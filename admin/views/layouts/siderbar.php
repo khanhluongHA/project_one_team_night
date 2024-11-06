@@ -55,6 +55,26 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link menu-link" href="?act=danhmuc-category">
+                        <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Danh Mục</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="?act=nguoidung-category">
+                        <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Người Dùng</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="?act=tintuc-category">
+                        <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Tin Tức</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="?act=lienhe-category">
+                        <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Liên Hệ</span>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link menu-link" href="#sidebarDanhMuc" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDanhMuc">
                         <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Danh mục sản phẩm</span>
                     </a>
