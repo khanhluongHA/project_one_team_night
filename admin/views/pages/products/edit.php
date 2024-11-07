@@ -42,50 +42,37 @@
         <!-- ============================================================== -->
         <div class="main-content">
             <div class="page-content">
-            <?php
-                require_once "models/TinTuc.php";
+                    <?php
+            ?>
+        <form action="index.php?action=update&id=<?php echo $tinTuc['id_tin_tuc']; ?>" method="post">
+        <div class="mb-3">
+                <label for="tieu_de" class="form-label">Tiêu đề:</label>
+                <input type="text" class="form-control" id="tieu_de" name="tieu_de" value="<?php echo htmlspecialchars($tinTuc['tieu_de']); ?>" required> 
 
-                // Handle form submission
-                if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                    $tieu_de = $_POST["tieu_de"];
-                    $noi_dung = $_POST["noi_dung"];
-                    $trang_thai = $_POST["trang_thai"];
 
-                    $conn = connectDB();
-                    if ($conn) {
-                        try {
-                            $sql = "INSERT INTO tin_tuc (tieu_de, noi_dung, trang_thai) VALUES (:tieu_de, :noi_dung, :trang_thai)";
-                            $stmt = $conn->prepare($sql);
-                            $stmt->bindParam(':tieu_de', $tieu_de);
-                            $stmt->bindParam(':noi_dung', $noi_dung);
-                            $stmt->bindParam(':trang_thai', $trang_thai);
-                            $stmt->execute();
-                            echo "<div class='alert alert-success'>Tin tức đã được thêm thành công.</div>";
-                        } catch (PDOException $e) {
-                            echo "<div class='alert alert-danger'>Lỗi: " . $e->getMessage() . "</div>";
-                        }
-                        $conn = null; // Close connection
-                    }
-                }
-                ?>
-                <form action="your_processing_script.php" method="post">  <!-- Replace with your actual processing script -->
-                    <div class="mb-3">
-                        <label for="tieu_de" class="form-label">Tiêu đề:</label>
-                        <input type="text" class="form-control" id="tieu_de" name="tieu_de" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="noi_dung" class="form-label">Nội dung:</label>
-                        <textarea class="form-control" id="noi_dung" name="noi_dung" rows="5" required></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="trang_thai" class="form-label">Trạng thái:</label>
-                        <select class="form-select" id="trang_thai" name="trang_thai">
-                            <option value="1">Xuất bản</option>
-                            <option value="0">Nháp</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Thêm</button>
-                </form>
+            </div>
+            <div class="mb-3">
+                <label for="noi_dung" class="form-label">Nội dung:</label>
+                <textarea class="form-control" id="noi_dung" name="noi_dung" rows="5" required><?php echo htmlspecialchars($tinTuc['noi_dung']); ?></textarea>
+
+
+            </div>
+            <div class="mb-3">
+                <label for="trang_thai" class="form-label">Trạng thái:</label>
+                <select class="form-select" id="trang_thai" name="trang_thai" required>
+                    <option value="1" <?php if ($tinTuc['trang_thai'] == 1) echo 'selected'; ?>>Xuất bản</option>
+                    <option value="0" <?php if ($tinTuc['trang_thai'] == 0) echo 'selected'; ?>>Nháp</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Cập nhật</button>
+        </form>
+        <?php
+
+
+        // Rest of file assuming you use some layout given html page includes, or form
+
+
+        ?>
             </div>
             <?php
                 $conn = connectDB();
