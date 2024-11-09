@@ -83,13 +83,13 @@
                                                          <?= !empty($_SESSION['errors']['email'] ) ? $_SESSION['errors']['email'] : '' ?>
                                                         </span>
 
-                                                        <label for="citynameInput" class="form-label">Tên ngày sinh</label>
+                                                        <label for="citynameInput" class="form-label">ngày sinh</label>
                                                         <input type="text" class="form-control" placeholder="Nhập ngay_sinh" name="ngay_sinh">
                                                         <span class="text-danger">
                                                          <?= !empty($_SESSION['errors']['ngay_sinh'] ) ? $_SESSION['errors']['ngay_sinh'] : '' ?>
                                                         </span>
 
-                                                        <label for="citynameInput" class="form-label">Tên giới tính</label>
+                                                        <label for="citynameInput" class="form-label">giới tính</label>
                                                         <input type="text" class="form-control" placeholder="Nhập gioi_tinh" name="gioi_tinh">
                                                         <span class="text-danger">
                                                          <?= !empty($_SESSION['errors']['gioi_tinh'] ) ? $_SESSION['errors']['gioi_tinh'] : '' ?>

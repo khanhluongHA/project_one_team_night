@@ -35,6 +35,8 @@ class NguoiDungController
             $so_dien_thoai = $_POST['so_dien_thoai'];
             $ngay_dang_ki = $_POST['ngay_dang_ki'];
             $dang_nhap_ngay_cuoi = $_POST['dang_nhap_ngay_cuoi'];
+            $trang_thai = $_POST['trang_thai'];
+
 
             // validate 
 
@@ -60,12 +62,15 @@ class NguoiDungController
             if(empty($dang_nhap_ngay_cuoi)){
                 $errors['dang_nhap_ngay_cuoi'] = 'Trạng thái là bắt buộc';
             }
+            if(empty($trang_thai)){
+                $errors['trang_thai'] = 'Trạng thái là bắt buộc';
+            }
 
             // thêm dữ liệu 
             if(empty($errors)){
                 // thêm dữ liệu
                 // thêm vào CSDL
-                 $this->modelNguoiDung->postData($email,$ngay_sinh,$gioi_tinh, $so_dien_thoai, $ngay_dang_ki, $dang_nhap_ngay_cuoi);
+                 $this->modelNguoiDung->postData($email,$ngay_sinh,$gioi_tinh, $so_dien_thoai, $ngay_dang_ki, $dang_nhap_ngay_cuoi, $trang_thai);
                  unset($_SESSION['erorrs']);
                  header('Location: ?act=nguoidung-category');
             }else{
@@ -101,37 +106,42 @@ class NguoiDungController
             $so_dien_thoai = $_POST['so_dien_thoai'];
             $ngay_dang_ki = $_POST['ngay_dang_ki'];
             $dang_nhap_ngay_cuoi = $_POST['dang_nhap_ngay_cuoi'];
+            $trang_thai = $_POST['trang_thai'];
+            
 
             // validate 
 
             $errors = [];
             if(empty($email)){
-                $errors['email'] = 'Tên danh mục là bắt buộc';
+                $errors['email'] = 'email người dùng là bắt buộc';
             }
 
             if(empty($ngay_sinh)){
-                $errors['ngay_sinh'] = 'Trạng thái là bắt buộc';
+                $errors['ngay_sinh'] = 'ngày sinh là bắt buộc';
             }
             if(empty($gioi_tinh)){
-                $errors['gioi_tinh'] = 'Tên danh mục là bắt buộc';
+                $errors['gioi_tinh'] = 'giới tính người dùng là bắt buộc';
             }
 
             if(empty($so_dien_thoai)){
-                $errors['so_dien_thoai'] = 'Trạng thái là bắt buộc';
+                $errors['so_dien_thoai'] = 'số điện thoại là bắt buộc';
             }
             if(empty($ngay_dang_ki)){
-                $errors['ngay_dang_ki'] = 'Tên danh mục là bắt buộc';
+                $errors['ngay_dang_ki'] = 'ngày đăng kí là bắt buộc';
             }
 
             if(empty($dang_nhap_ngay_cuoi)){
-                $errors['dang_nhap_ngay_cuoi'] = 'Trạng thái là bắt buộc';
+                $errors['dang_nhap_ngay_cuoi'] = 'đnăg nhập ngày cuối bắt buộc';
+            }
+            if(empty($trang_thai)){
+                $errors['trang_thai'] = 'đnăg nhập ngày cuối bắt buộc';
             }
 
             // thêm dữ liệu 
             if(empty($errors)){
                 // thêm dữ liệu
                 // thêm vào CSDL
-                 $this->modelNguoiDung->updateData($id_nguoi_dung ,$email,$ngay_sinh,$gioi_tinh, $so_dien_thoai, $ngay_dang_ki, $dang_nhap_ngay_cuoi);
+                 $this->modelNguoiDung->updateData($id_nguoi_dung ,$email,$ngay_sinh,$gioi_tinh, $so_dien_thoai, $ngay_dang_ki, $dang_nhap_ngay_cuoi, $trang_thai);
                  unset($_SESSION['erorrs']);
                  header('Location: ?act=nguoidung-category');
                  exit();

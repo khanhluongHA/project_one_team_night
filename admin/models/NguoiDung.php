@@ -25,10 +25,10 @@ class NguoiDung{
     }
 
     // thêm dữ liệu mới vào CSDL
-    public function postData($email,$ngay_sinh,$gioi_tinh, $so_dien_thoai, $ngay_dang_ki, $dang_nhap_ngay_cuoi){
+    public function postData($email,$ngay_sinh,$gioi_tinh, $so_dien_thoai, $ngay_dang_ki, $dang_nhap_ngay_cuoi, $trang_thai){
         try {
-            $sql = 'INSERT INTO nguoi_dungs (email, ngay_sinh, gioi_tinh, so_dien_thoai, ngay_dang_ki, dang_nhap_ngay_cuoi)
-            VALUE (:email, :ngay_sinh, :gioi_tinh, :so_dien_thoai, :ngay_dang_ki, :dang_nhap_ngay_cuoi)';
+            $sql = 'INSERT INTO nguoi_dungs (email, ngay_sinh, gioi_tinh, so_dien_thoai, ngay_dang_ki, dang_nhap_ngay_cuoi, trang_thai)
+            VALUE (:email, :ngay_sinh, :gioi_tinh, :so_dien_thoai, :ngay_dang_ki, :dang_nhap_ngay_cuoi, :trang_thai)';
 
             $stmt = $this->conn->prepare($sql);
             // gán gtri vào các tham số 
@@ -38,6 +38,8 @@ class NguoiDung{
             $stmt->bindParam(':so_dien_thoai', $so_dien_thoai);
             $stmt->bindParam(':ngay_dang_ki', $ngay_dang_ki);
             $stmt->bindParam(':dang_nhap_ngay_cuoi', $dang_nhap_ngay_cuoi);
+            $stmt->bindParam(':trang_thai', $trang_thai);
+
             
             return $stmt->execute();
 
@@ -85,9 +87,9 @@ class NguoiDung{
     }
 
      // câp nhật dữ liệu mới vào CSDL
-     public function updateData($id_nguoi_dung,$email,$ngay_sinh,$gioi_tinh, $so_dien_thoai, $ngay_dang_ki, $dang_nhap_ngay_cuoi){
+     public function updateData($id_nguoi_dung,$email,$ngay_sinh,$gioi_tinh, $so_dien_thoai, $ngay_dang_ki, $dang_nhap_ngay_cuoi, $trang_thai){
         try {
-            $sql = 'UPDATE nguoi_dungs SET email = :email, ngay_sinh = :ngay_sinh, gioi_tinh = :gioi_tinh, so_dien_thoai = :so_dien_thoai, ngay_dang_ki = :ngay_dang_ki, ngay_dang_nhap_cuoi = :ngay_dang_nhap_cuoi WHERE id_nguoi_dung = :id_nguoi_dung)';
+            $sql = 'UPDATE nguoi_dungs SET email = :email, ngay_sinh = :ngay_sinh, gioi_tinh = :gioi_tinh, so_dien_thoai = :so_dien_thoai, ngay_dang_ki = :ngay_dang_ki, ngay_dang_nhap_cuoi = :ngay_dang_nhap_cuoi, trang_thai = :trang_thai WHERE id_nguoi_dung = :id_nguoi_dung)';
 
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':id_nguoi_dung', $id_nguoi_dung);
@@ -98,6 +100,8 @@ class NguoiDung{
             $stmt->bindParam(':so_dien_thoai', $so_dien_thoai);
             $stmt->bindParam(':ngay_dang_ki', $ngay_dang_ki);
             $stmt->bindParam(':dang_nhap_ngay_cuoi', $dang_nhap_ngay_cuoi);
+            $stmt->bindParam(':trang_thai', $trang_thai);
+
 
             return $stmt->execute();
             

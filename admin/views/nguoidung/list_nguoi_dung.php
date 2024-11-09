@@ -84,6 +84,10 @@
                                                         <th scope="col">Số điện thoại</th>
                                                         <th scope="col">ngày đăng kí</th>
                                                         <th scope="col">ngày đăng nhập cuối</th>
+                                                        <th scope="col">trạng thái</th>
+                                                        <th scope="col">action</th>
+
+
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -96,6 +100,9 @@
                                                         <td><?= $nguoiDung['so_dien_thoai'] ?></td> 
                                                         <td><?= $nguoiDung['ngay_dang_ki'] ?></td>  
                                                         <td><?= $nguoiDung['dang_nhap_ngay_cuoi'] ?></td>
+                                                        <td><?= $nguoiDung['trang_thai'] ?></td>
+                                                        
+                                                        
 
                                                        
                                                         <td>
