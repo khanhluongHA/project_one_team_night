@@ -83,7 +83,7 @@ class DanhMuc{
      // câp nhật dữ liệu mới vào CSDL
      public function updateData($id,$ten_danh_muc,$trang_thai){
         try {
-            $sql = 'UPDATE danh_mucs SET ten_danh_muc = :ten_danh_muc, trang_thai = :trang_thai WHERE id = :id)';
+            $sql = 'UPDATE danh_mucs SET ten_danh_muc = :ten_danh_muc, trang_thai = :trang_thai WHERE id = :id';
 
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':id', $id);
