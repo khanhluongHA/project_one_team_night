@@ -12,7 +12,7 @@ class TinTucController
    // ham hie thi danh sach
     public function index(){
        //lay ra du lieu danh muc 
-       $tinTucs = $this->modelTinTuc->getAll();
+       $tinTuc = $this->modelTinTuc->getAll();
 
        // dua du lieu ra view 
        require_once './views/tintuc/list_tin_tuc.php';

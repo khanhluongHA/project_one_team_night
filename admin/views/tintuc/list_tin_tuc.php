@@ -84,8 +84,8 @@
                                                         <th scope="col">Action</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody>
-                                                    <?php foreach($tinTucs as $index => $tinTuc) : ?>
+                                                <tbody>                                               
+                                                    <?php foreach($tinTuc as $index => $tinTuc) : ?>
                                                     <tr>
                                                         <td class="fw-medium"><?= $index+1; ?></td>
                                                         <td><?= $tinTuc['tieu_de'] ?></td>  
