@@ -1,51 +1,117 @@
-<?php
-// ... (Your database connection code and defines) ...
+<?php 
 
-function displayNews($conn) {
-    try {
-        $stmt = $conn->prepare("SELECT id_tin_tuc, tieu_de, noi_dung, trang_thai FROM tin_tuc"); // Add "id" to the select query
-        $stmt->execute();
-        $newsItems = $stmt->fetchAll();
+class TinTuc{
 
-        if ($newsItems) {
-            echo '<table class="table table-striped table-bordered">'; // Styling classes
-            echo '<thead>';
-            echo '<tr>';
-            echo '<th>Tiêu đề</th>';
-            echo '<th>Nội dung</th>';
-            echo '<th>Trạng thái</th>';
-            echo '<th>Hành động</th>'; // New column header
-            echo '</tr>';
-            echo '</thead>';
-            echo '<tbody>';
+    public $conn;
+    // ket noi CSDL
+    public function __construct()
+    {
+       $this->conn = connectDB() ;
+    }
 
-            foreach ($newsItems as $row) {
-                echo '<tr>';
-                echo '<td>' . htmlspecialchars($row["tieu_de"]) . '</td>';
-                echo '<td>' . htmlspecialchars($row["noi_dung"]) . '</td>';
+    // danh sach danh muc 
+    public function getAll(){
+        try {
+            $sql = 'SELECT * FROM tin_tuc';
 
-                $status = ($row["trang_thai"] == 1) ? "Xuất bản" : $row["trang_thai"]; //Simplified
-                echo '<td>' . $status . '</td>';
+            $stmt = $this->conn->prepare($sql);
 
+            $stmt->execute();
 
-                 // Add Edit and Delete buttons:
-                echo '<td>';
-                echo '<a href="sua_tin_tuc.php?id=' . $row['id_tin_tuc'] . '" class="btn btn-sm btn-primary me-2">Sửa</a>';
-                echo '<a href="xoa_tin_tuc.php?id=' . $row['id_tin_tuc'] . '" class="btn btn-sm btn-danger">Xóa</a>';
-                echo '</td>';
+            return $stmt->fetchAll();
+        } catch (PDOException $e) {
+           echo 'Loi' . $e->getMessage();
+        }
+    }
 
+    // thêm dữ liệu mới vào CSDL
+    public function postData($tieu_de, $noi_dung ,$trang_thai){
+        try {
+            $sql = 'INSERT INTO tin_tuc (tieu_de, noi_dung ,trang_thai)
+            VALUE (:tieu_de, :noi_dung, :trang_thai)';
 
-                echo '</tr>';
-            }
+            $stmt = $this->conn->prepare($sql);
+            // gán gtri vào các tham số 
+            $stmt->bindParam(':tieu_de', $tieu_de);
+            $stmt->bindParam(':noi_dung', $noi_dung);
+            $stmt->bindParam(':trang_thai', $trang_thai);
+            
+            return $stmt->execute();
 
-            echo '</tbody>';
-            echo '</table>';
-        } else {
-            echo "Không có tin tức nào.";
+        } catch (PDOException $e) {
+           echo 'Loi' . $e->getMessage();
+           return false;
         }
 
-    } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
+    }
+
+    // xóa dữ liệu người dùng 
+
+    public function deleteData($id_tin_tuc) {
+        try {
+            $sql = 'DELETE FROM tin_tuc WHERE id_tin_tuc = :id_tin_tuc';
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':id_tin_tuc', $id_tin_tuc);
+
+            $stmt->execute();
+
+            return true;
+        } catch (PDOException $e) {
+           echo 'Loi' . $e->getMessage();
+        }
+        
+    }
+
+    // LẤY thông tin danh mục ra form sửa
+
+    public function getDetailData($id_tin_tuc) {
+        try {
+            $sql = 'SELECT * FROM tin_tuc WHERE id_tin_tuc = :id_tin_tuc';
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':id_tin_tuc', $id_tin_tuc);
+
+            $stmt->execute();
+
+            return $stmt->fetch();
+        } catch (PDOException $e) {
+           echo 'Loi' . $e->getMessage();
+        }
+        
+    }
+
+     // câp nhật dữ liệu mới vào CSDL
+     public function updateData($id_tin_tuc,$tieu_de, $noi_dung,$trang_thai){
+        try {
+            $sql = 'UPDATE tin_tuc SET tieu_de = :tieu_de, noi_dung = :noi_dung, trang_thai = :trang_thai WHERE id_tin_tuc = :id_tin_tuc)';
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':id_tin_tuc', $id_tin_tuc);
+            // gán gtri vào các tham số 
+            $stmt->bindParam(':tieu_de', $tieu_de);
+            $stmt->bindParam(':noi_dung', $noi_dung);
+            $stmt->bindParam(':trang_thai', $trang_thai);
+
+            return $stmt->execute();
+            
+        } catch (PDOException $e) {
+           echo 'Loi' . $e->getMessage();
+           return false;
+        }
+
+    }
+
+
+
+
+
+    // huy ket noi CSDL
+
+    public function __destruct()
+    {
+        $this->conn = null ; 
     }
 }
-?>
+
+

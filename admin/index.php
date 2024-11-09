@@ -13,6 +13,9 @@ require_once 'controllers/LienHeController.php';
 
 // Require toàn bộ file Models
 require_once 'models/DanhMuc.php';
+require_once 'models/NguoiDung.php';
+require_once 'models/TinTuc.php';
+
 
 // Route
 $act = $_GET['act'] ?? '/';
@@ -28,15 +31,22 @@ match ($act) {
     'form-sua-danh-muc'    => (new DanhMucController())->edit(),
     'sua-danh-muc'         => (new DanhMucController())->update(),
     'xoa-danh-muc'         => (new DanhMucController())->destroy(),
+
+
     'nguoidung-category' => (new NguoiDungController())->index(),
+    'form-them-nguoi-dung'   => (new NguoiDungController())->create(),
+    'them-nguoi-dung'       => (new NguoiDungController())->store(),
+    'form-sua-nguoi-dung'    => (new NguoiDungController())->edit(),
+    'sua-nguoi-dung'         => (new NguoiDungController())->update(),
+    'xoa-nguoi-dung'         => (new NguoiDungController())->destroy(),
+
+
     'tintuc-category' => (new TinTucController())->index(),
-    'edit-tintuc-category' => (new TinTucController())->index(),
+    'form-them-tin-tuc'   => (new TinTucController())->create(),
+    'them-tin-tuc'       => (new TinTucController())->store(),
+    'form-sua-tin-tuc'    => (new TinTucController())->edit(),
+    'sua-tin-tuc'         => (new TinTucController())->update(),
+    'xoa-tin-tuc'         => (new TinTucController())->destroy(),
 
     // quản lý liên hệ
-    'lienhe-category' => (new LienHeController())->index(),
-    'form-them-lienhe' => (new LienHeController())->index(),
-    'them-lienhe' => (new LienHeController())->index(),
-    'form-sua-lienhe' => (new LienHeController())->index(),
-    'sua-lienhe' => (new LienHeController())->index(),
-    'xoa-lienhe-' => (new LienHeController())->index(),
 };
