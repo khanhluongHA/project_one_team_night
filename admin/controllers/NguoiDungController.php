@@ -1,177 +1,202 @@
-
 <?php
-class NguoiDungController 
-{
-    //ham ket noi den File Model 
+
+class NguoiDungController{
+    // ket noi den file Model
     public $modelNguoiDung;
 
-    public function __construct()
-    {
+    public function __construct(){
         $this->modelNguoiDung = new NguoiDung();
     }
-   // ham hie thi danh sach
+
+    // ham hien thi danh sach
     public function index(){
-       //lay ra du lieu danh muc 
-       $nguoiDung = $this->modelNguoiDung->getAll();
-    //    var_dump($danhMucs);
+        // lay ra du lieu danh muc
+        $nguoiDungs = $this->modelNguoiDung->getAll();
+        // var_dump($danhMucs);
 
-       // dua du lieu ra view 
-       require_once './views/nguoidung/list_nguoi_dung.php';
+        // dua du lieu ra view
+        require_once './views/nguoidung/list_nguoi_dung.php';
         
     }
 
-    // ham hie thi form theem 
+    // ham hien thi form them
     public function create(){
+
         require_once './views/nguoidung/create_nguoi_dung.php';
-        
+    }   
+    public function details(){
+        $nguoiDungs = $this->modelNguoiDung->details();
+        require_once './views/nguoidung/detail_nguoi_dung.php';
+
+
     }
-    // ham xu ly them vao CSDL
+    // ham xu ly them CSDL
     public function store(){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
-            // lấy ra dữ liệu 
+            //lay ra du lieu
+            $ten_nguoi_dung = $_POST['ten_nguoi_dung'];
             $email = $_POST['email'];
+            $sdt = $_POST['sdt'];
+            $dia_chi = $_POST['dia_chi'];
+            $mat_khau = $_POST['mat_khau'];
             $ngay_sinh = $_POST['ngay_sinh'];
             $gioi_tinh = $_POST['gioi_tinh'];
-            $so_dien_thoai = $_POST['so_dien_thoai'];
-            $ngay_dang_ki = $_POST['ngay_dang_ki'];
-            $dang_nhap_ngay_cuoi = $_POST['dang_nhap_ngay_cuoi'];
+            $avatar = $_FILES['avarta']['name'];
+            $tmp=$_FILES['avarta']['tmp_name'];
+            move_uploaded_file($tmp,"../assets/images/".$avatar);
+            $vai_tro = $_POST['vai_tro'];
             $trang_thai = $_POST['trang_thai'];
 
-
-            // validate 
+            //validate
 
             $errors = [];
-            if(empty($email)){
-                $errors['email'] = 'Tên danh mục là bắt buộc';
+            if(empty($ten_nguoi_dung)){
+                $errors['ten_nguoi_dung'] = "ten nguoi dung khong duoc de trong";
             }
-
+            if(empty($email)){
+                $errors['email'] = "email khong duoc de trong";
+            }
+            if(empty($sdt)){
+                $errors['sdt'] = "sdt khong duoc de trong";
+            }
+            if(empty($dia_chi)){
+                $errors['dia_chi'] = "dia_chi dung khong duoc de trong";
+            }
+            if(empty($mat_khau)){
+                $errors['mat_khau'] = "mat_khau khong duoc de trong";
+            }
             if(empty($ngay_sinh)){
-                $errors['ngay_sinh'] = 'Trạng thái là bắt buộc';
+                $errors['ngay_sinh'] = "ngay_sinh khong duoc de trong";
             }
             if(empty($gioi_tinh)){
-                $errors['gioi_tinh'] = 'Tên danh mục là bắt buộc';
+                $errors['gioi_tinh'] = "gioi_tinh khong duoc de trong";
+            }
+            if(empty($avatar)){
+                $errors['avatar'] = "";
+            }
+            if(empty($vai_tro)){
+                $errors['vai_tro'] = "vai_tro khong duoc de trong";
             }
 
-            if(empty($so_dien_thoai)){
-                $errors['so_dien_thoai'] = 'Trạng thái là bắt buộc';
-            }
-            if(empty($ngay_dang_ki)){
-                $errors['ngay_dang_ki'] = 'Tên danh mục là bắt buộc';
-            }
-
-            if(empty($dang_nhap_ngay_cuoi)){
-                $errors['dang_nhap_ngay_cuoi'] = 'Trạng thái là bắt buộc';
-            }
             if(empty($trang_thai)){
-                $errors['trang_thai'] = 'Trạng thái là bắt buộc';
+                $errors['trang_thai'] = "trang thai khong duoc de trong";
             }
 
-            // thêm dữ liệu 
+            // them du lieu
             if(empty($errors)){
-                // thêm dữ liệu
-                // thêm vào CSDL
-                 $this->modelNguoiDung->postData($email,$ngay_sinh,$gioi_tinh, $so_dien_thoai, $ngay_dang_ki, $dang_nhap_ngay_cuoi, $trang_thai);
-                 unset($_SESSION['erorrs']);
-                 header('Location: ?act=nguoidung-category');
+                //neu ko co loi thi them du lieu
+                //them vao CSDL
+                $this->modelNguoiDung->postData(ten_nguoi_dung: $ten_nguoi_dung, email: $email, sdt: $sdt, dia_chi: $dia_chi, mat_khau: $mat_khau, ngay_sinh: $ngay_sinh, gioi_tinh: $gioi_tinh, avatar: $avatar, vai_tro: $vai_tro, trang_thai: $trang_thai);
+
+                unset($_SESSION['errors']);
+                header('location: ?act=nguoidung-category');
+                exit();
             }else{
-                $_SESSION['errors'] = $errors;
-                header('Location: ?act=form-them-nguoi-dung');
+                $_SESSION['errors'] = $errors;header('location: ?act=form-add-nguoi-dung');
                 exit();
             }
         }
-        
     }
 
-    // ham hien thi form xua
+    // ham hien thi form sua
     public function edit(){
-        // lấy id 
+        // lay thong tin chi tiet cua danh muc
+        // require_once './views/nguoidung/edit_nguoi_dung.php';
         $id = $_GET['id_nguoi_dung'];
-        // lấy thông tin chi tiết của danh mục 
-        $nguoiDung = $this->modelNguoiDung->getDetailData($id);
-
-        // đổ dữ liệu ra form 
-        require_once './views/nguoidung/edit_nguoi_dung.php';
-
+            // lay thong tin chi tiet cua danh muc
+        // $nguoiDungs = $this->modelNguoiDung->getAll();
+        $nguoiDungs = $this->modelNguoiDung->getDetailData($id);
+            // var_dump($nguoiDungs);
+            // require_once './views/nguoidung/edit_nguoi_dung.php';
+            require_once './views/nguoidung/edit_nguoi_dung.php';
         
     }
 
-     // ham xu ly cap nhat vao CSDL
-     public function update(){
+    // ham xu ly cap nhat du lieu vao CSDL
+    public function update(){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
-            // lấy ra dữ liệu 
-            $id_nguoi_dung = $_POST['id_nguoi_dung'];
-            $email = $_POST['email'];
-            $ngay_sinh = $_POST['ngay_sinh'];
-            $gioi_tinh = $_POST['gioi_tinh'];
-            $so_dien_thoai = $_POST['so_dien_thoai'];
-            $ngay_dang_ki = $_POST['ngay_dang_ki'];
-            $dang_nhap_ngay_cuoi = $_POST['dang_nhap_ngay_cuoi'];
+            //lay ra du lieu
+            $id = $_POST['id'];
+            // $ten_nguoi_dung = $_POST['ten_nguoi_dung'];
+            // $email = $_POST['email'];
+            // $sdt = $_POST['sdt'];
+            // $dia_chi = $_POST['dia_chi'];
+            // $mat_khau = $_POST['mat_khau'];
+            // $ngay_sinh = $_POST['ngay_sinh'];
+            // $gioi_tinh = $_POST['gioi_tinh'];
+            // $avartar = $_FILES['avartar']['avartar'];
+            // $avartar= $_FILES['avartar']['avartar'];
+            // move_uploaded_file($avartar,"../uploads/anh/".$avartar);
+            // // $avartar=$_POST['avartar'];
+            $vai_tro = $_POST['vai_tro'];
             $trang_thai = $_POST['trang_thai'];
-            
+            // var_dump($ten_nguoi_dung);die;
 
-            // validate 
+            //validate
 
-            $errors = [];
-            if(empty($email)){
-                $errors['email'] = 'email người dùng là bắt buộc';
-            }
+            // $errors = [];
+            // if(empty($ten_nguoi_dung)){
+            //     $errors['ten_nguoi_dung'] = "ten nguoi dung khong duoc de trong";
+            // }
+            // if(empty($email)){
+            //     $errors['email'] = "email khong duoc de trong";
+            // }
+            // if(empty($sdt)){
+            //     $errors['sdt'] = "sdt khong duoc de trong";
+            // }
+            // if(empty($dia_chi)){
+            //     $errors['dia_chi'] = "dia_chi dung khong duoc de trong";
+            // }
+            // if(empty($mat_khau)){
+            //     $errors['mat_khau'] = "mat_khau khong duoc de trong";
+            // }
+            // if(empty($ngay_sinh)){
+            //     $errors['ngay_sinh'] = "ngay_sinh khong duoc de trong";
+            // }
+            // if(empty($gioi_tinh)){
+            //     $errors['gioi_tinh'] = "gioi_tinh khong duoc de trong";
+            // }
+            // if(empty($avatar)){
+            //     $errors['avatar'] = "";
+            // }
+            // if(empty($vai_tro)){
+            //     $errors['vai_tro'] = "vai_tro khong duoc de trong";
+            // }
 
-            if(empty($ngay_sinh)){
-                $errors['ngay_sinh'] = 'ngày sinh là bắt buộc';
-            }
-            if(empty($gioi_tinh)){
-                $errors['gioi_tinh'] = 'giới tính người dùng là bắt buộc';
-            }
+            // if(empty($trang_thai)){
+            //     $errors['trang_thai'] = "trang thai khong duoc de trong";
+            // }
 
-            if(empty($so_dien_thoai)){
-                $errors['so_dien_thoai'] = 'số điện thoại là bắt buộc';
-            }
-            if(empty($ngay_dang_ki)){
-                $errors['ngay_dang_ki'] = 'ngày đăng kí là bắt buộc';
-            }
-
-            if(empty($dang_nhap_ngay_cuoi)){
-                $errors['dang_nhap_ngay_cuoi'] = 'đnăg nhập ngày cuối bắt buộc';
-            }
-            if(empty($trang_thai)){
-                $errors['trang_thai'] = 'đnăg nhập ngày cuối bắt buộc';
-            }
-
-            // thêm dữ liệu 
+            // them du lieu
             if(empty($errors)){
-                // thêm dữ liệu
-                // thêm vào CSDL
-                 $this->modelNguoiDung->updateData($id_nguoi_dung ,$email,$ngay_sinh,$gioi_tinh, $so_dien_thoai, $ngay_dang_ki, $dang_nhap_ngay_cuoi, $trang_thai);
-                 unset($_SESSION['erorrs']);
-                 header('Location: ?act=nguoidung-category');
-                 exit();
+                //neu ko co loi thi them du lieu
+                //them vao CSDL
+                $this->modelNguoiDung->updateData($id, $vai_tro, $trang_thai);
+                // var_dump($vai_tro);die;
+                unset($_SESSION['errors']);
+                // var_dump($errors);
+                // var_dump($ten_nguoi_dung);
+                header('location: ?act=nguoidung-category');
+                exit();
             }else{
                 $_SESSION['errors'] = $errors;
-                header('Location: ?act=form-sua-nguoi-dung');
+                // var_dump($errors);
+                header('location: ?act=form-sua-nguoi-dung');
                 exit();
             }
         }
-        
-     }
+    }
 
-       // ham xoa du lieu trong CSDL
+    // ham xoa du lieu
     public function destroy(){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $id = $_POST['id_nguoi_dung'];
+            // var_dump($id);
 
-            // xóa danh mục 
-
-            $this->modelNguoiDung->deleteData($id);
-
-            header('Location: ?act=nguoidung-category');
+            // xoa danh muc
+            $deleteNguoiDung = $this->modelNguoiDung->deleteData($id);
+            header('location: ?act=nguoidung-category');
             exit();
-
         }
-        
     }
 }
-
-
-
-
-

@@ -7,14 +7,14 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Người dùng | NN Shop</title>
+    <title>Danh mục sản phẩm | NN Shop</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
 
     <!-- CSS -->
     <?php
-    require_once  "views/layouts/libs_css.php";
+    require_once "views/layouts/libs_css.php";
     ?>
 
 </head>
@@ -42,23 +42,22 @@
 
             <div class="page-content">
                 <div class="container-fluid">
-                    <!-- start page title -->
-                    <div class="row">
+                          <!-- start page title -->
+                          <div class="row">
                         <div class="col-12">
                             <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
-                                <h4 class="mb-sm-0">Quản lý Người dùng</h4>
+                                <h4 class="mb-sm-0">Quản lý banner</h4>
 
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
                                         <li class="breadcrumb-item"><a href="javascript: void(0);">Admin</a></li>
-                                        <li class="breadcrumb-item active">Quản lý Người dùng</li>
+                                        <li class="breadcrumb-item active">Danh sách banner</li>
                                     </ol>
                                 </div>
 
                             </div>
                         </div>
                     </div>
-                    <!-- end page title -->
 
                     <div class="row">
                         <div class="col">
@@ -66,9 +65,9 @@
                             <div class="h-100">
                             <div class="card">
                                 <div class="card-header align-items-center d-flex">
-                                    <h4 class="card-title mb-0 flex-grow-1">Danh Sách Người dùng</h4>
-                                    <a href="?act=form-them-nguoi-dung" class="btn btn-soft-success material-shadow-none"><i class="ri-add-circle-line align-middle me-1"></i> Thêm Người dùng</a>
-                                    </div>
+                                    <h4 class="card-title mb-0 flex-grow-1"> Danh sách banner</h4>
+                                    <a href="?act=form-them-banner" class="btn btn-soft-success material-shadow-none"><i class="ri-add-circle-line align-middle me-1"></i> Thêm banners </a>
+                                
                                 </div><!-- end card header -->
 
                                 <div class="card-body">
@@ -78,67 +77,53 @@
                                                 <thead>
                                                     <tr>
                                                         <th scope="col">STT</th>
-                                                        <th scope="col">Tên ngf dùng</th>                                                     
-                                                        <th scope="col">avatar</th>
-                                                        <th scope="col">vai tro</th>
-                                                        <th scope="col">trang thái</th>
-                                                        <th scope="col">action</th>
-
-
+                                                        <th scope="col">Tiêu đề</th>
+                                                        <th scope="col">Trạng thái</th>
+                                                        <th scope="col">Action</th>
+                                                        <th scope="col">Hình ảnh</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <?php foreach($nguoiDungs as $index => $nguoiDung) : ?>
+                                                    <?php foreach ($banNers as $index => $banNer) : ?>
                                                     <tr>
-                                                        <td class="fw-medium"><?= $index+1; ?></td>
-                                                        <td><?= $nguoiDung['ten_nguoi_dung'] ?></td> 
-                                                       
-                                                        <td><img src="<?php echo  $nguoiDung['avartar']; ?>" width="60px" height="50px" alt="Image Description"></td>
+                                                        <td class="fw-medium"><?= $index + 1 ?></td>
+                                                        <td><?= $banNer['ten_banner'] ?></td>
                                                         <td>
                                                             <?php 
-                                                            if($nguoiDung['vai_tro'] ==1) { ?>
-                                                            <span class="badge bg-success">admin</span>
-                                                            <?php } else { ?>
-                                                                <span class="badge bg-danger">nguoi dung</span>
-                                                           <?php }
-                                                            ?>
-                                                            
-                                                        </td>
-                                                        <td>
-                                                            <?php 
-                                                            if($nguoiDung['trang_thai'] ==1) { ?>
-                                                            <span class="badge bg-success">Hiển Thị</span>
-                                                            <?php } else { ?>
-                                                                <span class="badge bg-danger">Không hiển Thị</span>
-                                                           <?php }
-                                                            ?>
-                                                            
-                                                        </td>
-                                                        
-                                                        
+                                                            if($banNer['trang_thai']==1){?>
+                                                                <span class="badge bg-success">Hiển thị</span>
+                                                                <?php
+                                                            }else{
+                                                                ?>
+                                                                     <span class="badge bg-danger">Không hiển thị</span>
+                                                                <?php
 
-                                                       
+                                                            }
+                                                            
+                                                            ?>
+                                                            
+                                                        </td>
                                                         <td>
                                                                     <div class="hstack gap-3 flex-wrap">
-                                                                    <a href="?act=chi-tiet-nguoi-dung"><i class="ri-dashboard-2-line"></i></a>
-                                                                        <a href="?act=form-sua-nguoi-dung&id_nguoi_dung=<?= $nguoiDung['id']?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
-                                                                        <form action="?act=xoa-nguoi-dung" method="POST"
-                                                                        onsubmit="return confirm('Bạn có đồng ý xóa không ? ')">
-                                                                        <input type="hidden" name="id_nguoi_dung" value="<?= $nguoiDung['id']?>">
+                                                                        <a href="?act=form-sua-banner&banner_id=<?= $banNer['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
+                                                                        <form action="?act=xoa-banner" method="POST"
+                                                                        onsubmit="return confirm('Bạn co đồng ý không')">
+                                                                        <input type="hidden" name="banner_id" value="<?= $banNer['id'] ?>">
                                                                         <button type="submit" class="link-danger fs-15" style="border: none; background: none;">
-                                                                            <i class="ri-delete-bin-line"></i></button>
-  
+                                                                            <i class="ri-delete-bin-line"></i>
+                                                                      </button>
                                                                         </form>
                                                                     </div>
                                                                 </td>
+                                                                <td><img src="<?php echo './uploads/anh/' . $banNer['anh_banner']; ?>" width="192px" height="108px" alt="Image Description"></td>     
+                                                                     
                                                     </tr>
-                                                    
-                                                   <?php endforeach; ?>
+                                                    <?php endforeach; ?>
                                                 </tbody>
                                             </table>
                                         </div>
                                     </div>
-                                    
+                                 
                                 </div><!-- end card-body -->
                             </div><!-- end card -->
 

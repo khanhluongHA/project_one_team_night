@@ -78,15 +78,22 @@
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
                                                         <label for="citynameInput" class="form-label">Tiêu đề</label>
-                                                        <input type="text" class="form-control" placeholder="Nhập tiêu đề" name="tieu_de">
+                                                        <input type="text" class="form-control" name="tieu_de">
                                                         <span class="text-danger">
                                                          <?= !empty($_SESSION['errors']['tieu_de'] ) ? $_SESSION['errors']['tieu_de'] : '' ?>
                                                         </span>
 
                                                         <label for="citynameInput" class="form-label">Nội Dung</label>
-                                                        <input type="text" class="form-control" placeholder="Nhập Nội dung" name="noi_dung">
+                                                        <input type="text" class="form-control" name="noi_dung">
                                                         <span class="text-danger">
                                                          <?= !empty($_SESSION['errors']['noi_dung'] ) ? $_SESSION['errors']['noi_dung'] : '' ?>
+                                                        </span>
+                                                        </span>
+
+                                                        <label for="citynameInput" class="form-label">ngay_dang</label>
+                                                        <input type="date" class="form-control" name="ngay_dang">
+                                                        <span class="text-danger">
+                                                         <?= !empty($_SESSION['errors']['ngay_dang'] ) ? $_SESSION['errors']['ngay_dang'] : '' ?>
                                                         </span>
                                                     </div>
                                                 </div>

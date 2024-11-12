@@ -7,14 +7,14 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Người dùng | NN Shop</title>
+    <title>Trạng thái đơn hàng | NN Shop</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
 
     <!-- CSS -->
     <?php
-    require_once  "views/layouts/libs_css.php";
+    require_once "views/layouts/libs_css.php";
     ?>
 
 </head>
@@ -42,23 +42,22 @@
 
             <div class="page-content">
                 <div class="container-fluid">
-                    <!-- start page title -->
-                    <div class="row">
+                          <!-- start page title -->
+                          <div class="row">
                         <div class="col-12">
                             <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
-                                <h4 class="mb-sm-0">Quản lý Người dùng</h4>
+                                <h4 class="mb-sm-0">Quản lý trạng thái đơn hàng</h4>
 
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
                                         <li class="breadcrumb-item"><a href="javascript: void(0);">Admin</a></li>
-                                        <li class="breadcrumb-item active">Quản lý Người dùng</li>
+                                        <li class="breadcrumb-item active">Trạng thái đơn hàng</li>
                                     </ol>
                                 </div>
 
                             </div>
                         </div>
                     </div>
-                    <!-- end page title -->
 
                     <div class="row">
                         <div class="col">
@@ -66,9 +65,9 @@
                             <div class="h-100">
                             <div class="card">
                                 <div class="card-header align-items-center d-flex">
-                                    <h4 class="card-title mb-0 flex-grow-1">Danh Sách Người dùng</h4>
-                                    <a href="?act=form-them-nguoi-dung" class="btn btn-soft-success material-shadow-none"><i class="ri-add-circle-line align-middle me-1"></i> Thêm Người dùng</a>
-                                    </div>
+                                    <h4 class="card-title mb-0 flex-grow-1"> Danh sách trạng thái đơn hàng</h4>
+                                    <a href="?act=form- them-trang-thai" class="btn btn-soft-success material-shadow-none"><i class="ri-add-circle-line align-middle me-1"></i> Thêm trạng thái đơn hàng</a>
+                                
                                 </div><!-- end card header -->
 
                                 <div class="card-body">
@@ -78,67 +77,81 @@
                                                 <thead>
                                                     <tr>
                                                         <th scope="col">STT</th>
-                                                        <th scope="col">Tên ngf dùng</th>                                                     
-                                                        <th scope="col">avatar</th>
-                                                        <th scope="col">vai tro</th>
-                                                        <th scope="col">trang thái</th>
-                                                        <th scope="col">action</th>
-
-
+                                                        <th scope="col">Tên sản phẩm</th>
+                                                        <th scope="col">Trạng thái</th>
+                                                        <th scope="col">Thông Tin tài khoản</th>
+                                                        <th scope="col">Thông Tin nhận hàng</th>
+                                                        <th scope="col">Thông tin đơn hàng</th>
+                                                        <th scope="col">Sản phẩm trong giỏ hàng</th>
+                                                        <th scope="col">Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <?php foreach($nguoiDungs as $index => $nguoiDung) : ?>
+                                                    <?php foreach ($trangThais as $index => $trangThai) : ?>
                                                     <tr>
-                                                        <td class="fw-medium"><?= $index+1; ?></td>
-                                                        <td><?= $nguoiDung['ten_nguoi_dung'] ?></td> 
-                                                       
-                                                        <td><img src="<?php echo  $nguoiDung['avartar']; ?>" width="60px" height="50px" alt="Image Description"></td>
+                                                        <td class="fw-medium"><?= $index + 1 ?></td>
+                                                        <td><?= $trangThai['ten_trang_thai'] ?></td>
+                                                        
+                                                        <td><?= $trangThai['thong_tin_tai_khoan'] ?></td>
+                                                        <td><?= $trangThai['thong_tin_nhan_hang'] ?></td>
+                                                        <td><?= $trangThai['thong_tin_don_hang'] ?></td>
+                                                        <td><?= $trangThai['san_pham_trong_don_hang'] ?></td>
                                                         <td>
                                                             <?php 
-                                                            if($nguoiDung['vai_tro'] ==1) { ?>
-                                                            <span class="badge bg-success">admin</span>
-                                                            <?php } else { ?>
-                                                                <span class="badge bg-danger">nguoi dung</span>
-                                                           <?php }
-                                                            ?>
+                                                            if($trangThai['trang_thai_tb']==1){?>
+                                                                <span class="badge bg-success">Chờ xác nhận</span>
+                                                                <?php
+                                                            }  
+                                                            else if($trangThai['trang_thai_tb']==2){?>
+                                                                <span class="badge bg-success">Đã xác nhận</span>
+                                                                <?php
+                                                            }
+                                                            else if($trangThai['trang_thai_tb']==3){?>
+                                                                <span class="badge bg-success">Đang giao</span>
+                                                                <?php
+                                                            }
+                                                            else if($trangThai['trang_thai_tb']==4){?>
+                                                                <span class="badge bg-success">Đã Giao</span>
+                                                                <?php
+                                                            }
+                                                            else if($trangThai['trang_thai_tb']==5){?>
+                                                                <span class="badge bg-success">Giao hàng thành công</span>
+                                                                <?php
+                                                            }
+                                                            else if($trangThai['trang_thai_tb']==6){?>
+                                                                <span class="badge bg-success">Giao hàng thất bại</span>
+                                                                <?php
+                                                            }
                                                             
-                                                        </td>
-                                                        <td>
-                                                            <?php 
-                                                            if($nguoiDung['trang_thai'] ==1) { ?>
-                                                            <span class="badge bg-success">Hiển Thị</span>
-                                                            <?php } else { ?>
-                                                                <span class="badge bg-danger">Không hiển Thị</span>
-                                                           <?php }
-                                                            ?>
-                                                            
-                                                        </td>
-                                                        
-                                                        
+                                                            else{
+                                                                ?>
+                                                                     <span class="badge bg-danger">Đã hủy</span>
+                                                                <?php
 
-                                                       
+                                                            }
+                                                            
+                                                            ?>
+                                                            
+                                                        </td>
                                                         <td>
                                                                     <div class="hstack gap-3 flex-wrap">
-                                                                    <a href="?act=chi-tiet-nguoi-dung"><i class="ri-dashboard-2-line"></i></a>
-                                                                        <a href="?act=form-sua-nguoi-dung&id_nguoi_dung=<?= $nguoiDung['id']?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
-                                                                        <form action="?act=xoa-nguoi-dung" method="POST"
-                                                                        onsubmit="return confirm('Bạn có đồng ý xóa không ? ')">
-                                                                        <input type="hidden" name="id_nguoi_dung" value="<?= $nguoiDung['id']?>">
+                                                                        <a href="?act=form-sua-trang-thai&trang_thai_id=<?= $trangThai['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
+                                                                        <form action="?act=xoa-trang-thai" method="POST"
+                                                                        onsubmit="return confirm('Bạn co đồng ý không')">
+                                                                        <input type="hidden" name="trang_thai_id" value="<?= $trangThai['id'] ?>">
                                                                         <button type="submit" class="link-danger fs-15" style="border: none; background: none;">
-                                                                            <i class="ri-delete-bin-line"></i></button>
-  
+                                                                            <i class="ri-delete-bin-line"></i>
+                                                                      </button>
                                                                         </form>
                                                                     </div>
                                                                 </td>
                                                     </tr>
-                                                    
-                                                   <?php endforeach; ?>
+                                                    <?php endforeach; ?>
                                                 </tbody>
                                             </table>
                                         </div>
                                     </div>
-                                    
+                                 
                                 </div><!-- end card-body -->
                             </div><!-- end card -->
 

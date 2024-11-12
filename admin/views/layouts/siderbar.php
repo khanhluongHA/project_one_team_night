@@ -59,11 +59,7 @@
                         <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Danh Mục</span>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link menu-link" href="?act=nguoidung-category">
-                        <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Người Dùng</span>
-                    </a>
-                </li>
+                
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="?act=tintuc-category">
                         <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Tin Tức</span>
@@ -72,6 +68,26 @@
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="?act=lienhe-category">
                         <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Liên Hệ</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="?act=banners">
+                        <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Banner</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="?act=khuyen-mais">
+                        <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Khuyến mãi</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="?act=trang-thais">
+                        <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Trạng thái đơn hàng</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="?act=nguoidung-categoryy">
+                        <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">người dùng</span>
                     </a>
                 </li>
                 <li class="nav-item">

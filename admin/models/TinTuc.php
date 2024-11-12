@@ -12,7 +12,7 @@ class TinTuc{
     // danh sach danh muc 
     public function getAll(){
         try {
-            $sql = 'SELECT * FROM tin_tuc';
+            $sql = 'SELECT * FROM tin_tucs';
 
             $stmt = $this->conn->prepare($sql);
 
@@ -25,16 +25,17 @@ class TinTuc{
     }
 
     // thêm dữ liệu mới vào CSDL
-    public function postData($tieu_de, $noi_dung ,$trang_thai){
+    public function postData($tieu_de, $noi_dung, $ngay_dang, $trang_thai){
         try {
-            $sql = 'INSERT INTO tin_tuc (tieu_de, noi_dung ,trang_thai)
-            VALUE (:tieu_de, :noi_dung, :trang_thai)';
+            $sql = 'INSERT INTO tin_tucs (tieu_de, noi_dung, ngay_dang, trang_thai) VALUE (:tieu_de, :noi_dung, :ngay_dang, :trang_thai)';
 
             $stmt = $this->conn->prepare($sql);
             // gán gtri vào các tham số 
             $stmt->bindParam(':tieu_de', $tieu_de);
             $stmt->bindParam(':noi_dung', $noi_dung);
+            $stmt->bindParam(':ngay_dang', $ngay_dang);
             $stmt->bindParam(':trang_thai', $trang_thai);
+            // var_dump($tieu_de);die;
             
             return $stmt->execute();
 
@@ -47,12 +48,12 @@ class TinTuc{
 
     // xóa dữ liệu người dùng 
 
-    public function deleteData($id_tin_tuc) {
+    public function deleteData($id) {
         try {
-            $sql = 'DELETE FROM tin_tuc WHERE id_tin_tuc = :id_tin_tuc';
+            $sql = "DELETE FROM tin_tucs WHERE id = :id";
 
             $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(':id_tin_tuc', $id_tin_tuc);
+            $stmt->bindParam(':id', $id);
 
             $stmt->execute();
 
@@ -65,12 +66,13 @@ class TinTuc{
 
     // LẤY thông tin danh mục ra form sửa
 
-    public function getDetailData($id_tin_tuc) {
+    public function getDetailData($id) {
         try {
-            $sql = 'SELECT * FROM tin_tuc WHERE id_tin_tuc = :id_tin_tuc';
+            $sql = 'SELECT * FROM tin_tucs WHERE id = :id';
 
             $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(':id_tin_tuc', $id_tin_tuc);
+            $stmt->bindParam(':id', $id);
+            // var_dump($id);die;
 
             $stmt->execute();
 
@@ -82,16 +84,18 @@ class TinTuc{
     }
 
      // câp nhật dữ liệu mới vào CSDL
-     public function updateData($id_tin_tuc,$tieu_de, $noi_dung,$trang_thai){
+     public function updateData($id, $tieu_de, $noi_dung, $ngay_dang, $trang_thai){
         try {
-            $sql = 'UPDATE tin_tuc SET tieu_de = :tieu_de, noi_dung = :noi_dung, trang_thai = :trang_thai WHERE id_tin_tuc = :id_tin_tuc)';
+            $sql = 'UPDATE tin_tucs SET tieu_de = :tieu_de, noi_dung = :noi_dung, ngay_dang = :ngay_dang, trang_thai = :trang_thai WHERE id = :id';
 
             $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(':id_tin_tuc', $id_tin_tuc);
+            $stmt->bindParam(':id', $id);
             // gán gtri vào các tham số 
             $stmt->bindParam(':tieu_de', $tieu_de);
             $stmt->bindParam(':noi_dung', $noi_dung);
+            $stmt->bindParam(':ngay_dang', $ngay_dang);
             $stmt->bindParam(':trang_thai', $trang_thai);
+            // var_dump($id);die;
 
             return $stmt->execute();
             

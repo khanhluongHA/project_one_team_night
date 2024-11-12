@@ -7,14 +7,14 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Cập nhật Tin tức | NN Shop</title>
+    <title>Thêm danh mục  | NN Shop</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
 
     <!-- CSS -->
     <?php
-    require_once  "views/layouts/libs_css.php";
+    require_once "views/layouts/libs_css.php";
     ?>
 
 </head>
@@ -27,6 +27,7 @@
         <!-- HEADER -->
         <?php
         require_once "views/layouts/header.php";
+
         require_once "views/layouts/siderbar.php";
         ?>
         
@@ -41,23 +42,22 @@
 
             <div class="page-content">
                 <div class="container-fluid">
-                    <!-- start page title -->
-                    <div class="row">
+                          <!-- start page title -->
+                          <div class="row">
                         <div class="col-12">
                             <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
-                                <h4 class="mb-sm-0">Cập nhật Tin tức</h4>
+                                <h4 class="mb-sm-0">Quản lý trạng thái đơn hàng</h4>
 
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
                                         <li class="breadcrumb-item"><a href="javascript: void(0);">Admin</a></li>
-                                        <li class="breadcrumb-item active">Cập nhật Tin tức</li>
+                                        <li class="breadcrumb-item active">Trạng thái đơn hàng</li>
                                     </ol>
                                 </div>
 
                             </div>
                         </div>
                     </div>
-                    <!-- end page title -->
 
                     <div class="row">
                         <div class="col">
@@ -65,52 +65,79 @@
                             <div class="h-100">
                             <div class="card">
                                 <div class="card-header align-items-center d-flex">
-                                    <h4 class="card-title mb-0 flex-grow-1">Cập nhật Tin tức</h4>
-                                    
+                                    <h4 class="card-title mb-0 flex-grow-1"> Thêm trạng thái đơn hàng</h4>
+                                    <div class="flex-shrink-0">
+                                   
                                     </div>
                                 </div><!-- end card header -->
 
                                 <div class="card-body">
+                                   
                                     <div class="live-preview">
-                                        <form action="?act=sua-tin-tuc" method="POST">
-                                            <input type="hidden" name="id_tin_tuc" value="<?= $tinTucs['id'] ?>">
+                                        <form action="?act=them-trang-thai" method="POST">
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
-                                                        <label for="citynameInput" class="form-label">Tiêu đề</label>
-                                                        <input type="text" class="form-control"  name="tieu_de" value="<?= $tinTucs['tieu_de'] ?>">
+                                                        <label for="citynameInput" class="form-label">Tên sản phẩm</label>
+                                                        <input type="text" class="form-control" placeholder="Nhập tên trạng thái" name="ten_trang_thai">
                                                         <span class="text-danger">
-                                                         <?= !empty($_SESSION['errors']['tieu_de'] ) ? $_SESSION['errors']['tieu_de'] : '' ?>
-                                                        </span>
-
-                                                        <label for="citynameInput" class="form-label">Nội dung</label>
-                                                        <input type="text" class="form-control"  name="noi_dung" value="<?= $tinTucs['noi_dung'] ?>">
-                                                        <span class="text-danger">
-                                                         <?= !empty($_SESSION['errors']['noi_dung'] ) ? $_SESSION['errors']['noi_dung'] : '' ?>
-                                                        </span>
-                                                        </span>
-
-                                                        <label for="citynameInput" class="form-label">ngày đăng</label>
-                                                        <input type="text" class="form-control"  name="ngay_dang" value="<?= $tinTucs['ngay_dang'] ?>">
-                                                        <span class="text-danger">
-                                                         <?= !empty($_SESSION['errors']['ngay_dang'] ) ? $_SESSION['errors']['ngay_dang'] : '' ?>
+                                                                <?= !empty($_SESSION['errors']['ten_trang_thai']) ? $_SESSION['errors']['ten_trang_thai'] : ''?>
                                                         </span>
                                                     </div>
-
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label for="citynameInput" class="form-label">Thông Tin Tài Khoản</label>
+                                                        <input type="text" class="form-control" placeholder="Nhập thông tin tài khoản" name="thong_tin_tai_khoan">
+                                                        <span class="text-danger">
+                                                                <?= !empty($_SESSION['errors']['thong_tin_tai_khoan']) ? $_SESSION['errors']['thong_tin_tai_khoan'] : ''?>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label for="citynameInput" class="form-label">Thông tin nhận hàng</label>
+                                                        <input type="text" class="form-control" placeholder="Nhập thông tin nhận hàng" name="thong_tin_nhan_hang">
+                                                        <span class="text-danger">
+                                                                <?= !empty($_SESSION['errors']['thong_tin_nhan_hang']) ? $_SESSION['errors']['thong_tin_nhan_hang'] : ''?>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label for="citynameInput" class="form-label">Thông tin đơn hàng</label>
+                                                        <input type="text" class="form-control" placeholder="Nhập thông tin đơn hàng" name="thong_tin_don_hang">
+                                                        <span class="text-danger">
+                                                                <?= !empty($_SESSION['errors']['thong_tin_don_hang']) ? $_SESSION['errors']['thong_tin_don_hang'] : ''?>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label for="citynameInput" class="form-label">sản phẩm trong đơn hàng</label>
+                                                        <input type="text" class="form-control" placeholder="Nhập sản phẩm trong đơn hàng" name="san_pham_trong_don_hang">
+                                                        <span class="text-danger">
+                                                                <?= !empty($_SESSION['errors']['san_pham_trong_don_hang']) ? $_SESSION['errors']['san_pham_trong_don_hang'] : ''?>
+                                                        </span>
+                                                    </div>
                                                 </div>
                                                 <!--end col-->
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
-                                                        <label for="ForminputState" class="form-label">Trạng Thái</label>
-                                                        <select  class="form-select" name="trang_thai">
-                                                        
+                                                        <label for="ForminputState" class="form-label">Trạng thái</label>
+                                                        <select  class="form-select" name="trang_thai_tb">
                                                             <option selected disabled>Chọn trạng thái</option>
-                                                           
-                                                            <option value="1" <?= $tinTucs['trang_thai'] == 1 ? 'selected' : '' ?> >Hiển thị</option>
-                                                            <option value="2" <?= $tinTucs['trang_thai'] == 2 ? 'selected' : '' ?>>Không hiển thị</option>
+                                                            <option value="1">Chờ xác nhận</option>
+                                                            <option value="2">Đã xác nhận</option>
+                                                            <option value="3">Đang giao</option>
+                                                            <option value="4">Đã Giao</option>
+                                                            <option value="5">Giao hàng thành công</option>
+                                                            <option value="6">Giao hàng thất bại</option>
+                                                            <option value="7">Đã hủy</option>
+                                                        
                                                         </select>
                                                         <span class="text-danger">
-                                                         <?= !empty($_SESSION['errors']['trang_thai'] ) ? $_SESSION['errors']['trang_thai'] : '' ?>
+                                                                <?= !empty($_SESSION['errors']['trang_thai_tb']) ? $_SESSION['errors']['trang_thai_tb'] : ''?>
                                                         </span>
                                                     </div>
                                                 </div>
@@ -127,7 +154,7 @@
                                     </div>
                                     
                                 </div>
-                            </div><!-- end card -->
+                            </div>
 
                             </div> <!-- end .h-100-->
 

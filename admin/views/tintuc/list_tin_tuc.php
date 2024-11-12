@@ -80,16 +80,20 @@
                                                         <th scope="col">STT</th>
                                                         <th scope="col">tiêu đề</th>
                                                         <th scope="col">nội dung</th>
+                                                        <th scope="col">ngày đăng</th>
                                                         <th scope="col">Trạng Thái</th>
                                                         <th scope="col">Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>                                               
-                                                    <?php foreach($tinTuc as $index => $tinTuc) : ?>
+                                                    <?php foreach($tinTucs as $index => $tinTuc) : ?>
                                                     <tr>
                                                         <td class="fw-medium"><?= $index+1; ?></td>
                                                         <td><?= $tinTuc['tieu_de'] ?></td>  
-                                                        <td><?= $tinTuc['noi_dung'] ?></td>  
+                                                        <td>
+                                                            <textarea readonly rows="4" cols="50"><?= $tinTuc['noi_dung'] ?></textarea>
+                                                        </td>
+                                                        <td><?= $tinTuc['ngay_dang'] ?></td>
                                                         <td>
                                                             <?php 
                                                             if($tinTuc['trang_thai'] ==1) { ?>
@@ -102,10 +106,10 @@
                                                         </td>
                                                         <td>
                                                                     <div class="hstack gap-3 flex-wrap">
-                                                                        <a href="?act=form-sua-tin-tuc&id-tin-tuc=<?= $tinTuc['id_tin_tuc']?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
+                                                                        <a href="?act=form-sua-tin-tuc&id_tin_tuc=<?= $tinTuc['id']?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
                                                                         <form action="?act=xoa-tin-tuc" method="POST"
                                                                         onsubmit="return confirm('Bạn có đồng ý xóa không ? ')">
-                                                                        <input type="hidden" name="id-tin-tuc" value="<?= $tinTuc['id_tin_tuc']?>">
+                                                                        <input type="hidden" name="id-tin-tuc" value="<?= $tinTuc['id']?>">
                                                                         <button type="submit" class="link-danger fs-15" style="border: none; background: none;">
                                                                             <i class="ri-delete-bin-line"></i></button>
   

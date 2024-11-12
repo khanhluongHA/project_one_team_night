@@ -1,18 +1,18 @@
-<?php 
+<?php
 
 class NguoiDung{
-
     public $conn;
-    // ket noi CSDL
+
+    //ket noi CSDL
     public function __construct()
     {
-       $this->conn = connectDB() ;
+        $this->conn = connectDB();
     }
 
-    // danh sach danh muc 
+    //danh sach danh muc
     public function getAll(){
-        try {
-            $sql = 'SELECT * FROM nguoi_dungs';
+        try{
+            $sql = "SELECT * FROM nguoi_dungs";
 
             $stmt = $this->conn->prepare($sql);
 
@@ -20,108 +20,109 @@ class NguoiDung{
 
             return $stmt->fetchAll();
         } catch (PDOException $e) {
-           echo 'Loi' . $e->getMessage();
+            echo "Connection failed: " . $e->getMessage();
         }
     }
 
-    // thêm dữ liệu mới vào CSDL
-    public function postData($email,$ngay_sinh,$gioi_tinh, $so_dien_thoai, $ngay_dang_ki, $dang_nhap_ngay_cuoi, $trang_thai){
-        try {
-            $sql = 'INSERT INTO nguoi_dungs (email, ngay_sinh, gioi_tinh, so_dien_thoai, ngay_dang_ki, dang_nhap_ngay_cuoi, trang_thai)
-            VALUE (:email, :ngay_sinh, :gioi_tinh, :so_dien_thoai, :ngay_dang_ki, :dang_nhap_ngay_cuoi, :trang_thai)';
+    //them du lieu vao CSDL
+    public function postData($ten_nguoi_dung, $email, $sdt, $dia_chi, $mat_khau, $ngay_sinh, $gioi_tinh, $avatar, $vai_tro, $trang_thai){
+        try{
+            
+            $sql = "INSERT INTO nguoi_dungs (ten_nguoi_dung, email, sdt, dia_chi, mat_khau, ngay_sinh, gioi_tinh, avatar, trang_thai) VALUES (:ten_nguoi_dung, :email, :sdt, :dia_chi, :mat_khau, :ngay_sinh, :gioi_tinh, :avatar, :trang_thai)";
 
             $stmt = $this->conn->prepare($sql);
-            // gán gtri vào các tham số 
+
+            //gan gia tri vao cac tham so
+            $stmt->bindParam(':ten_nguoi_dung', $ten_nguoi_dung);
             $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':sdt', $sdt);
+            $stmt->bindParam(':dia_chi', $dia_chi);
+            $stmt->bindParam(':mat_khau', $mat_khau);
             $stmt->bindParam(':ngay_sinh', $ngay_sinh);
             $stmt->bindParam(':gioi_tinh', $gioi_tinh);
-            $stmt->bindParam(':so_dien_thoai', $so_dien_thoai);
-            $stmt->bindParam(':ngay_dang_ki', $ngay_dang_ki);
-            $stmt->bindParam(':dang_nhap_ngay_cuoi', $dang_nhap_ngay_cuoi);
+            $stmt->bindParam(':avatar', $avatar);
+            $stmt->bindParam(':vai_tro', $vai_tro);
             $stmt->bindParam(':trang_thai', $trang_thai);
 
-            
-            return $stmt->execute();
+            $stmt->execute();
 
+            return $stmt->rowCount();
         } catch (PDOException $e) {
-           echo 'Loi' . $e->getMessage();
-           return false;
+            echo "Connection failed: " . $e->getMessage();
+            return false;
         }
-
     }
 
-    // xóa dữ liệu người dùng 
-
-    public function deleteData($id_nguoi_dung) {
-        try {
-            $sql = 'DELETE FROM nguoi_dungs WHERE id_nguoi_dung = :id_nguoi_dung';
+    public function deleteData($id){
+        try{
+            $sql = "DELETE FROM nguoi_dungs WHERE id = :id";
 
             $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(':id_nguoi_dung', $id_nguoi_dung);
+
+            $stmt->bindParam(':id', $id); 
+            // var_dump(id);die;  
 
             $stmt->execute();
 
             return true;
         } catch (PDOException $e) {
-           echo 'Loi' . $e->getMessage();
+            echo "Connection failed: " . $e->getMessage();
         }
-        
     }
-
-    // LẤY thông tin danh mục ra form sửa
-
-    public function getDetailData($id_nguoi_dung) {
-        try {
-            $sql = 'SELECT * FROM nguoi_dungs WHERE id_nguoi_dung = :id_nguoi_dung';
+    public function getDetailData($id){
+        try{
+            $sql = "SELECT * FROM nguoi_dungs WHERE id = :id";
 
             $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(':id_nguoi_dung', $id_nguoi_dung);
+
+            $stmt->bindParam(':id', $id);   
 
             $stmt->execute();
 
             return $stmt->fetch();
         } catch (PDOException $e) {
-           echo 'Loi' . $e->getMessage();
+            echo "Connection failed: " . $e->getMessage();
         }
-        
     }
-
-     // câp nhật dữ liệu mới vào CSDL
-     public function updateData($id_nguoi_dung,$email,$ngay_sinh,$gioi_tinh, $so_dien_thoai, $ngay_dang_ki, $dang_nhap_ngay_cuoi, $trang_thai){
+    public function updateData($id,$vai_tro,$trang_thai){
         try {
-            $sql = 'UPDATE nguoi_dungs SET email = :email, ngay_sinh = :ngay_sinh, gioi_tinh = :gioi_tinh, so_dien_thoai = :so_dien_thoai, ngay_dang_ki = :ngay_dang_ki, ngay_dang_nhap_cuoi = :ngay_dang_nhap_cuoi, trang_thai = :trang_thai WHERE id_nguoi_dung = :id_nguoi_dung)';
-
+            $sql = 'UPDATE nguoi_dungs SET vai_tro = :vai_tro ,trang_thai = :trang_thai WHERE id = :id ';
             $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(':id_nguoi_dung', $id_nguoi_dung);
-            // gán gtri vào các tham số 
-            $stmt->bindParam(':email', $email);
-            $stmt->bindParam(':ngay_sinh', $ngay_sinh);
-            $stmt->bindParam(':gioi_tinh', $gioi_tinh);
-            $stmt->bindParam(':so_dien_thoai', $so_dien_thoai);
-            $stmt->bindParam(':ngay_dang_ki', $ngay_dang_ki);
-            $stmt->bindParam(':dang_nhap_ngay_cuoi', $dang_nhap_ngay_cuoi);
+            $stmt->bindParam(':id', $id);
+            // $stmt->bindParam(':ten_nguoi_dung', $ten_nguoi_dung);
+            // $stmt->bindParam(':email', $email);
+            // $stmt->bindParam(':sdt', $sdt);
+            // $stmt->bindParam(':dia_chi', $dia_chi);
+            // $stmt->bindParam(':mat_khau', $mat_khau);
+            // $stmt->bindParam(':ngay_sinh', $ngay_sinh);
+            // $stmt->bindParam(':gioi_tinh', $gioi_tinh);
+            // $stmt->bindParam(':avarta', $avartar);
+            $stmt->bindParam(':vai_tro', $vai_tro);
             $stmt->bindParam(':trang_thai', $trang_thai);
-
-
+            // var_dump($trang_thai);die;
             return $stmt->execute();
             
         } catch (PDOException $e) {
-           echo 'Loi' . $e->getMessage();
+            echo 'Loi' . $e->getMessage();
            return false;
         }
-
     }
+    public function details(){
+        try{
+            $sql = "SELECT * FROM nguoi_dungs";
 
+            $stmt = $this->conn->prepare($sql);
 
+            $stmt->execute();
 
-
-
-    // huy ket noi CSDL
-
-    public function __destruct()
-    {
-        $this->conn = null ; 
+            return $stmt->fetch();
+        } catch (PDOException $e) {
+            echo "Connection failed: " . $e->getMessage();
+        }
+    }
+    
+    //huy ket noi CSDL
+    public function __destruct(){
+        $this->conn = null;
     }
 }
-
-

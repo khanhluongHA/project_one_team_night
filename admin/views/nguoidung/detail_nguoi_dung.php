@@ -78,7 +78,13 @@
                                                 <thead>
                                                     <tr>
                                                         <th scope="col">STT</th>
-                                                        <th scope="col">Tên ngf dùng</th>                                                     
+                                                        <th scope="col">Tên ngf dùng</th>
+                                                        <th scope="col">email</th>
+                                                        <th scope="col">sdt</th>
+                                                        <th scope="col">dia chi</th>
+                                                        <th scope="col">mat khau</th>
+                                                        <th scope="col">ngay sinh</th>
+                                                        <th scope="col">gioi tinh</th>
                                                         <th scope="col">avatar</th>
                                                         <th scope="col">vai tro</th>
                                                         <th scope="col">trang thái</th>
@@ -88,32 +94,18 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <?php foreach($nguoiDungs as $index => $nguoiDung) : ?>
                                                     <tr>
-                                                        <td class="fw-medium"><?= $index+1; ?></td>
-                                                        <td><?= $nguoiDung['ten_nguoi_dung'] ?></td> 
-                                                       
-                                                        <td><img src="<?php echo  $nguoiDung['avartar']; ?>" width="60px" height="50px" alt="Image Description"></td>
-                                                        <td>
-                                                            <?php 
-                                                            if($nguoiDung['vai_tro'] ==1) { ?>
-                                                            <span class="badge bg-success">admin</span>
-                                                            <?php } else { ?>
-                                                                <span class="badge bg-danger">nguoi dung</span>
-                                                           <?php }
-                                                            ?>
-                                                            
-                                                        </td>
-                                                        <td>
-                                                            <?php 
-                                                            if($nguoiDung['trang_thai'] ==1) { ?>
-                                                            <span class="badge bg-success">Hiển Thị</span>
-                                                            <?php } else { ?>
-                                                                <span class="badge bg-danger">Không hiển Thị</span>
-                                                           <?php }
-                                                            ?>
-                                                            
-                                                        </td>
+                                                        <td class="fw-medium">1</td>
+                                                        <td><?= $nguoiDungs['ten_nguoi_dung'] ?></td> 
+                                                        <td><?= $nguoiDungs['email'] ?></td> 
+                                                        <td><?= $nguoiDungs['sdt'] ?></td> 
+                                                        <td><?= $nguoiDungs['dia_chi'] ?></td> 
+                                                        <td><?= $nguoiDungs['mat_khau'] ?></td>  
+                                                        <td><?= $nguoiDungs['ngay_sinh'] ?></td>
+                                                        <td><?= $nguoiDungs['gioi_tinh'] ?></td>
+                                                        <td><?= $nguoiDungs['avartar'] ?></td>
+                                                        <td><?= $nguoiDungs['vai_tro'] ?></td>
+                                                        <td><?= $nguoiDungs['trang_thai'] ?></td>
                                                         
                                                         
 
@@ -121,10 +113,10 @@
                                                         <td>
                                                                     <div class="hstack gap-3 flex-wrap">
                                                                     <a href="?act=chi-tiet-nguoi-dung"><i class="ri-dashboard-2-line"></i></a>
-                                                                        <a href="?act=form-sua-nguoi-dung&id_nguoi_dung=<?= $nguoiDung['id']?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
+                                                                        <a href="?act=form-sua-nguoi-dung&id_nguoi_dung=<?= $nguoiDungs['id']?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
                                                                         <form action="?act=xoa-nguoi-dung" method="POST"
                                                                         onsubmit="return confirm('Bạn có đồng ý xóa không ? ')">
-                                                                        <input type="hidden" name="id_nguoi_dung" value="<?= $nguoiDung['id']?>">
+                                                                        <input type="hidden" name="id_nguoi_dung" value="<?= $nguoiDungs['id']?>">
                                                                         <button type="submit" class="link-danger fs-15" style="border: none; background: none;">
                                                                             <i class="ri-delete-bin-line"></i></button>
   
@@ -133,7 +125,6 @@
                                                                 </td>
                                                     </tr>
                                                     
-                                                   <?php endforeach; ?>
                                                 </tbody>
                                             </table>
                                         </div>

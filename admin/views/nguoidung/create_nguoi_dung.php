@@ -77,65 +77,107 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
-                                                        <label for="citynameInput" class="form-label">Tên email</label>
-                                                        <input type="text" class="form-control" placeholder="Nhập email" name="email">
+                                                    <label for="citynameInput" class="form-label">Ten</label>
+                                                        <input type="text" class="form-control" placeholder="Nhap ten nguoi dung" name="ten_nguoi_dung">
                                                         <span class="text-danger">
-                                                         <?= !empty($_SESSION['errors']['email'] ) ? $_SESSION['errors']['email'] : '' ?>
+                                                            <?= !empty($_SESSION['errors']['ten_nguoi_dung']) ? $_SESSION['errors']['ten_nguoi_dung'] : ''?>
                                                         </span>
-
-                                                        <label for="citynameInput" class="form-label">ngày sinh</label>
-                                                        <input type="text" class="form-control" placeholder="Nhập ngay_sinh" name="ngay_sinh">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label for="citynameInput" class="form-label">email</label>
+                                                        <input type="text" class="form-control" placeholder="Nhap email nguoi dung" name="email">
                                                         <span class="text-danger">
-                                                         <?= !empty($_SESSION['errors']['ngay_sinh'] ) ? $_SESSION['errors']['ngay_sinh'] : '' ?>
+                                                            <?= !empty($_SESSION['errors']['email']) ? $_SESSION['errors']['email'] : ''?>
                                                         </span>
-
-                                                        <label for="citynameInput" class="form-label">giới tính</label>
-                                                        <input type="text" class="form-control" placeholder="Nhập gioi_tinh" name="gioi_tinh">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label for="citynameInput" class="form-label">sdt</label>
+                                                        <input type="text" class="form-control" placeholder="Nhap ten nguoi dung" name="sdt">
                                                         <span class="text-danger">
-                                                         <?= !empty($_SESSION['errors']['gioi_tinh'] ) ? $_SESSION['errors']['gioi_tinh'] : '' ?>
+                                                            <?= !empty($_SESSION['errors']['sdt']) ? $_SESSION['errors']['sdt'] : ''?>
                                                         </span>
-
-                                                        <label for="citynameInput" class="form-label">số điện thoại</label>
-                                                        <input type="text" class="form-control" placeholder="Nhập so_dien_thoai" name="so_dien_thoai">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label for="citynameInput" class="form-label">dia chi</label>
+                                                        <input type="text" class="form-control" placeholder="Nhap ten nguoi dung" name="dia_chi">
                                                         <span class="text-danger">
-                                                         <?= !empty($_SESSION['errors']['so_dien_thoai'] ) ? $_SESSION['errors']['so_dien_thoai'] : '' ?>
+                                                            <?= !empty($_SESSION['errors']['dia_chi']) ? $_SESSION['errors']['dia_chi'] : ''?>
                                                         </span>
-
-                                                        <label for="citynameInput" class="form-label">ngày đăng kí</label>
-                                                        <input type="text" class="form-control" placeholder="Nhập ngay_dang_ki" name="ngay_dang_ki">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label for="citynameInput" class="form-label">mat khau</label>
+                                                        <input type="text" class="form-control" placeholder="Nhap ten nguoi dung" name="mat_khau">
                                                         <span class="text-danger">
-                                                         <?= !empty($_SESSION['errors']['ngay_dang_ki'] ) ? $_SESSION['errors']['ngay_dang_ki'] : '' ?>
+                                                            <?= !empty($_SESSION['errors']['mat_khau']) ? $_SESSION['errors']['mat_khau'] : ''?>
                                                         </span>
-
-                                                        <label for="citynameInput" class="form-label">ngày đăng nhập cuối</label>
-                                                        <input type="text" class="form-control" placeholder="Nhập dang_nhap_ngay_cuoi" name="dang_nhap_ngay_cuoi">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label for="citynameInput" class="form-label">ngay sinh</label>
+                                                        <input type="text" class="form-control" placeholder="Nhap ten nguoi dung" name="ngay_sinh">
                                                         <span class="text-danger">
-                                                         <?= !empty($_SESSION['errors']['dang_nhap_ngay_cuoi'] ) ? $_SESSION['errors']['dang_nhap_ngay_cuoi'] : '' ?>
+                                                            <?= !empty($_SESSION['errors']['ngay_sinh']) ? $_SESSION['errors']['ngay_sinh'] : ''?>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label for="citynameInput" class="form-label">gioi tinh</label>
+                                                        <input type="text" class="form-control" placeholder="Nhap ten nguoi dung" name="gioi_tinh">
+                                                        <span class="text-danger">
+                                                            <?= !empty($_SESSION['errors']['gioi_tinh']) ? $_SESSION['errors']['gioi_tinh'] : ''?>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label for="citynameInput" class="form-label">avatar</label><input type="file" class="form-control" placeholder="Nhap ten nguoi dung" name="avatar">
+                                                        <span class="text-danger">
+                                                            <?= !empty($_SESSION['errors']['avatar']) ? $_SESSION['errors']['avatar'] : ''?>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label for="ForminputState" class="form-label">vai tro</label>
+                                                        <select id="ForminputState" class="form-select" name="vai_tro">
+                                                            <option selected disabled>Chon vai tro</option>
+                                                            <option value="1">admin</option>
+                                                            <option value="2">nguoi dung</option>
+                                                        </select>
+                                                        <span class="text-danger">
+                                                            <?= !empty($_SESSION['errors']['vai_tro']) ? $_SESSION['errors']['vai_tro'] : ''?>
                                                         </span>
                                                     </div>
                                                 </div>
                                                 <!--end col-->
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
-                                                        <label for="ForminputState" class="form-label">Trạng Thái</label>
-                                                        <select  class="form-select" name="trang_thai">
-                                                        
-                                                            <option selected disabled>Chọn trạng thái</option>
-                                                           
-                                                            <option value="1">Hiển thị</option>
-                                                            <option value="2">Không hiển thị</option>
+                                                        <label for="ForminputState" class="form-label">Trang Thai</label>
+                                                        <select id="ForminputState" class="form-select" name="trang_thai">
+                                                            <option selected disabled>Chon Trang Thai</option>
+                                                            <option value="1">Hien Thi</option>
+                                                            <option value="2">Khong Hien Thi</option>
                                                         </select>
                                                         <span class="text-danger">
-                                                         <?= !empty($_SESSION['errors']['trang_thai'] ) ? $_SESSION['errors']['trang_thai'] : '' ?>
+                                                            <?= !empty($_SESSION['errors']['trang_thai']) ? $_SESSION['errors']['trang_thai'] : ''?>
                                                         </span>
                                                     </div>
                                                 </div>
-                                                <!--end col-->
-                                                <div class="col-lg-12">
-                                                    <div class="text-center">
-                                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                                <!--end col--><div class="col-lg-12">
+                                                    <div class="text-left">
+                                                        <button type="submit" class="btn btn-primary">them nguoi dung</button>
                                                     </div>
-                                                </div>
+                                                </div>​
                                                 <!--end col-->
                                             </div>
                                             <!--end row-->
