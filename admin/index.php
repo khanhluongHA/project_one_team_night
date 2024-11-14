@@ -14,6 +14,10 @@ require_once 'controllers/KhuyenMaiController.php';
 require_once 'controllers/TrangThaiController.php';
 require_once 'controllers/NguoiDungController.php';
 require_once './controllers/AdminSanPhamController.php';
+require_once 'controllers/DonHangController.php';
+require_once 'controllers/ChiTietDonHangController.php';
+
+
 
 
 
@@ -27,6 +31,8 @@ require_once 'models/LienHe.php';
 require_once 'models/NguoiDung.php';
 require_once './models/AdminSanPham.php';
 require_once './models/AdminDanhMuc.php';
+require_once 'models/DonHang.php';
+require_once 'models/ChiTietDonHang.php';
 
 
 
@@ -104,5 +110,17 @@ match ($act) {
 
     // bình luận
     'update-trang-thai-binh-luan' => (new AdminSanPhamController())->updateTrangThaiBinhLuan(),
+
+    // đơn hàng
+    'donhang-category'      => (new DonHangController())->index(),
+    'form-sua-don-hang'     => (new DonHangController())->edit(),
+    'sua-don-hang'          => (new DonHangController())->update(),
+    // chi tiết đơn hàng
+    'chitietdonhangs'              => (new ChiTietDonHangController())->index_chitietdonhang(),
+    'form- them-chitietdonhang'    => (new ChiTietDonHangController())->create_chitietdonhang(),
+    'them-chitietdonhang'          => (new ChiTietDonHangController())->store_chitietdonhang(),
+    'form-sua-chitietdonhang'      => (new ChiTietDonHangController())->edit_chitietdonhang(),
+    'sua-chitietdonhang'           => (new ChiTietDonHangController())->update_chitietdonhang(),
+    'xoa-chitietdonhang'           => (new ChiTietDonHangController())->destroy_chitietdonhang(),
  
 };

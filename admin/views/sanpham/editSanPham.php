@@ -65,7 +65,7 @@
                     </div>
 
                     <div class="form-group">
-                      <label for="gia_san_pham">Giá thú cưng</label>
+                      <label for="gia_san_pham">Giá sản phẩm</label>
                       <input type="number" id="gia_san_pham" name="gia_san_pham" class="form-control"
                         value="<?= $sanPham['gia_san_pham'] ?>">
                       <?php if (isset($_SESSION['error']['gia_san_pham'])) { ?>

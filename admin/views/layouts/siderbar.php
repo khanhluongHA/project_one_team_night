@@ -86,8 +86,18 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link menu-link" href="?act=donhang-category">
+                        <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Đơn hàng</span>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link menu-link" href="?act=trang-thais">
                         <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Trạng thái đơn hàng</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="?act=chitietdonhangs">
+                        <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Chi tiết đơn hàng</span>
                     </a>
                 </li>
                 <li class="nav-item">
