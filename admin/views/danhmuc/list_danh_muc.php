@@ -106,7 +106,6 @@
                                                                         <input type="hidden" name="danh_muc_id" value="<?= $danhMuc['id']?>">
                                                                         <button type="submit" class="link-danger fs-15" style="border: none; background: none;">
                                                                             <i class="ri-delete-bin-line"></i></button>
-  
                                                                         </form>
                                                                     </div>
                                                                 </td>

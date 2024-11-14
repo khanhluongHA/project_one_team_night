@@ -76,51 +76,6 @@
                                     <div class="live-preview">
                                         <form action="?act=them-trang-thai" method="POST">
                                             <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="mb-3">
-                                                        <label for="citynameInput" class="form-label">Tên sản phẩm</label>
-                                                        <input type="text" class="form-control" placeholder="Nhập tên trạng thái" name="ten_trang_thai">
-                                                        <span class="text-danger">
-                                                                <?= !empty($_SESSION['errors']['ten_trang_thai']) ? $_SESSION['errors']['ten_trang_thai'] : ''?>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="mb-3">
-                                                        <label for="citynameInput" class="form-label">Thông Tin Tài Khoản</label>
-                                                        <input type="text" class="form-control" placeholder="Nhập thông tin tài khoản" name="thong_tin_tai_khoan">
-                                                        <span class="text-danger">
-                                                                <?= !empty($_SESSION['errors']['thong_tin_tai_khoan']) ? $_SESSION['errors']['thong_tin_tai_khoan'] : ''?>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="mb-3">
-                                                        <label for="citynameInput" class="form-label">Thông tin nhận hàng</label>
-                                                        <input type="text" class="form-control" placeholder="Nhập thông tin nhận hàng" name="thong_tin_nhan_hang">
-                                                        <span class="text-danger">
-                                                                <?= !empty($_SESSION['errors']['thong_tin_nhan_hang']) ? $_SESSION['errors']['thong_tin_nhan_hang'] : ''?>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="mb-3">
-                                                        <label for="citynameInput" class="form-label">Thông tin đơn hàng</label>
-                                                        <input type="text" class="form-control" placeholder="Nhập thông tin đơn hàng" name="thong_tin_don_hang">
-                                                        <span class="text-danger">
-                                                                <?= !empty($_SESSION['errors']['thong_tin_don_hang']) ? $_SESSION['errors']['thong_tin_don_hang'] : ''?>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="mb-3">
-                                                        <label for="citynameInput" class="form-label">sản phẩm trong đơn hàng</label>
-                                                        <input type="text" class="form-control" placeholder="Nhập sản phẩm trong đơn hàng" name="san_pham_trong_don_hang">
-                                                        <span class="text-danger">
-                                                                <?= !empty($_SESSION['errors']['san_pham_trong_don_hang']) ? $_SESSION['errors']['san_pham_trong_don_hang'] : ''?>
-                                                        </span>
-                                                    </div>
-                                                </div>
                                                 <!--end col-->
                                                 <div class="col-md-6">
                                                     <div class="mb-3">

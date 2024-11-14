@@ -76,6 +76,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link menu-link" href="?act=san-pham">
+                        <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Sản phẩm</span>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link menu-link" href="?act=khuyen-mais">
                         <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Khuyến mãi</span>
                     </a>

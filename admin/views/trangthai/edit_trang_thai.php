@@ -79,15 +79,7 @@
 
                                             <input type="hidden" name="id" value="<?= $trangThai['id'] ?>">
                                             <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="mb-3">
-                                                        <label for="citynameInput" class="form-label">Tên sản phẩm</label>
-                                                        <input type="text" class="form-control" placeholder="Nhập tên trạng thái" name="ten_trang_thai" value="<?=$trangThai['ten_trang_thai']?>">
-                                                        <span class="text-danger">
-                                                                <?= !empty($_SESSION['errors']['ten_trang_thai']) ? $_SESSION['errors']['ten_trang_thai'] : ''?>
-                                                        </span>
-                                                    </div>
-                                                </div>
+                                                
                                                 <!--end col-->
                                                 <div class="col-md-6">
                                                     <div class="mb-3">

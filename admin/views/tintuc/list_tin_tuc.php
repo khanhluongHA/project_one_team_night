@@ -91,7 +91,23 @@
                                                         <td class="fw-medium"><?= $index+1; ?></td>
                                                         <td><?= $tinTuc['tieu_de'] ?></td>  
                                                         <td>
-                                                            <textarea readonly rows="4" cols="50"><?= $tinTuc['noi_dung'] ?></textarea>
+                                                            <textarea readonly rows="7" cols="50"><?= $tinTuc['noi_dung'] ?></textarea>
+                                                            <style>
+                                                                textarea {
+                                                                    width: 100%; /* Chiếm toàn bộ chiều rộng của ô td */
+                                                                    padding: 10px;
+                                                                    font-size: 16px;
+                                                                    line-height: 1.5;
+                                                                    border: none; /* Bỏ đường viền */
+                                                                    outline: none; /* Bỏ đường viền khi focus */
+                                                                    resize: none; /* Không cho phép thay đổi kích thước */
+                                                                    background-color: #f8f8f8; /* Màu nền nhạt */
+                                                                    border-radius: 5px; /* Bo tròn góc */
+                                                                    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1); /* Đổ bóng mờ bên trong */
+                                                                    overflow: hidden; /* Ẩn nội dung tràn ra ngoài */
+
+                                                                    }
+                                                            </style>
                                                         </td>
                                                         <td><?= $tinTuc['ngay_dang'] ?></td>
                                                         <td>

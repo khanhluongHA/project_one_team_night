@@ -77,12 +77,8 @@
                                                 <thead>
                                                     <tr>
                                                         <th scope="col">STT</th>
-                                                        <th scope="col">Tên sản phẩm</th>
-                                                        <th scope="col">Trạng thái</th>
-                                                        <th scope="col">Thông Tin tài khoản</th>
+                                                      
                                                         <th scope="col">Thông Tin nhận hàng</th>
-                                                        <th scope="col">Thông tin đơn hàng</th>
-                                                        <th scope="col">Sản phẩm trong giỏ hàng</th>
                                                         <th scope="col">Action</th>
                                                     </tr>
                                                 </thead>
@@ -90,12 +86,7 @@
                                                     <?php foreach ($trangThais as $index => $trangThai) : ?>
                                                     <tr>
                                                         <td class="fw-medium"><?= $index + 1 ?></td>
-                                                        <td><?= $trangThai['ten_trang_thai'] ?></td>
                                                         
-                                                        <td><?= $trangThai['thong_tin_tai_khoan'] ?></td>
-                                                        <td><?= $trangThai['thong_tin_nhan_hang'] ?></td>
-                                                        <td><?= $trangThai['thong_tin_don_hang'] ?></td>
-                                                        <td><?= $trangThai['san_pham_trong_don_hang'] ?></td>
                                                         <td>
                                                             <?php 
                                                             if($trangThai['trang_thai_tb']==1){?>

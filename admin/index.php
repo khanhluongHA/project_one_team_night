@@ -13,6 +13,8 @@ require_once 'controllers/BanNerController.php';
 require_once 'controllers/KhuyenMaiController.php';
 require_once 'controllers/TrangThaiController.php';
 require_once 'controllers/NguoiDungController.php';
+require_once './controllers/AdminSanPhamController.php';
+
 
 
 // Require toàn bộ file Models
@@ -23,13 +25,16 @@ require_once 'models/KhuyenMai.php';
 require_once 'models/TrangThai.php';
 require_once 'models/LienHe.php';
 require_once 'models/NguoiDung.php';
+require_once './models/AdminSanPham.php';
+require_once './models/AdminDanhMuc.php';
+
+
 
 
 
 // Route
 $act = $_GET['act'] ?? '/';
 // Để bảo bảo tính chất chỉ gọi 1 hàm Controller để xử lý request thì mình sử dụng match
-
 match ($act) {
     // Dashboards
     '/'=> (new DashboardController())->index(),
@@ -58,12 +63,12 @@ match ($act) {
     'xoa-banner'           => (new BanNerController())->destroy_banner(),
     // khuyến mãi
 
-    'khuyen-mais' =>(new KhuyenMaiController())->danhsachma(),
-    'form-them-khuyen-mai' => (new KhuyenMaiController())->formAddkhuyenmai(),
-    'them-khuyen-mai' => (new KhuyenMaiController())->Addkhuyenmai(),
-    'xoa-khuyen-mai' =>(new KhuyenMaiController())->deletekhuyenmai(),
-    'form-sua-khuyen-mai' =>(new KhuyenMaiController())->formEditKhuyenmai(),
-    'sua-khuyen-mai' =>(new KhuyenMaiController())->postEditKhuyenmai(),
+    'khuyen-mais'           =>(new KhuyenMaiController())->danhsachma(),
+    'form-them-khuyen-mai'  => (new KhuyenMaiController())->formAddkhuyenmai(),
+    'them-khuyen-mai'       => (new KhuyenMaiController())->Addkhuyenmai(),
+    'xoa-khuyen-mai'        =>(new KhuyenMaiController())->deletekhuyenmai(),
+    'form-sua-khuyen-mai'   =>(new KhuyenMaiController())->formEditKhuyenmai(),
+    'sua-khuyen-mai'        =>(new KhuyenMaiController())->postEditKhuyenmai(),
 
     // trạng thái đơn hàng
 
@@ -76,15 +81,28 @@ match ($act) {
 
     // liên hệ
 
-    'lienhe-category' => (new LienHeController())->index(),
-    'xoa-lien-he'         => (new LienHeController())->destroy(),
+    'lienhe-category'       => (new LienHeController())->index(),
+    'xoa-lien-he'           => (new LienHeController())->destroy(),
     // người dùng
-    'nguoidung-categoryy' => (new NguoiDungController())->index(),
+    'nguoidung-categoryy'    => (new NguoiDungController())->index(),
     'form-them-nguoi-dung'   => (new NguoiDungController())->create(),
-    'them-nguoi-dung'       => (new NguoiDungController())->store(),
+    'them-nguoi-dung'        => (new NguoiDungController())->store(),
     'form-sua-nguoi-dung'    => (new NguoiDungController())->edit(),
     'sua-nguoi-dung'         => (new NguoiDungController())->update(),
     'xoa-nguoi-dung'         => (new NguoiDungController())->destroy(),
     'chi-tiet-nguoi-dung'    => (new NguoiDungController())->details(),
+
+    // sản phẩm
+    'san-pham'              => (new AdminSanPhamController())->danhSachSanPham(),
+    'form-them-san-pham'    => (new AdminSanPhamController())->formAddSanPham(),
+    'them-san-pham'         => (new AdminSanPhamController())->postAddSanPham(),
+    'form-sua-san-pham'     => (new AdminSanPhamController())->formEditSanPham(),
+    'sua-san-pham'          => (new AdminSanPhamController())->postEditSanPham(),
+    'sua-album-anh-pham'    => (new AdminSanPhamController())->postEditAnhSanPham(),
+    'xoa-san-pham'          => (new AdminSanPhamController())->deleteSanPham(),
+    'chi-tiet-san-pham'     => (new AdminSanPhamController())->detailSanPham(),
+
+    // bình luận
+    'update-trang-thai-binh-luan' => (new AdminSanPhamController())->updateTrangThaiBinhLuan(),
  
 };

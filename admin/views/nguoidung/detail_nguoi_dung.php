@@ -78,17 +78,17 @@
                                                 <thead>
                                                     <tr>
                                                         <th scope="col">STT</th>
-                                                        <th scope="col">Tên ngf dùng</th>
-                                                        <th scope="col">email</th>
-                                                        <th scope="col">sdt</th>
-                                                        <th scope="col">dia chi</th>
-                                                        <th scope="col">mat khau</th>
-                                                        <th scope="col">ngay sinh</th>
-                                                        <th scope="col">gioi tinh</th>
-                                                        <th scope="col">avatar</th>
-                                                        <th scope="col">vai tro</th>
-                                                        <th scope="col">trang thái</th>
-                                                        <th scope="col">action</th>
+                                                        <th scope="col">Tên người dùng</th>
+                                                        <th scope="col">Email</th>
+                                                        <th scope="col">Số điện thoại</th>
+                                                        <th scope="col">Địa chỉ</th>
+                                                        <th scope="col">Mật khẩu</th>
+                                                        <th scope="col">Ngày sinh</th>
+                                                        <th scope="col">Giới Tính</th>
+                                                        <th scope="col">Avatar</th>
+                                                        <th scope="col">Vai Trò</th>
+                                                        <th scope="col">Trạng thái</th>
+                                                        <th scope="col">Action</th>
 
 
                                                     </tr>

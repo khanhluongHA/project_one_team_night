@@ -95,7 +95,7 @@
                                                         <td class="fw-medium"><?= $index + 1?></td>
                                                         <td><?= $lienHe['danh_sach'] ?></td>
                                                         <td>
-                                                            <a href="?act=nguoidung-category?>" class="btn btn-primary">Xem chi tiết</a>
+                                                            <a href="?act=chi-tiet-nguoi-dung" class="btn btn-primary">Xem chi tiết</a>
                                                         </td>
                                                         <td><?= $lienHe['trang_thai'] ?></td>
                         

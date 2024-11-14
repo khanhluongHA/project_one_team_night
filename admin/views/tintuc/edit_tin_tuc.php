@@ -82,14 +82,32 @@
                                                         <span class="text-danger">
                                                          <?= !empty($_SESSION['errors']['tieu_de'] ) ? $_SESSION['errors']['tieu_de'] : '' ?>
                                                         </span>
-
+                                        
                                                         <label for="citynameInput" class="form-label">Nội dung</label>
-                                                        <input type="text" class="form-control"  name="noi_dung" value="<?= $tinTucs['noi_dung'] ?>">
+                                                        <textarea class="form-control" name="noi_dung" rows="5" cols="50"><?= $tinTucs['noi_dung'] ?></textarea>
+                                                        <style>
+                                                            textarea {
+                                                                width: 100%;
+                                                                padding: 10px;
+                                                                font-size: 16px;
+                                                                line-height: 1.5;
+                                                                border: none; 
+                                                                outline: none; 
+                                                                resize: none;
+                                                                background-color: #f8f8f8; 
+                                                                border-radius: 5px; 
+                                                                box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1); 
+                                                                overflow: hidden;
+                                                                }
+                                                                textarea:hover {
+                                                                background-color: #f0f0f0;
+                                                                box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.15);
+                                                                }
+                                                        </style>
                                                         <span class="text-danger">
-                                                         <?= !empty($_SESSION['errors']['noi_dung'] ) ? $_SESSION['errors']['noi_dung'] : '' ?>
+                                                        <?= !empty($_SESSION['errors']['noi_dung'] ) ? $_SESSION['errors']['noi_dung'] : '' ?>
                                                         </span>
                                                         </span>
-
                                                         <label for="citynameInput" class="form-label">ngày đăng</label>
                                                         <input type="text" class="form-control"  name="ngay_dang" value="<?= $tinTucs['ngay_dang'] ?>">
                                                         <span class="text-danger">

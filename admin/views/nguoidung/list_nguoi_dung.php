@@ -120,7 +120,7 @@
                                                        
                                                         <td>
                                                                     <div class="hstack gap-3 flex-wrap">
-                                                                    <a href="?act=chi-tiet-nguoi-dung"><i class="ri-dashboard-2-line"></i></a>
+                                                                        <a href="?act=chi-tiet-nguoi-dung"><i class="ri-dashboard-2-line"></i></a>
                                                                         <a href="?act=form-sua-nguoi-dung&id_nguoi_dung=<?= $nguoiDung['id']?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
                                                                         <form action="?act=xoa-nguoi-dung" method="POST"
                                                                         onsubmit="return confirm('Bạn có đồng ý xóa không ? ')">
