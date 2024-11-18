@@ -25,15 +25,19 @@ class DonHang{
     }
 
     // thêm dữ liệu mới vào CSDL
-    // public function postData($ten_danh_muc,$trang_thai){
+    // public function postData($ma_don_hang,$ngay_dat,$phuong_thuc_thanh_toan,$trang_thai_thanh_toan){
     //     try {
     //         $sql = 'INSERT INTO danh_mucs (ten_danh_muc, trang_thai)
     //         VALUE (:ten_danh_muc, :trang_thai)';
 
     //         $stmt = $this->conn->prepare($sql);
     //         // gán gtri vào các tham số 
-    //         $stmt->bindParam(':ten_danh_muc', $ten_danh_muc);
-    //         $stmt->bindParam(':trang_thai', $trang_thai);
+    //         $stmt->bindParam(':ma_don_hang', $ma_don_hang);
+    //         $stmt->bindParam(':ten_nguoi_nhan', $ten_nguoi_nhan);
+    //         $stmt->bindParam(':sdt_nguoi_nhan', $sdt_nguoi_nhan);
+    //         $stmt->bindParam(':ngay_dat', $ngay_dat);
+    //         $stmt->bindParam(':tong_tien', $tong_tien);
+    //         $stmt->bindParam(':trang_thai_don_hang', $trang_thai_don_hang);
             
     //         return $stmt->execute();
 
@@ -116,20 +120,18 @@ class DonHang{
     }
 
      // câp nhật dữ liệu mới vào CSDL
-     public function updateData($id,$ma_don_hang,$ten_nguoi_nhan,$sdt_nguoi_nhan,$ngay_dat,$tong_tien,$trang_thai_don_hang){
+     public function updateData($id,$ma_don_hang,$ngay_dat,$phuong_thuc_thanh_toan,$trang_thai_thanh_toan){
         try {
-            $sql = 'UPDATE don_hangs SET ma_don_hang = :ma_don_hang, ten_nguoi_nhan = :ten_nguoi_nhan, sdt_nguoi_nhan = :sdt_nguoi_nhan, ngay_dat = :ngay_dat, tong_tien = :tong_tien, trang_thai_don_hang = :trang_thai_don_hang WHERE id = :id';
+            $sql = 'UPDATE don_hangs SET ma_don_hang = :ma_don_hang, ngay_dat = :ngay_dat, phuong_thuc_thanh_toan = :phuong_thuc_thanh_toan, trang_thai_thanh_toan = :trang_thai_thanh_toan WHERE id = :id';
 
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':id', $id);
             // gán gtri vào các tham số 
             $stmt->bindParam(':ma_don_hang', $ma_don_hang);
-            $stmt->bindParam(':ten_nguoi_nhan', $ten_nguoi_nhan);
-            $stmt->bindParam(':sdt_nguoi_nhan', $sdt_nguoi_nhan);
             $stmt->bindParam(':ngay_dat', $ngay_dat);
-            $stmt->bindParam(':tong_tien', $tong_tien);
-            $stmt->bindParam(':trang_thai_don_hang', $trang_thai_don_hang);
-            // var_dump($id);die;
+            $stmt->bindParam(':phuong_thuc_thanh_toan', $phuong_thuc_thanh_toan);
+            $stmt->bindParam(':trang_thai_thanh_toan', $trang_thai_thanh_toan);
+            // var_dump($phuong_thuc_thanh_toan);die;
 
             return $stmt->execute();
             

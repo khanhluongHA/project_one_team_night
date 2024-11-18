@@ -16,6 +16,9 @@ require_once 'controllers/NguoiDungController.php';
 require_once './controllers/AdminSanPhamController.php';
 require_once 'controllers/DonHangController.php';
 require_once 'controllers/ChiTietDonHangController.php';
+require_once './controllers/AdminTaiKhoanController.php';
+require_once './controllers/AdminBaoCaoThongKeController.php';
+require_once './controllers/AdminBinhLuanController.php';
 
 
 
@@ -33,6 +36,10 @@ require_once './models/AdminSanPham.php';
 require_once './models/AdminDanhMuc.php';
 require_once 'models/DonHang.php';
 require_once 'models/ChiTietDonHang.php';
+require_once './models/AdminTaiKhoan.php';
+require_once './models/AdminThongKe.php';
+require_once './models/AdminBinhLuan.php';
+
 
 
 
@@ -40,6 +47,9 @@ require_once 'models/ChiTietDonHang.php';
 
 // Route
 $act = $_GET['act'] ?? '/';
+// if ($act !== 'login-admin' && $act !== 'check-login-admin' && $act !== 'logout-admin') {
+//     checkLoginAdmin();
+//   }
 // Để bảo bảo tính chất chỉ gọi 1 hàm Controller để xử lý request thì mình sử dụng match
 match ($act) {
     // Dashboards
@@ -110,6 +120,19 @@ match ($act) {
 
     // bình luận
     'update-trang-thai-binh-luan' => (new AdminSanPhamController())->updateTrangThaiBinhLuan(),
+    'binh-luan' => (new AdminBinhLuanController())->danhSachBinhLuan(),
+    'form-them-binh-luan' => (new AdminBinhLuanController())->formAddBinhLuan(),
+    'form-sua-binh-luan' => (new AdminBinhLuanController())->formEditBinhLuan(),
+    'sua-binh-luan' => (new AdminBinhLuanController())->editBinhLuan(),
+    'them-binh-luan' => (new AdminBinhLuanController())->themBinhLuan(),
+    'xoa-binh-luan' => (new AdminBinhLuanController())->deleteBinhLuan(),
+
+    // tài khoản
+    'list-tai-khoan-khach-hang' => (new AdminTaiKhoanController())->danhSachKhachHang(),
+    'form-sua-khach-hang' => (new AdminTaiKhoanController())->formEditKhachHang(),
+    'sua-khach-hang' => (new AdminTaiKhoanController())->postAddQuanTri(),
+    'chi-tiet-khach-hang' => (new AdminTaiKhoanController())->postEditQuanTri(),
+
 
     // đơn hàng
     'donhang-category'      => (new DonHangController())->index(),
@@ -122,5 +145,14 @@ match ($act) {
     'form-sua-chitietdonhang'      => (new ChiTietDonHangController())->edit_chitietdonhang(),
     'sua-chitietdonhang'           => (new ChiTietDonHangController())->update_chitietdonhang(),
     'xoa-chitietdonhang'           => (new ChiTietDonHangController())->destroy_chitietdonhang(),
+    //login
+    'login-admin' =>(new AdminTaiKhoanController())->formLogin(),
+    'check-login-admin' =>(new AdminTaiKhoanController())->login(),
+    'logout-admin' =>(new AdminTaiKhoanController())->logout(),
+    // thống kê
+    'thong-ke' => (new AdminBaoCaoThongKeController())->thongKe(),
+    // danh gia
+    'update-trang-thai-danh-gia' => (new AdminSanPhamController())->updateTrangThaiDanhGia(),
+    
  
 };

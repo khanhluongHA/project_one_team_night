@@ -139,6 +139,7 @@ class AdminSanPhamController
             }
         }
     }
+    
 
     public function formEditSanPham()
     {
@@ -379,6 +380,7 @@ class AdminSanPhamController
 
         $listAnhSanPham = $this->modelSanPham->getListAnhSanPham($id);
         $listBinhLuan = $this->modelSanPham->getBinhLuanFromSanPham($id);
+        $listDanhGia = $this->modelSanPham->getFromDanhGia($id);
 
         if ($sanPham) {
             require_once './views/sanpham/detailSanPham.php';
@@ -389,6 +391,8 @@ class AdminSanPhamController
         }
 
     }
+
+    
 
     public function updateTrangThaiBinhLuan()
     {
@@ -411,6 +415,32 @@ class AdminSanPhamController
 
                 } else {
                     header("Location: ?act=chi-tiet-san-pham&id_san_pham=" . $binhLuan['san_pham_id']);
+                }
+            }
+
+        }
+    }
+    public function updateTrangThaiDanhGia()
+    {
+        $id_danh_gia = $_POST['id_danh_gia'];
+        $name_view = $_POST['name_view'];
+        $id_khach_hang = $_POST['id_khach_hang'];
+        $id_danh_gia = $this->modelSanPham->getDetailDanhGia($id_danh_gia);
+
+        if ($id_danh_gia) {
+            $trang_thai_update = '';
+            if ($id_danh_gia['trang_thai'] == 1) {
+                $trang_thai_update = 2;
+            } else {
+                $trang_thai_update = 1;
+            }
+            $status = $this->modelSanPham->updateTrangThaiDanhGia($id_danh_gia, $trang_thai_update);
+            if ($status) {
+                if ($name_view == 'detail_khach') {
+                    header("Location:  " . BASE_URL_ADMIN . '?act=chi-tiet-khach-hang&id_khach_hang=' . $id_danh_gia['tai_khoan_id']);
+
+                } else {
+                    header("Location: " . BASE_URL_ADMIN . '?act=chi-tiet-san-pham&id_san_pham=' . $id_danh_gia['san_pham_id']);
                 }
             }
 

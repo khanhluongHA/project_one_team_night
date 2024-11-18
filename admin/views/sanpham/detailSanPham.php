@@ -144,6 +144,44 @@
 
                     </table>
                 </div>
+                <h2>Đánh giá sản phẩm</h2>
+                <div>
+            <table id="example2" class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th>STT</th>
+                  <th>Tên sản phẩm</th>
+                  <th>Người dánh giá</th>
+                  <th>Số sao</th>
+                  <th>Ngày đánh giá</th>
+                  <th>Trạng thái</th>
+                  <th>Thao tác</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php  foreach ($listDanhGia as $key => $danhgia): ?>
+                  <tr>
+                    <td><?= $key + 1 ?></td>
+                    <td><?= $danhgia['ten_san_pham'] ?></td>
+                    <td><a target="_blank" href="<?= BASE_URL_ADMIN . '?act=chi-tiet-khach-hang&id_khach_hang=' . $danhgia['tai_khoan_id'] ?>">
+                        <?= $danhgia['ho_ten'] ?></a>
+                    </td>
+                    <td><?= $danhgia['so_danh_gia'] ?></td>
+                    <td><?= $danhgia['ngay_danh_gia'] ?></td>
+                    <td><?= $danhgia['trang_thai'] == 1 ? 'Hiển thị' : 'Ẩn' ?></td>
+                    <td>
+                      <div class="btn-group">
+
+                     
+
+                      </div>
+                    </td>
+                  </tr>
+                <?php endforeach ?>
+                    </tbody>
+
+                    </table>
+                </div>
                 </div>
 
             </div>

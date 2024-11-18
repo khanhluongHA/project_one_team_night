@@ -298,4 +298,58 @@ class AdminSanPham
             echo "Error: " . $e->getMessage();
         }
     }
+    public function getFromDanhGia($id) {
+        try {
+            $sql = 'SELECT danh_gias.*, san_phams.ten_san_pham, tai_khoans.ho_ten
+                    FROM danh_gias
+                    INNER JOIN san_phams ON danh_gias.san_pham_id = san_phams.id
+                    INNER JOIN tai_khoans ON danh_gias.tai_khoan_id = tai_khoans.id
+                    WHERE danh_gias.san_pham_id = :id';
+    
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([':id' => $id]);
+    
+            return $stmt->fetchAll();
+        } catch (Exception $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+    public function getDetailDanhGia($id)
+    {
+
+        try {
+            $sql = 'SELECT * FROM danh_gias WHERE id = :id';
+
+            $stmt = $this->conn->prepare($sql);
+
+            $stmt->execute([':id' => $id]);
+
+            return $stmt->fetch();
+        } catch (Exception $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+
+    public function updateTrangThaiDanhGia($id, $trang_thai)
+    {
+        try {
+            $sql = ' UPDATE danh_gias
+                 SET
+                   trang_thai = :trang_thai
+
+                WHERE id = :id';
+
+            $stmt = $this->conn->prepare($sql);
+
+            $stmt->execute([
+                ':trang_thai' => $trang_thai,
+                ':id' => $id
+
+            ]);
+    //  lấy id sản phẩm vừa thêm         
+    return true;
+    } catch (Exception $e) {
+        echo "Error: " . $e->getMessage();
+    }
+    }
 }

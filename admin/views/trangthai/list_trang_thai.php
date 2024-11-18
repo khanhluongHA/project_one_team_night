@@ -77,8 +77,7 @@
                                                 <thead>
                                                     <tr>
                                                         <th scope="col">STT</th>
-                                                      
-                                                        <th scope="col">Thông Tin nhận hàng</th>
+                                                        <th scope="col">Trạng thái</th>
                                                         <th scope="col">Action</th>
                                                     </tr>
                                                 </thead>
@@ -86,50 +85,13 @@
                                                     <?php foreach ($trangThais as $index => $trangThai) : ?>
                                                     <tr>
                                                         <td class="fw-medium"><?= $index + 1 ?></td>
-                                                        
-                                                        <td>
-                                                            <?php 
-                                                            if($trangThai['trang_thai_tb']==1){?>
-                                                                <span class="badge bg-success">Chờ xác nhận</span>
-                                                                <?php
-                                                            }  
-                                                            else if($trangThai['trang_thai_tb']==2){?>
-                                                                <span class="badge bg-success">Đã xác nhận</span>
-                                                                <?php
-                                                            }
-                                                            else if($trangThai['trang_thai_tb']==3){?>
-                                                                <span class="badge bg-success">Đang giao</span>
-                                                                <?php
-                                                            }
-                                                            else if($trangThai['trang_thai_tb']==4){?>
-                                                                <span class="badge bg-success">Đã Giao</span>
-                                                                <?php
-                                                            }
-                                                            else if($trangThai['trang_thai_tb']==5){?>
-                                                                <span class="badge bg-success">Giao hàng thành công</span>
-                                                                <?php
-                                                            }
-                                                            else if($trangThai['trang_thai_tb']==6){?>
-                                                                <span class="badge bg-success">Giao hàng thất bại</span>
-                                                                <?php
-                                                            }
-                                                            
-                                                            else{
-                                                                ?>
-                                                                     <span class="badge bg-danger">Đã hủy</span>
-                                                                <?php
-
-                                                            }
-                                                            
-                                                            ?>
-                                                            
-                                                        </td>
+                                                        <td><?= $trangThai['trang_thai_tb'] ?></td>  
                                                         <td>
                                                                     <div class="hstack gap-3 flex-wrap">
-                                                                        <a href="?act=form-sua-trang-thai&trang_thai_id=<?= $trangThai['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
+                                                                        <a href="?act=form-sua-trang-thai&trang_thai_don_hang=<?= $trangThai['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
                                                                         <form action="?act=xoa-trang-thai" method="POST"
                                                                         onsubmit="return confirm('Bạn co đồng ý không')">
-                                                                        <input type="hidden" name="trang_thai_id" value="<?= $trangThai['id'] ?>">
+                                                                        <input type="hidden" name="trang_thai_don_hang" value="<?= $trangThai['id'] ?>">
                                                                         <button type="submit" class="link-danger fs-15" style="border: none; background: none;">
                                                                             <i class="ri-delete-bin-line"></i>
                                                                       </button>

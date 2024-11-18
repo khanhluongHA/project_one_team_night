@@ -26,7 +26,7 @@ class LienHeController
        // ham xoa du lieu trong CSDL
     public function destroy(){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
-            $id = $_POST['danh_muc_id'];
+            $id = $_POST['lien_he_id'];
 
             // xóa danh mục 
 

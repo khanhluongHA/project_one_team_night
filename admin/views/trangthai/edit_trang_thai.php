@@ -84,16 +84,7 @@
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
                                                         <label for="ForminputState" class="form-label">Trạng thái đơn hàng</label>
-                                                        <select  class="form-select" name="trang_thai_tb">
-                                                            <option selected disabled>Chọn trạng thái đơn hàng</option>
-                                                            <option value="1"<?= $trangThai['trang_thai_tb']==1 ? 'selected' : '' ?>>Chờ xác nhận</option>
-                                                            <option value="2"<?= $trangThai['trang_thai_tb']==2 ? 'selected' : '' ?>>Đã xác nhận</option>
-                                                            <option value="3"<?= $trangThai['trang_thai_tb']==3 ? 'selected' : '' ?>>Đang giao</option>
-                                                            <option value="4"<?= $trangThai['trang_thai_tb']==4 ? 'selected' : '' ?>>Đã Giao</option>
-                                                            <option value="5"<?= $trangThai['trang_thai_tb']==5 ? 'selected' : '' ?>>Giao hàng thành công</option>
-                                                            <option value="6"<?= $trangThai['trang_thai_tb']==6 ? 'selected' : '' ?>>Giao hàng thất bại</option>
-                                                            <option value="7"<?= $trangThai['trang_thai_tb']==7 ? 'selected' : '' ?>>Đã hủy</option>
-                                                        </select>
+                                                        <input type="text" class="form-control" placeholder="Nhập tên trạng thái" name="trang_thai_tb" value="<?=$trangThai['trang_thai_tb']?>">
                                                         <span class="text-danger">
                                                                 <?= !empty($_SESSION['errors']['trang_thai_tb']) ? $_SESSION['errors']['trang_thai_tb'] : ''?>
                                                         </span>

@@ -78,13 +78,11 @@
                                                 <thead>
                                                     <tr>
                                                         <th scope="col">STT</th>
-                                                        <th scope="col">Tên ngf dùng</th>                                                     
+                                                        <th scope="col">Tên người dùng</th>                                                     
                                                         <th scope="col">avatar</th>
                                                         <th scope="col">vai tro</th>
                                                         <th scope="col">trang thái</th>
                                                         <th scope="col">action</th>
-
-
                                                     </tr>
                                                 </thead>
                                                 <tbody>

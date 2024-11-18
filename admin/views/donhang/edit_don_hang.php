@@ -87,50 +87,39 @@
                                                         <div class="col-md-6">
                                                         <div class="mb-3">
                                                         <label for="citynameInput" class="form-label">Tên đơn hàng</label>
-                                                        <input type="text" class="form-control"  name="ten_nguoi_nhan" value="<?= $donHang['ten_nguoi_nhan'] ?>">
-                                                        <span class="text-danger">
-                                                         <?= !empty($_SESSION['errors']['ten_nguoi_nhan'] ) ? $_SESSION['errors']['ten_nguoi_nhan'] : '' ?>
-                                                        </span>
-                                                        </div>
-                                                </div>
-                                                        <div class="col-md-6">
-                                                        <div class="mb-3">
-                                                        <label for="citynameInput" class="form-label">Tên đơn hàng</label>
-                                                        <input type="text" class="form-control"  name="sdt_nguoi_nhan" value="<?= $donHang['sdt_nguoi_nhan'] ?>">
-                                                        <span class="text-danger">
-                                                         <?= !empty($_SESSION['errors']['sdt_nguoi_nhan'] ) ? $_SESSION['errors']['sdt_nguoi_nhan'] : '' ?>
-                                                        </span>
-                                                        </div>
-                                                </div>
-                                                        <div class="col-md-6">
-                                                        <div class="mb-3">
-                                                        <label for="citynameInput" class="form-label">Tên đơn hàng</label>
-                                                        <input type="date" class="form-control"  name="ngay_dat" value="<?= $donHang['ngay_dat'] ?>">
+                                                        <input type="text" class="form-control"  name="ngay_dat" value="<?= $donHang['ngay_dat'] ?>">
                                                         <span class="text-danger">
                                                          <?= !empty($_SESSION['errors']['ngay_dat'] ) ? $_SESSION['errors']['ngay_dat'] : '' ?>
                                                         </span>
                                                         </div>
                                                 </div>
-                                                        <div class="col-md-6">
-                                                        <div class="mb-3">
-                                                        <label for="citynameInput" class="form-label">Tên đơn hàng</label>
-                                                        <input type="double" class="form-control"  name="tong_tien" value="<?= $donHang['tong_tien'] ?>">
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label for="ForminputState" class="form-label">Phương thức</label>
+                                                        <select id="ForminputState"  class="form-select" name="phuong_thuc_thanh_toan" value="<?= $donHang['phuong_thuc_thanh_toan'] ?>">
+                                                            <option selected disabled>Chọn trạng thái</option>          
+                                                            <option value="1" <?= $donHang['phuong_thuc_thanh_toan'] == 1 ? 'selected' : '' ?> >Chuyển khoản</option>
+                                                            <option value="2" <?= $donHang['phuong_thuc_thanh_toan'] == 2 ? 'selected' : '' ?>>Tiền mặt</option>
+                                                            <option value="3" <?= $donHang['phuong_thuc_thanh_toan'] == 3 ? 'selected' : '' ?>>Thẻ tín dụng</option>
+                                                        </select>
                                                         <span class="text-danger">
-                                                         <?= !empty($_SESSION['errors']['tong_tien'] ) ? $_SESSION['errors']['tong_tien'] : '' ?>
+                                                         <?= !empty($_SESSION['errors']['phuong_thuc_thanh_toan'] ) ? $_SESSION['errors']['phuong_thuc_thanh_toan'] : '' ?>
                                                         </span>
                                                     </div>
                                                 </div>
+                                                        
+                                                
                                                 <!--end col-->
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
                                                         <label for="ForminputState" class="form-label">Trạng Thái</label>
-                                                        <select id="ForminputState"  class="form-select" name="trang_thai_don_hang" value="<?= $donHang['trang_thai_don_hang'] ?>">
+                                                        <select id="ForminputState"  class="form-select" name="trang_thai_thanh_toan" value="<?= $donHang['trang_thai_thanh_toan'] ?>">
                                                             <option selected disabled>Chọn trạng thái</option>          
-                                                            <option value="1" <?= $donHang['trang_thai_don_hang'] == 1 ? 'selected' : '' ?> >Đang xử lí</option>
-                                                            <option value="2" <?= $donHang['trang_thai_don_hang'] == 2 ? 'selected' : '' ?>>Đã giao</option>
+                                                            <option value="1" <?= $donHang['trang_thai_thanh_toan'] == 1 ? 'selected' : '' ?> >Chưa thanh toán</option>
+                                                            <option value="2" <?= $donHang['trang_thai_thanh_toan'] == 2 ? 'selected' : '' ?>>Đã thanh toán</option>
                                                         </select>
                                                         <span class="text-danger">
-                                                         <?= !empty($_SESSION['errors']['trang_thai_don_hang'] ) ? $_SESSION['errors']['trang_thai_don_hang'] : '' ?>
+                                                         <?= !empty($_SESSION['errors']['trang_thai_thanh_toan'] ) ? $_SESSION['errors']['trang_thai_thanh_toan'] : '' ?>
                                                         </span>
                                                     </div>
                                                 </div>

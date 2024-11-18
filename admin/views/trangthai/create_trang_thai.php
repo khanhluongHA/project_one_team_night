@@ -76,21 +76,13 @@
                                     <div class="live-preview">
                                         <form action="?act=them-trang-thai" method="POST">
                                             <div class="row">
+                                                
                                                 <!--end col-->
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
                                                         <label for="ForminputState" class="form-label">Trạng thái</label>
-                                                        <select  class="form-select" name="trang_thai_tb">
-                                                            <option selected disabled>Chọn trạng thái</option>
-                                                            <option value="1">Chờ xác nhận</option>
-                                                            <option value="2">Đã xác nhận</option>
-                                                            <option value="3">Đang giao</option>
-                                                            <option value="4">Đã Giao</option>
-                                                            <option value="5">Giao hàng thành công</option>
-                                                            <option value="6">Giao hàng thất bại</option>
-                                                            <option value="7">Đã hủy</option>
+                                                        <input type="text" class="form-control" placeholder="Nhập tên trạng thái" name="trang_thai_tb">
                                                         
-                                                        </select>
                                                         <span class="text-danger">
                                                                 <?= !empty($_SESSION['errors']['trang_thai_tb']) ? $_SESSION['errors']['trang_thai_tb'] : ''?>
                                                         </span>

@@ -35,11 +35,9 @@ class DonHangController
             // lấy ra dữ liệu 
             $id = $_POST['id'];
             $ma_don_hang = $_POST['ma_don_hang'];
-            $ten_nguoi_nhan = $_POST['ten_nguoi_nhan'];
-            $sdt_nguoi_nhan = $_POST['sdt_nguoi_nhan'];
             $ngay_dat = $_POST['ngay_dat'];
-            $tong_tien = $_POST['tong_tien'];
-            $trang_thai_don_hang = $_POST['trang_thai_don_hang'];
+            $phuong_thuc_thanh_toan = $_POST['phuong_thuc_thanh_toan'];
+            $trang_thai_thanh_toan = $_POST['trang_thai_thanh_toan'];
             // var_dump($trang_thai_don_hang);die;
 
             // validate 
@@ -57,7 +55,7 @@ class DonHangController
             if(empty($errors)){
                 // thêm dữ liệu
                 // thêm vào CSDL
-                 $this->modelDonHang->updateData($id,$ma_don_hang,$ten_nguoi_nhan,sdt_nguoi_nhan: $sdt_nguoi_nhan,ngay_dat: $ngay_dat,tong_tien: $tong_tien,trang_thai_don_hang: $trang_thai_don_hang);
+                 $this->modelDonHang->updateData($id,$ma_don_hang,$ngay_dat,$phuong_thuc_thanh_toan,$trang_thai_thanh_toan);
                 //  var_dump($sdt_nguoi_nhan);die;
                  unset($_SESSION['erorrs']);
                  header('Location: ?act=donhang-category');

@@ -68,9 +68,10 @@
                                 <div class="card-header align-items-center d-flex">
                                     <h4 class="card-title mb-0 flex-grow-1">Danh Sách đơn hàng Sản Phẩm</h4>
                                     <form action="search.php" method="GET">
-                                    <input type="text" name="example1" placeholder="Nhập từ khóa tìm kiếm">
-                                    <button type="submit">Tìm kiếm</button>
-                                    </form>
+    <input type="text" name="example1" placeholder="Nhập từ khóa tìm kiếm">
+    <button type="submit">Tìm kiếm</button>
+</form>
+                                    
                                     </form>
                                     </div>
                                 </div><!-- end card header -->
@@ -82,12 +83,10 @@
                                                 <thead>
                                                     <tr>
                                                         <th scope="col">STT</th>
-                                                        <th scope="col">Mã đơn hàng</th>
-                                                        <th scope="col">Tên ngf nhận</th>
-                                                        <th scope="col">Số điện thoại</th>
+                                                        <th scope="col">Mã đơn hàng</th>               
                                                         <th scope="col">ngày đặt</th>
-                                                        <th scope="col">Tổng tiền</th>
-                                                        <th scope="col">Trạng Thái</th>
+                                                        <th scope="col">phương thức thanh toán</th>
+                                                        <th scope="col">Trạng thái thanh toán</th>
                                                         <th scope="col">Action</th>
                                                     </tr>
                                                 </thead>
@@ -96,20 +95,27 @@
                                                     <tr>
                                                         <td class="fw-medium"><?= $index+1; ?></td>
                                                         <td><?= $donHang['ma_don_hang'] ?></td>
-                                                        <td><?= $donHang['ten_nguoi_nhan'] ?></td>  
-                                                        <td><?= $donHang['sdt_nguoi_nhan'] ?></td>  
                                                         <td><?= $donHang['ngay_dat'] ?></td>  
-                                                        <td><?= $donHang['tong_tien'] ?></td>  
+                                                        <td>
+                                                        <?php 
+if ($donHang['trang_thai_thanh_toan'] == 1) { ?>
+    <span class="badge bg-success">Chuyển khoản</span>
+<?php } elseif ($donHang['trang_thai_thanh_toan'] == 2) { ?>
+    <span class="badge bg-danger">Tiền mặt</span>
+<?php } else { ?>
+    <span class="badge bg-warning">Chưa xác định</span>
+<?php } ?>
+                                                            
+                                                        </td>  
                                                        
                                                         <td>
                                                             <?php 
-                                                            if($donHang['trang_thai_don_hang'] ==1) { ?>
-                                                            <span class="badge bg-success">Đang xử lí</span>
+                                                            if($donHang['trang_thai_thanh_toan'] ==1) { ?>
+                                                            <span class="badge bg-success">Chưa thanh toán</span>
                                                             <?php } else { ?>
-                                                                <span class="badge bg-danger">đã giao</span>
+                                                                <span class="badge bg-danger">Đã thanh toán</span>
                                                            <?php }
                                                             ?>
-                                                            
                                                             
                                                         </td>
                                                         <td>
@@ -118,7 +124,7 @@
                                                                         
                                                                         
                                                                         
-                                                                        <a href="?act=chitietdonhangs"><i class="ri-dashboard-2-line"></i></a>
+                                                                        <a href="?act=chi-tiet-don-hang"><i class="ri-dashboard-2-line"></i></a>
                     
   
                                                                         </form>

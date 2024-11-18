@@ -30,46 +30,22 @@ class TrangThaiController
      public function store_trang_thai(){
         if ($_SERVER['REQUEST_METHOD']=='POST') {
             //lấy ra dữ liệu
-            $ten_trang_thai = $_POST['ten_trang_thai'];
             $trang_thai_tb = $_POST['trang_thai_tb'];
-            $thong_tin_tai_khoan = $_POST['thong_tin_tai_khoan'];
-            $thong_tin_nhan_hang = $_POST['thong_tin_nhan_hang'];
-            $thong_tin_don_hang = $_POST['thong_tin_don_hang'];
-            $san_pham_trong_don_hang = $_POST['san_pham_trong_don_hang'];
 
             //validate
             $errors = [];
-            if (empty($ten_trang_thai)) {
-                $errors['ten_trang_thai'] = 'tên trang thai là bắt buộc';
-
-            }
+            
 
             if (empty($trang_thai_tb)) {
                 $errors['trang_thai_tb'] = 'trạng thái là bắt buộc';
                 
-            }
-            if (empty($thong_tin_tai_khoan)) {
-                $errors['thong_tin_tai_khoan'] = 'trạng thái là bắt buộc';
-                
-            }
-            if (empty($thong_tin_nhan_hang)) {
-                $errors['thong_tin_nhan_hang'] = 'trạng thái là bắt buộc';
-                
-            }
-            if (empty($thong_tin_don_hang)) {
-                $errors['thong_tin_don_hang'] = 'trạng thái là bắt buộc';
-                
-            }
-            if (empty($san_pham_trong_don_hang)) {
-                $errors['san_pham_trong_don_hang'] = 'trạng thái là bắt buộc';
-                
-            }
+        }
 
         //thêm dữ liệu
         if (empty($errors)) {
             //nếu ko có lỗi thì thêm dữ liệu
             //thêm vào csdl
-            $this->modelTrangThai->postData($ten_trang_thai,$trang_thai_tb,$thong_tin_tai_khoan, $thong_tin_nhan_hang, $thong_tin_don_hang, $san_pham_trong_don_hang);
+            $this->modelTrangThai->postData($trang_thai_tb);
             unset($_SESSION['errors']);
             header('location: ?act=trang-thais');
             exit();
@@ -85,7 +61,7 @@ class TrangThaiController
       //hàm hiển thị form chỉnh sửa
     public function edit_trang_thai(){
         //lấy id
-        $id = $_GET['trang_thai_id'];
+        $id = $_GET['trang_thai_don_hang'];
         //lấy thông tin chi tiết của danh mục
         $trangThai = $this->modelTrangThai->getDetailData($id);
 
@@ -100,46 +76,22 @@ class TrangThaiController
             if ($_SERVER['REQUEST_METHOD']=='POST') {
                 //lấy ra dữ liệu
                 $id = $_POST['id'];
-                $ten_trang_thai = $_POST['ten_trang_thai'];
                 $trang_thai_tb = $_POST['trang_thai_tb'];
-                $thong_tin_tai_khoan = $_POST['thong_tin_tai_khoan'];
-                $thong_tin_nhan_hang = $_POST['thong_tin_nhan_hang'];
-                $thong_tin_don_hang = $_POST['thong_tin_don_hang'];
-                $san_pham_trong_don_hang = $_POST['san_pham_trong_don_hang'];
     
                 //validate
                 $errors = [];
-                if (empty($ten_trang_thai)) {
-                    $errors['ten_trang_thai'] = 'tên trạng thhasi là bắt buộc';
-    
-                }
+                
     
                 if (empty($trang_thai_tb)) {
                     $errors['trang_thai_tb'] = 'trạng thái là bắt buộc';
                     
-                }
-                if (empty($thong_tin_tai_khoan)) {
-                    $errors['thong_tin_tai_khoan'] = 'trạng thái là bắt buộc';
-                    
-                }
-                if (empty($thong_tin_nhan_hang)) {
-                    $errors['thong_tin_nhan_hang'] = 'trạng thái là bắt buộc';
-                    
-                }
-                if (empty($thong_tin_don_hang)) {
-                    $errors['thong_tin_don_hang'] = 'trạng thái là bắt buộc';
-                    
-                }
-                if (empty($san_pham_trong_don_hang)) {
-                    $errors['san_pham_trong_don_hang'] = 'trạng thái là bắt buộc';
-                    
-                }
+            }
     
             //thêm dữ liệu
             if (empty($errors)) {
                 //nếu ko có lỗi thì thêm dữ liệu
                 //thêm vào csdl
-                $this->modelTrangThai->updateData($id,$ten_trang_thai,$trang_thai_tb, $thong_tin_tai_khoan, $thong_tin_nhan_hang, $thong_tin_don_hang, $san_pham_trong_don_hang);
+                $this->modelTrangThai->updateData($id, $trang_thai_tb);
                 unset($_SESSION['errors']);
                 header('location: ?act=trang-thais');
                 exit();
@@ -158,7 +110,7 @@ class TrangThaiController
       //hàm xóa dữ liệu trong CSDL
     public function destroy_trang_thai(){
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $id = $_POST['trang_thai_id'];
+            $id = $_POST['trang_thai_don_hang'];
             
             //xóa danh mục
            $deleteTrangThai = $this->modelTrangThai->deleteData($id);

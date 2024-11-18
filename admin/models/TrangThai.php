@@ -28,21 +28,16 @@ class TrangThai
     }
 
     //thêm dữ liệu mới vafp csdl
-    public function postData($ten_trang_thai,$trang_thai_tb, $thong_tin_tai_khoan, $thong_tin_nhan_hang, $thong_tin_don_hang, $san_pham_trong_don_hang){
+    public function postData($trang_thai_tb){
         try {
            
-            $sql= 'INSERT INTO trang_thais (ten_trang_thai,trang_thai_tb, thong_tin_tai_khoan, thong_tin_nhan_hang, thong_tin_don_hang, san_pham_trong_don_hang)
-            VALUES (:ten_trang_thai,:trang_thai_tb, :thong_tin_tai_khoan, :thong_tin_nhan_hang, :thong_tin_don_hang, :san_pham_trong_don_hang)';
+            $sql= 'INSERT INTO trang_thais (trang_thai_tb)
+            VALUES (:trang_thai_tb)';
 
             $stmt = $this->conn->prepare($sql);
 
             //gán gtri vào các tham số
-            $stmt->bindParam(':ten_trang_thai', $ten_trang_thai);
             $stmt->bindParam(':trang_thai_tb', $trang_thai_tb);
-            $stmt->bindParam(':thong_tin_tai_khoan', $thong_tin_tai_khoan);
-            $stmt->bindParam(':thong_tin_nhan_hang', $thong_tin_nhan_hang);
-            $stmt->bindParam(':thong_tin_don_hang', $thong_tin_don_hang);
-            $stmt->bindParam(':san_pham_trong_don_hang', $san_pham_trong_don_hang);
             $stmt->execute();
 
             return true;
@@ -71,21 +66,16 @@ class TrangThai
         }
 
          //cập nhật dữ liệu mới vafp csdl
-    public function updateData($id,$ten_trang_thai,$trang_thai_tb, $thong_tin_tai_khoan, $thong_tin_nhan_hang, $thong_tin_don_hang, $san_pham_trong_don_hang){
+    public function updateData($id,$trang_thai_tb){
         try {
            
-            $sql= 'UPDATE trang_thais SET ten_trang_thai=:ten_trang_thai, trang_thai_tb = :trang_thai_tb, thong_tin_tai_khoan=:thong_tin_tai_khoan,thong_tin_nhan_hang=:thong_tin_nhan_hang,thong_tin_don_hang=:thong_tin_don_hang, san_pham_trong_don_hang=:san_pham_trong_don_hang WHERE id=:id';
+            $sql= 'UPDATE trang_thais SET  trang_thai_tb = :trang_thai_tb WHERE id=:id';
 
             $stmt = $this->conn->prepare($sql);
 
             //gán gtri vào các tham số
             $stmt->bindParam(':id', $id);
-            $stmt->bindParam(':ten_trang_thai', $ten_trang_thai);
             $stmt->bindParam(':trang_thai_tb', $trang_thai_tb);
-            $stmt->bindParam(':thong_tin_tai_khoan', $thong_tin_tai_khoan);
-            $stmt->bindParam(':thong_tin_nhan_hang', $thong_tin_nhan_hang);
-            $stmt->bindParam(':thong_tin_don_hang', $thong_tin_don_hang);
-            $stmt->bindParam(':san_pham_trong_don_hang', $san_pham_trong_don_hang);
             $stmt->execute();
 
             return true;
