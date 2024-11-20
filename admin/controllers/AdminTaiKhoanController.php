@@ -10,7 +10,6 @@ class AdminTaiKhoanController {
 
     {
         $this->modelTaiKhoan =new AdminTaiKhoan();
-        $this->modelDonHang =new AdminDonHang();
         $this->modelSanPham =new AdminSanPham();
     }
 

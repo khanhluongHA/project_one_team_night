@@ -87,6 +87,8 @@
                                                         <th scope="col">ngày đặt</th>
                                                         <th scope="col">phương thức thanh toán</th>
                                                         <th scope="col">Trạng thái thanh toán</th>
+                                                        <th scope="col">Trạng thái đơn hàng</th>
+
                                                         <th scope="col">Action</th>
                                                     </tr>
                                                 </thead>
@@ -98,38 +100,61 @@
                                                         <td><?= $donHang['ngay_dat'] ?></td>  
                                                         <td>
                                                         <?php 
-if ($donHang['trang_thai_thanh_toan'] == 1) { ?>
-    <span class="badge bg-success">Chuyển khoản</span>
-<?php } elseif ($donHang['trang_thai_thanh_toan'] == 2) { ?>
-    <span class="badge bg-danger">Tiền mặt</span>
-<?php } else { ?>
-    <span class="badge bg-warning">Chưa xác định</span>
-<?php } ?>
-                                                            
-                                                        </td>  
-                                                       
+                                                        if ($donHang['phuong_thuc_thanh_toan'] == 1) { ?>
+                                                            <span class="badge bg-success">Chuyển khoản</span>
+                                                        <?php } elseif ($donHang['phuong_thuc_thanh_toan'] == 2) { ?>
+                                                            <span class="badge bg-danger">Tiền mặt</span>
+                                                        <?php } else { ?>
+                                                            <span class="badge bg-warning">Thẻ tín dụng</span>
+                                                        <?php } ?>
+                                                                                                             
                                                         <td>
                                                             <?php 
                                                             if($donHang['trang_thai_thanh_toan'] ==1) { ?>
                                                             <span class="badge bg-success">Chưa thanh toán</span>
-                                                            <?php } else { ?>
+                                                            <?php }
+                                                            
+                                                            
+                                                            else { ?>
                                                                 <span class="badge bg-danger">Đã thanh toán</span>
                                                            <?php }
                                                             ?>
                                                             
                                                         </td>
+                                                    <td>
+                                                        <?php 
+                                                            if ($donHang['trang_thai_don_hang'] == 1) { ?>
+                                                                <span class="badge bg-success">chưa xác nhận</span>
+                                                            <?php } elseif ($donHang['trang_thai_don_hang'] == 2) { ?>
+                                                                <span class="badge bg-danger">đã xác nhận</span>
+                                                            <?php }elseif ($donHang['trang_thai_don_hang'] == 3) { ?>
+                                                                <span class="badge bg-danger">đang giao</span>
+                                                            <?php }elseif ($donHang['trang_thai_don_hang'] == 4) { ?>
+                                                                <span class="badge bg-danger">đã giao</span>
+                                                            <?php }elseif ($donHang['trang_thai_don_hang'] == 5) { ?>
+                                                                <span class="badge bg-danger">giao thành công</span>
+                                                            <?php }elseif ($donHang['trang_thai_don_hang'] == 6) { ?>
+                                                                <span class="badge bg-danger">giao thất bại</span>
+                                                            <?php }
+                                                             else { ?>
+                                                                <span class="badge bg-warning">đã hủy</span>
+                                                            <?php } ?>
+                                                             </td>
+                                                       
+
                                                         <td>
                                                                     <div class="hstack gap-3 flex-wrap">
                                                                         <a href="?act=form-sua-don-hang&don_hang_id=<?= $donHang['id']?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
                                                                         
                                                                         
                                                                         
-                                                                        <a href="?act=chi-tiet-don-hang"><i class="ri-dashboard-2-line"></i></a>
+                                                                        <a href="?act=chi-tiet-don-hang&don_hang_id=<?= $donHang['id']?>" class="link-success fs-15"><i class="ri-dashboard-2-line"></i></a>
                     
   
                                                                         </form>
                                                                     </div>
                                                                 </td>
+                                                                
                                                     </tr>
                                                     
                                                    <?php endforeach; ?>

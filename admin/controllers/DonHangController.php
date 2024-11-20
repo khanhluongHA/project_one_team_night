@@ -24,6 +24,7 @@ class DonHangController
         $id = $_GET['don_hang_id'];
         // lấy thông tin chi tiết của danh mục 
         $donHang = $this->modelDonHang->getDetailData($id);
+       
 
         // đổ dữ liệu ra form 
         require_once './views/donhang/edit_don_hang.php';
@@ -38,6 +39,7 @@ class DonHangController
             $ngay_dat = $_POST['ngay_dat'];
             $phuong_thuc_thanh_toan = $_POST['phuong_thuc_thanh_toan'];
             $trang_thai_thanh_toan = $_POST['trang_thai_thanh_toan'];
+            $trang_thai_don_hang = $_POST['trang_thai_don_hang'];
             // var_dump($trang_thai_don_hang);die;
 
             // validate 
@@ -55,7 +57,7 @@ class DonHangController
             if(empty($errors)){
                 // thêm dữ liệu
                 // thêm vào CSDL
-                 $this->modelDonHang->updateData($id,$ma_don_hang,$ngay_dat,$phuong_thuc_thanh_toan,$trang_thai_thanh_toan);
+                 $this->modelDonHang->updateData($id,$ma_don_hang,$ngay_dat,$phuong_thuc_thanh_toan,$trang_thai_thanh_toan,$trang_thai_don_hang);
                 //  var_dump($sdt_nguoi_nhan);die;
                  unset($_SESSION['erorrs']);
                  header('Location: ?act=donhang-category');
@@ -174,7 +176,17 @@ class DonHangController
         
     // }
 
+     //----------------------------------------------------------------Chi tiết đơn hàng----------------------------------------------------------
+    public function detailDonHang(){
+        $id_don_hang = $_GET['don_hang_id'];
+        //lấy thông tin đơn hàng ở bảng đơn hàng
+        $donHang = $this->modelDonHang->getDetailDonHang($id_don_hang);
+        // lấy danh sachs sản phẩm đã đặt hàng của đon hàng ở bảng chi_tiet_don_hangs
+        $sanPhamDonHang = $this->modelDonHang->getListSpDonHang($id_don_hang);
+        $listTrangThaiDonHang = $this->modelDonHang->getAllTrangThaiDonHang();
 
-
+        
+        require_once './views/donhang/detailDonHang.php';
+    }
 
 }

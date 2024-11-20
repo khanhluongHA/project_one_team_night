@@ -120,9 +120,9 @@ class DonHang{
     }
 
      // câp nhật dữ liệu mới vào CSDL
-     public function updateData($id,$ma_don_hang,$ngay_dat,$phuong_thuc_thanh_toan,$trang_thai_thanh_toan){
+     public function updateData($id,$ma_don_hang,$ngay_dat,$phuong_thuc_thanh_toan,$trang_thai_thanh_toan,$trang_thai_don_hang){
         try {
-            $sql = 'UPDATE don_hangs SET ma_don_hang = :ma_don_hang, ngay_dat = :ngay_dat, phuong_thuc_thanh_toan = :phuong_thuc_thanh_toan, trang_thai_thanh_toan = :trang_thai_thanh_toan WHERE id = :id';
+            $sql = 'UPDATE don_hangs SET ma_don_hang = :ma_don_hang, ngay_dat = :ngay_dat, phuong_thuc_thanh_toan = :phuong_thuc_thanh_toan, trang_thai_thanh_toan = :trang_thai_thanh_toan, trang_thai_don_hang = :trang_thai_don_hang WHERE id = :id';
 
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':id', $id);
@@ -131,6 +131,7 @@ class DonHang{
             $stmt->bindParam(':ngay_dat', $ngay_dat);
             $stmt->bindParam(':phuong_thuc_thanh_toan', $phuong_thuc_thanh_toan);
             $stmt->bindParam(':trang_thai_thanh_toan', $trang_thai_thanh_toan);
+            $stmt->bindParam(':trang_thai_don_hang', $trang_thai_don_hang);
             // var_dump($phuong_thuc_thanh_toan);die;
 
             return $stmt->execute();
@@ -151,6 +152,70 @@ class DonHang{
     public function __destruct()
     {
         $this->conn = null ; 
+    }
+
+    //----------------------------------------chi tiết đơn hàng-------------------------------------------------------------
+      public function getDetailDonHang($id) {
+        try {
+            $sql = 'SELECT don_hangs.*, tt_don_hangs.ten_trang_thai 
+            FROM don_hangs
+            INNER JOIN tt_don_hangs ON don_hangs.trang_thai_don_hang = tt_don_hangs.id
+            WHERE don_hangs.id = :id';
+    
+
+            //----------------------------------------------------
+           
+
+
+            $stmt = $this->conn->prepare($sql);
+            
+            $stmt->execute([':id' => $id]);
+
+          
+
+            return $stmt->fetch();
+        } catch (PDOException $e) {
+           echo 'Loi' . $e->getMessage();
+        }
+        
+    }
+ 
+
+    public function getAllTrangThaiDonHang() {
+        try {
+            $sql = 'SELECT * FROM tt_don_hangs';
+          
+
+
+            $stmt = $this->conn->prepare($sql);
+            
+            $stmt->execute();
+
+          
+
+            return $stmt->fetchAll();
+        } catch (PDOException $e) {
+           echo 'Loi' . $e->getMessage();
+        }
+        
+    }
+
+    public function getListSpDonHang($id) {
+        try {
+            $sql = 'SELECT chi_tiet_don_hangs.*, san_phams.ten_san_pham
+            FROM chi_tiet_don_hangs
+            INNER JOIN san_phams ON chi_tiet_don_hangs.san_pham_id = san_phams.id
+            WHERE chi_tiet_don_hangs.don_hang_id = :id';
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([':id'=>$id]);
+          
+
+            return $stmt->fetchAll();
+        } catch (PDOException $e) {
+           echo 'Loi' . $e->getMessage();
+        }
+        
     }
 }
 

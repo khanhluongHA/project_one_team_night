@@ -77,8 +77,8 @@
                                     <div class="info-box-content">
                                         <span class="info-box-text">Tổng Doanh Thu</span>
                                         <span class="info-box-number">
-                                            <?php if (isset($tongDoanhThu['TongDoanhThu'])): ?>
-                                                <strong><?= number_format($tongDoanhThu['TongDoanhThu'], 2) ?> VNĐ</strong>
+                                            <?php if (isset($tongDoanhThu['thanh_toan'])): ?>
+                                                <strong><?= number_format($tongDoanhThu['thanh_toan']) ?> VNĐ</strong>
                                             <?php else: ?>
                                                 <strong>0 VNĐ</strong>
                                             <?php endif; ?>
@@ -96,8 +96,8 @@
                                     <div class="info-box-content">
                                         <span class="info-box-text">Số lượng hàng còn</span>
                                         <span class="info-box-number">
-                                            <?php if (isset($tongDonHangChoXuLy['TongDonHangTon'])): ?>
-                                                <strong><?= $tongDonHangChoXuLy['TongDonHangTon'] ?></strong>
+                                            <?php if (isset($tongDonHangChoXuLy['trang_thai_thanh_toan'])): ?>
+                                                <strong><?= $tongDonHangChoXuLy['trang_thai_thanh_toan'] ?></strong>
                                             <?php else: ?>
                                                 <strong>0</strong>
                                             <?php endif; ?>
@@ -115,8 +115,8 @@
                                     <div class="info-box-content">
                                         <span class="info-box-text">Đơn hàng đã bán</span>
                                         <span class="info-box-number">
-                                            <?php if (isset($soLuongBan['so_luong_ban'])): ?>
-                                                <strong><?= $soLuongBan['so_luong_ban'] ?></strong>
+                                            <?php if (isset($soLuongBan['trang_thai_thanh_toan'])): ?>
+                                                <strong><?= $soLuongBan['trang_thai_thanh_toan'] ?></strong>
                                             <?php else: ?>
                                                 <strong>0</strong>
                                             <?php endif; ?>

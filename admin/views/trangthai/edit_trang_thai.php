@@ -81,7 +81,7 @@
                                             <div class="row">
                                                 
                                                 <!--end col-->
-                                                <div class="col-md-6">
+                                                <div class="col-md-15">
                                                     <div class="mb-3">
                                                         <label for="ForminputState" class="form-label">Trạng thái đơn hàng</label>
                                                         <input type="text" class="form-control" placeholder="Nhập tên trạng thái" name="trang_thai_tb" value="<?=$trangThai['trang_thai_tb']?>">

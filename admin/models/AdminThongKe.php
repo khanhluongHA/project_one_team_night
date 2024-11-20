@@ -8,12 +8,14 @@ class AdminThongKe {
     }
 
     public function getTongDoanhThu() {
-        $stmt = $this->conn->query("SELECT SUM(TongDoanhThu) AS TongDoanhThu FROM thong_kes");
+        $stmt = $this->conn->query("SELECT SUM(thanh_toan) AS thanh_toan FROM don_hangs");
+
+        $tongDonHang = $this->getTongDonHangDaBan();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     public function getTongDonHangChoXuLy() {
-        $stmt = $this->conn->query("SELECT COUNT(*) AS TongDonHangTon FROM don_hangs WHERE trang_thai_don_hang in (1,2,3,5,10,11)");
+        $stmt = $this->conn->query("SELECT COUNT(*) AS trang_thai_thanh_toan FROM don_hangs WHERE trang_thai_thanh_toan in (1)");
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
@@ -31,7 +33,7 @@ class AdminThongKe {
     }
 
     public function getTongDonHangDaBan() {
-        $stmt = $this->conn->query("SELECT COUNT(*) AS so_luong_ban FROM don_hangs WHERE trang_thai_don_hang in (4,6,7,8,9)"); // Giả sử trạng thái 4 là đã hoàn thành
+        $stmt = $this->conn->query("SELECT COUNT(*) AS trang_thai_thanh_toan FROM don_hangs WHERE trang_thai_thanh_toan in (2)"); // Giả sử trạng thái 4 là đã hoàn thành
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 

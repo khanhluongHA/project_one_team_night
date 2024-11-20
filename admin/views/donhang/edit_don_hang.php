@@ -77,7 +77,7 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
-                                                        <label for="citynameInput" class="form-label">Tên đơn hàng</label>
+                                                        <label for="citynameInput" class="form-label">Mã đơn hàng</label>
                                                         <input type="text" class="form-control"  name="ma_don_hang" value="<?= $donHang['ma_don_hang'] ?>">
                                                         <span class="text-danger">
                                                          <?= !empty($_SESSION['errors']['ma_don_hang'] ) ? $_SESSION['errors']['ma_don_hang'] : '' ?>
@@ -86,8 +86,8 @@
                                                 </div>
                                                         <div class="col-md-6">
                                                         <div class="mb-3">
-                                                        <label for="citynameInput" class="form-label">Tên đơn hàng</label>
-                                                        <input type="text" class="form-control"  name="ngay_dat" value="<?= $donHang['ngay_dat'] ?>">
+                                                        <label for="citynameInput" class="form-label">Ngày đặt hàng</label>
+                                                        <input type="date" class="form-control"  name="ngay_dat" value="<?= $donHang['ngay_dat'] ?>">
                                                         <span class="text-danger">
                                                          <?= !empty($_SESSION['errors']['ngay_dat'] ) ? $_SESSION['errors']['ngay_dat'] : '' ?>
                                                         </span>
@@ -116,10 +116,32 @@
                                                         <select id="ForminputState"  class="form-select" name="trang_thai_thanh_toan" value="<?= $donHang['trang_thai_thanh_toan'] ?>">
                                                             <option selected disabled>Chọn trạng thái</option>          
                                                             <option value="1" <?= $donHang['trang_thai_thanh_toan'] == 1 ? 'selected' : '' ?> >Chưa thanh toán</option>
-                                                            <option value="2" <?= $donHang['trang_thai_thanh_toan'] == 2 ? 'selected' : '' ?>>Đã thanh toán</option>
+                                                         
+                                                            <option value="2" <?= $donHang['trang_thai_thanh_toan'] == 2 ? 'selected' : '' ?> >đã thanh toán</option>
                                                         </select>
                                                         <span class="text-danger">
                                                          <?= !empty($_SESSION['errors']['trang_thai_thanh_toan'] ) ? $_SESSION['errors']['trang_thai_thanh_toan'] : '' ?>
+                                                        </span>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label for="ForminputState" class="form-label">Trạng Thái đơn hàng</label>
+                                                        <select id="ForminputState"  class="form-select" name="trang_thai_don_hang" value="<?= $donHang['trang_thai_don_hang'] ?>">
+                                                            <option selected disabled>Chọn trạng thái</option>          
+                                                            <option value="1" <?= $donHang['trang_thai_don_hang'] == 1 ? 'selected' : '' ?> >Chưa xác nhận</option>
+                                                         
+                                                            <option value="2" <?= $donHang['trang_thai_don_hang'] == 2 ? 'selected' : '' ?> >đã xác nhận</option>
+                                                            <option value="3" <?= $donHang['trang_thai_don_hang'] == 3 ? 'selected' : '' ?> >đang giao</option>
+                                                            <option value="4" <?= $donHang['trang_thai_don_hang'] == 4 ? 'selected' : '' ?> >đã giao</option>
+                                                            <option value="5" <?= $donHang['trang_thai_don_hang'] == 5 ? 'selected' : '' ?> >giao hàng thành công</option>
+                                                            <option value="6" <?= $donHang['trang_thai_don_hang'] == 6 ? 'selected' : '' ?> >giao hàng thất bại</option>
+                                                            <option value="7" <?= $donHang['trang_thai_don_hang'] == 7 ? 'selected' : '' ?> >đã hủy</option>
+                                                        </select>
+                                                        <span class="text-danger">
+                                                         <?= !empty($_SESSION['errors']['trang_thai_don_hang'] ) ? $_SESSION['errors']['trang_thai_don_hang'] : '' ?>
                                                         </span>
                                                     </div>
                                                 </div>
