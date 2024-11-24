@@ -116,7 +116,13 @@
             </div>
             <!-- End .container -->
         </footer>
-        <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/jquery.min.js"></script>
+        </body>
+
+
+<!-- Mirrored from portotheme.com/html/porto_ecommerce/demo4.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 19 Nov 2024 03:35:29 GMT -->
+
+        <!-- Plugins JS File -->
+    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/optional/isotope.pkgd.min.js"></script>
     <script src="assets/js/plugins.min.js"></script>

@@ -1,19 +1,14 @@
 <?php
-function connectDB(){
-    $host = DB_HOST;
-    $port = DB_PORT;
-    $dbname = DB_NAME;
-    
+function connectDB() {
     try {
-        $conn = new PDO("mysql:host=$host;port=$port;dbname=$dbname", DB_USERNAME, DB_PASSWORD);
-        // set the PDO error mode to exception
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-        $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);    
-        
-        return $conn;
+        $dsn = 'mysql:host=' . DB_HOST . ';port=' . DB_PORT . ';dbname=' . DB_NAME . ';charset=utf8';
+        $options = [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        ];
+        return new PDO($dsn, DB_USERNAME, DB_PASSWORD, $options);
     } catch (PDOException $e) {
-        echo "Connection failed: ". $e->getMessage(); 
+        die("Database connection failed: " . $e->getMessage());
     }
 }
 

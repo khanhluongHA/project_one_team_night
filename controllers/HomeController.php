@@ -3,6 +3,6 @@
 class HomeController
 {
     public function home() {
-        echo "Xưởng thực hành dự án 1";
+        require_once './views/home.php';
     }
 }
