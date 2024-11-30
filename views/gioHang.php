@@ -2,7 +2,7 @@
 <html lang="en">
 
 
-<!-- Mirrored from portotheme.com/html/porto_ecommerce/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 19 Nov 2024 03:33:03 GMT -->
+<!-- Mirrored from portotheme.com/html/porto_ecommerce/cart.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 19 Nov 2024 03:33:02 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
 	<meta charset="UTF-8">
@@ -10,6 +10,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 	<title>Porto - Bootstrap eCommerce Template</title>
+	
 
 	<meta name="keywords" content="HTML5 Template" />
 	<meta name="description" content="Porto - Bootstrap eCommerce Template">
@@ -182,7 +183,7 @@
 										<div class="product">
 											<div class="product-details">
 												<h4 class="product-title">
-													<a href="?act=detail">Ultimate 3D Bluetooth Speaker</a>
+													<a href="product.html">Ultimate 3D Bluetooth Speaker</a>
 												</h4>
 
 												<span class="cart-product-info">
@@ -192,7 +193,7 @@
 											</div><!-- End .product-details -->
 
 											<figure class="product-image-container">
-												<a href="?act=detail" class="product-image">
+												<a href="product.html" class="product-image">
 													<img src="assets/images/products/product-1.jpg" alt="product"
 														width="80" height="80">
 												</a>
@@ -204,7 +205,7 @@
 										<div class="product">
 											<div class="product-details">
 												<h4 class="product-title">
-													<a href="?act=detail">Brown Women Casual HandBag</a>
+													<a href="product.html">Brown Women Casual HandBag</a>
 												</h4>
 
 												<span class="cart-product-info">
@@ -214,7 +215,7 @@
 											</div><!-- End .product-details -->
 
 											<figure class="product-image-container">
-												<a href="?act=detail" class="product-image">
+												<a href="product.html" class="product-image">
 													<img src="assets/images/products/product-2.jpg" alt="product"
 														width="80" height="80">
 												</a>
@@ -226,7 +227,7 @@
 										<div class="product">
 											<div class="product-details">
 												<h4 class="product-title">
-													<a href="?act=detail">Circled Ultimate 3D Speaker</a>
+													<a href="product.html">Circled Ultimate 3D Speaker</a>
 												</h4>
 
 												<span class="cart-product-info">
@@ -236,7 +237,7 @@
 											</div><!-- End .product-details -->
 
 											<figure class="product-image-container">
-												<a href="?act=detail" class="product-image">
+												<a href="product.html" class="product-image">
 													<img src="assets/images/products/product-3.jpg" alt="product"
 														width="80" height="80">
 												</a>
@@ -325,16 +326,16 @@
 								</div><!-- End .megamenu -->
 							</li>
 							<li>
-								<a href="?act=detail">Products</a>
+								<a href="product.html">Products</a>
 								<div class="megamenu megamenu-fixed-width">
 									<div class="row">
 										<div class="col-lg-4">
 											<a href="#" class="nolink">PRODUCT PAGES</a>
 											<ul class="submenu">
-												<li><a href="?act=detail">SIMPLE PRODUCT</a></li>
+												<li><a href="product.html">SIMPLE PRODUCT</a></li>
 												<li><a href="product-variable.html">VARIABLE PRODUCT</a></li>
-												<li><a href="?act=detail">SALE PRODUCT</a></li>
-												<li><a href="?act=detail">FEATURED & ON SALE</a></li>
+												<li><a href="product.html">SALE PRODUCT</a></li>
+												<li><a href="product.html">FEATURED & ON SALE</a></li>
 												<li><a href="product-custom-tab.html">WITH CUSTOM TAB</a></li>
 												<li><a href="product-sidebar-left.html">WITH LEFT SIDEBAR</a></li>
 												<li><a href="product-sidebar-right.html">WITH RIGHT SIDEBAR</a></li>
@@ -427,93 +428,183 @@
 		</header><!-- End .header -->
 
 		<main class="main">
-			<div class="page-header">
-				<div class="container d-flex flex-column align-items-center">
-					<nav aria-label="breadcrumb" class="breadcrumb-nav">
-						<div class="container">
-							<ol class="breadcrumb">
-								<li class="breadcrumb-item"><a href="demo4.html">Home</a></li>
-								<li class="breadcrumb-item"><a href="category.html">Shop</a></li>
-								<li class="breadcrumb-item active" aria-current="page">
-									My Account
-								</li>
-							</ol>
-						</div>
-					</nav>
+			<div class="container">
+				<ul class="checkout-progress-bar d-flex justify-content-center flex-wrap">
+					<li class="active">
+						<a href="cart.html">Shopping Cart</a>
+					</li>
+					<li>
+						<a href="checkout.html">Checkout</a>
+					</li>
+					<li class="disabled">
+						<a href="cart.html">Order Complete</a>
+					</li>
+				</ul>
 
-					<h1>My Account</h1>
-				</div>
-			</div>
-
-			<div class="container login-container">
 				<div class="row">
-					<div class="col-lg-10 mx-auto">
-						<div class="row">
-							<div class="col-md-6">
-								<div class="heading mb-1">
-									<h2 class="title">Login</h2>
-                                    <?php ?>
-								</div>
-                                
-								<form action="" method="post">
-									<label for="login-email">
-										Username or email address
-										<span class="required">*</span>
-									</label>
-									<input type="text" class="form-input form-wide" id="login-email" required name="username" />
+					<div class="col-lg-8">
+						<div class="cart-table-container">
+							<table class="table table-cart">
+								<thead>
+									<tr>
+										<th class="thumbnail-col"></th>
+										<th class="product-col">Product</th>
+										<th class="price-col">Price</th>
+										<th class="qty-col">Quantity</th>
+										<th class="text-right">Subtotal</th>
+									</tr>
+								</thead>
+								<tbody>
+                                    <?php 
+                                    $tongGioHang = 0;
+                                    foreach($chiTietGioiHang as $key => $sanPham):
+                                    ?>
+									<tr class="product-row">
+										<td>
+											<figure class="product-image-container">
+												<a href="product.html" class="product-image">
+													<img src="<?= $sanPham['hinh_anh']?>" alt="product">
+												</a>
 
-									<label for="login-password">
-										Password
-										<span class="required">*</span>
-									</label>
-									<input type="password" class="form-input form-wide" id="login-password" required name="password" />
+												<a href="#" class="btn-remove icon-cancel" title="Remove Product"></a>
+											</figure>
+										</td>
+										<td class="product-col">
+											<h5 class="product-title">
+												<a href="product.html"><?= $sanPham['ten_san_pham']?></a>
+											</h5>
+										</td>
+										<td><?= $sanPham['gia_san_pham']?></td>
+										<td>
+											<div class="product-single-qty">
+												<input class="horizontal-quantity form-control" type="text">
+											</div><!-- End .product-single-qty -->
+										</td>
+										<td class="text-right"><span class="subtotal-price">$17.90</span></td>
+									</tr>
+                                    <?php endforeach ?>
+								</tbody>
 
-									<div class="form-footer">
-										<div class="custom-control custom-checkbox mb-0">
-											<input type="checkbox" class="custom-control-input" id="lost-password" />
-											<label class="custom-control-label mb-0" for="lost-password">Remember
-												me</label>
-										</div>
 
-										<a href="forgot-password.html"
-											class="forget-password text-dark form-footer-right">Forgot
-											Password?</a>
-									</div>
-									<button type="submit" class="btn btn-dark btn-md w-100">
-										LOGIN
-									</button>
-								</form>
+								<tfoot>
+									<tr>
+										<td colspan="5" class="clearfix">
+											<div class="float-left">
+												<div class="cart-discount">
+													<form action="#">
+														<div class="input-group">
+															<input type="text" class="form-control form-control-sm"
+																placeholder="Coupon Code" required>
+															<div class="input-group-append">
+																<button class="btn btn-sm" type="submit">Apply
+																	Coupon</button>
+															</div>
+														</div><!-- End .input-group -->
+													</form>
+												</div>
+											</div><!-- End .float-left -->
+
+											<div class="float-right">
+												<button type="submit" class="btn btn-shop btn-update-cart">
+													Update Cart
+												</button>
+											</div><!-- End .float-right -->
+										</td>
+									</tr>
+								</tfoot>
+							</table>
+						</div><!-- End .cart-table-container -->
+					</div><!-- End .col-lg-8 -->
+
+					<div class="col-lg-4">
+						<div class="cart-summary">
+							<h3>CART TOTALS</h3>
+
+							<table class="table table-totals">
+								<tbody>
+									<tr>
+										<td>Subtotal</td>
+										<td>$17.90</td>
+									</tr>
+
+									<tr>
+										<td colspan="2" class="text-left">
+											<h4>Shipping</h4>
+
+											<div class="form-group form-group-custom-control">
+												<div class="custom-control custom-radio">
+													<input type="radio" class="custom-control-input" name="radio"
+														checked>
+													<label class="custom-control-label">Local pickup</label>
+												</div><!-- End .custom-checkbox -->
+											</div><!-- End .form-group -->
+
+											<div class="form-group form-group-custom-control mb-0">
+												<div class="custom-control custom-radio mb-0">
+													<input type="radio" name="radio" class="custom-control-input">
+													<label class="custom-control-label">Flat rate</label>
+												</div><!-- End .custom-checkbox -->
+											</div><!-- End .form-group -->
+
+											<form action="#">
+												<div class="form-group form-group-sm">
+													<label>Shipping to <strong>NY.</strong></label>
+													<div class="select-custom">
+														<select class="form-control form-control-sm">
+															<option value="USA">United States (US)</option>
+															<option value="Turkey">Turkey</option>
+															<option value="China">China</option>
+															<option value="Germany">Germany</option>
+														</select>
+													</div><!-- End .select-custom -->
+												</div><!-- End .form-group -->
+
+												<div class="form-group form-group-sm">
+													<div class="select-custom">
+														<select class="form-control form-control-sm">
+															<option value="NY">New York</option>
+															<option value="CA">California</option>
+															<option value="TX">Texas</option>
+														</select>
+													</div><!-- End .select-custom -->
+												</div><!-- End .form-group -->
+
+												<div class="form-group form-group-sm">
+													<input type="text" class="form-control form-control-sm"
+														placeholder="Town / City">
+												</div><!-- End .form-group -->
+
+												<div class="form-group form-group-sm">
+													<input type="text" class="form-control form-control-sm"
+														placeholder="ZIP">
+												</div><!-- End .form-group -->
+
+												<button type="submit" class="btn btn-shop btn-update-total">
+													Update Totals
+												</button>
+											</form>
+										</td>
+									</tr>
+								</tbody>
+
+								<tfoot>
+									<tr>
+										<td>Total</td>
+										<td>$17.90</td>
+									</tr>
+								</tfoot>
+							</table>
+
+							<div class="checkout-methods">
+								<a href="cart.html" class="btn btn-block btn-dark">Proceed to Checkout
+									<i class="fa fa-arrow-right"></i></a>
 							</div>
-							<div class="col-md-6">
-								<div class="heading mb-1">
-									<h2 class="title">Register</h2>
-								</div>
+						</div><!-- End .cart-summary -->
+					</div><!-- End .col-lg-4 -->
+				</div><!-- End .row -->
+			</div><!-- End .container -->
 
-								<form action="#" method="post">
-									<label for="register-email">
-										Email address
-										<span class="required">*</span>
-									</label>
-									<input type="text" class="form-input form-wide" id="register-email" required name="username" />
-
-									<label for="register-password">
-										Password
-										<span class="required">*</span>
-									</label>
-									<input type="password" class="form-input form-wide" id="register-password" name="password"
-										required />
-
-									<div class="form-footer mb-2">
-										<button type="submit" class="btn btn-dark btn-md w-100 mr-0">
-											Register
-										</button>
-									</div>
-								</form>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+			<div class="mb-6"></div><!-- margin -->
 		</main><!-- End .main -->
 
 		<footer class="footer bg-dark">
@@ -532,7 +623,7 @@
 											456-7890</a>
 									</li>
 									<li>
-										<span class="contact-info-label">Email:</span> <a href="https://portotheme.com/cdn-cgi/l/email-protection#e68b878f8aa6839e878b968a83c885898b"><span class="__cf_email__" data-cfemail="f69b979f9ab6938e979b869a93d895999b">[email&#160;protected]</span></a>
+										<span class="contact-info-label">Email:</span> <a href="https://portotheme.com/cdn-cgi/l/email-protection#0469656d6844617c65697468612a676b69"><span class="__cf_email__" data-cfemail="a8c5c9c1c4e8cdd0c9c5d8c4cd86cbc7c5">[email&#160;protected]</span></a>
 									</li>
 									<li>
 										<span class="contact-info-label">Working Days/Hours:</span>
@@ -669,15 +760,15 @@
 						</ul>
 					</li>
 					<li>
-						<a href="?act=detail">Products</a>
+						<a href="product.html">Products</a>
 						<ul>
 							<li>
 								<a href="#" class="nolink">PRODUCT PAGES</a>
 								<ul>
-									<li><a href="?act=detail">SIMPLE PRODUCT</a></li>
+									<li><a href="product.html">SIMPLE PRODUCT</a></li>
 									<li><a href="product-variable.html">VARIABLE PRODUCT</a></li>
-									<li><a href="?act=detail">SALE PRODUCT</a></li>
-									<li><a href="?act=detail">FEATURED & ON SALE</a></li>
+									<li><a href="product.html">SALE PRODUCT</a></li>
+									<li><a href="product.html">FEATURED & ON SALE</a></li>
 									<li><a href="product-sticky-info.html">WIDTH CUSTOM TAB</a></li>
 									<li><a href="product-sidebar-left.html">WITH LEFT SIDEBAR</a></li>
 									<li><a href="product-sidebar-right.html">WITH RIGHT SIDEBAR</a></li>
@@ -829,5 +920,5 @@
 </body>
 
 
-<!-- Mirrored from portotheme.com/html/porto_ecommerce/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 19 Nov 2024 03:33:04 GMT -->
+<!-- Mirrored from portotheme.com/html/porto_ecommerce/cart.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 19 Nov 2024 03:33:03 GMT -->
 </html>

@@ -57,9 +57,7 @@
                                 $colorAlerts = 'danger';
                             }
                             ?>
-                            <div class="alert alert-<?= $colorAlerts; ?>" role="alert">
-                                Đơn hàng: <?= $donHang['ten_trang_thai'] ?>
-                            </div>
+                            
                             
                             
                             <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
@@ -69,19 +67,16 @@
                                 <div >
                                 <div >
                                         <form action="" method="POST">
-                                            <select name="" id="" >
-                                                <?php  foreach($listTrangThaiDonHang as $key=>$trangThai):?>
-                                                <option 
-
-                                                <?= $trangThai['ten_trang_thai'] ==  $donHang['ten_trang_thai'] ? 'selected':''  ?>
-                                                
-                                                <?= $trangThai['ten_trang_thai'] >  $donHang['ten_trang_thai'] ? 'disabled':''  ?>
-                                                
-                                                 value="<?= $trangThai['ten_trang_thai']; ?>" ><?= $trangThai['ten_trang_thai']; ?>
-
-                                                </option>
-                                                <?php endforeach ?>
-                                            </select>
+                                            <select id="ForminputState" class="form-select" name="trang_thai_don_hang">
+                                                            <option selected disabled>Chọn trạng thái</option>
+                                                            <option value="1" <?= $donHang['trang_thai_don_hang'] == 1 ? 'selected' : '' ?> <?= $donHang['trang_thai_don_hang'] > 1 ? 'disabled' : '' ?>>Chưa xác nhận</option>
+                                                            <option value="2" <?= $donHang['trang_thai_don_hang'] == 2 ? 'selected' : '' ?> <?= $donHang['trang_thai_don_hang'] > 2 ? 'disabled' : '' ?>>Đã xác nhận</option>
+                                                            <option value="3" <?= $donHang['trang_thai_don_hang'] == 3 ? 'selected' : '' ?> <?= $donHang['trang_thai_don_hang'] > 3 ? 'disabled' : '' ?>>Đang giao</option>
+                                                            <option value="4" <?= $donHang['trang_thai_don_hang'] == 4 ? 'selected' : '' ?> <?= $donHang['trang_thai_don_hang'] > 4 ? 'disabled' : '' ?>>Đã giao</option>
+                                                            <option value="5" <?= $donHang['trang_thai_don_hang'] == 5 ? 'selected' : '' ?> <?= $donHang['trang_thai_don_hang'] > 5 ? 'disabled' : '' ?>>Giao hàng thành công</option>
+                                                            <option value="6" <?= $donHang['trang_thai_don_hang'] == 6 ? 'selected' : '' ?> <?= $donHang['trang_thai_don_hang'] > 6 ? 'disabled' : '' ?>>Giao hàng thất bại</option>
+                                                            <option value="7" <?= $donHang['trang_thai_don_hang'] == 7 ? 'selected' : '' ?> <?= $donHang['trang_thai_don_hang'] == 7 ? 'disabled' : '' ?>>Đã hủy</option>
+                                                        </select>
                                         </form>
                                        
                                     </div>
@@ -115,7 +110,7 @@
                                                         <tr>
                                                             <td>Email: <?=$donHang['email_nguoi_nhan']?></td>
                                                             <td>  Email: <?=$donHang['email_nguoi_nhan']?></td>
-                                                            <td>  Tổng tiền: <?=$donHang['tong_tien']?></td>
+                                                            <td>  Tổng tiền: <?=$donHang['thanh_toan']?></td>
                                                             <th scope="col"> </th>
                                                         </tr>
                                                         <tr>
@@ -128,8 +123,17 @@
                                                         <tr>
                                                             <td></td>
                                                             <td></td>
-                                                            <td>Thanh toán: <?=$donHang['phuong_thuc_thanh_toan']?></td>
+                                                            <td>Thanh toán: 
 
+                                                            <?php 
+                                                        if ($donHang['phuong_thuc_thanh_toan'] == 1) { ?>
+                                                            <span class="badge bg-success">Chuyển khoản</span>
+                                                        <?php } elseif ($donHang['phuong_thuc_thanh_toan'] == 2) { ?>
+                                                            <span class="badge bg-danger">Tiền mặt</span>
+                                                        <?php } else { ?>
+                                                            <span class="badge bg-warning">Thẻ tín dụng</span>
+                                                        <?php } ?>
+                                                            </td>
                                                         </tr>
                                                       
                                                     </tbody>
@@ -202,14 +206,14 @@
                                                         <tr>
                                                             <td><?= $key+1 ?></td>
                                                             <td><?= $sanPham['ten_san_pham'] ?> </td>
-                                                            <td><?= $sanPham['don_gia'] ?> </td>
+                                                            <td><?= $sanPham['gia_san_pham'] ?> </td>
                                                             <td><?= $sanPham['so_luong'] ?> </td>
-                                                            <td><?= $sanPham['thanh_tien'] ?> </td>
+                                                            <td><?= $sanPham['gia_san_pham'] ?> </td>
                                                            
                                                            
                                                         </tr>
                                                         <?php
-                                                        $tongtien += $sanPham['thanh_tien'];
+                                                        $tongtien += $sanPham['gia_san_pham'];
                                                         ?>
                                                         <?php endforeach; ?>
                                                 </tbody>

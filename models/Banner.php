@@ -1,23 +1,20 @@
 <?php
-class Banner {
+class Banner{
     public $conn;
-
-    public function __construct() {
-        $this->conn = connectDB(); // Đảm bảo hàm connectDB() hoạt động đúng
+    // ket noi CSDL
+    public function __construct()
+    {
+       $this->conn = connectDB() ;
     }
-
-    public function getAll(){
+    public function all(){
         try {
-            
-            $sql= 'SELECT * FROM banners WHERE 1';
-
+            $sql = 'SELECT * FROM `banners` WHERE 1';
             $stmt = $this->conn->prepare($sql);
-
+            // var_dump($stmt);die;
             $stmt->execute();
-
-            return  $stmt->fetchAll();
-        } catch (PDOException $e){
-            echo 'lỗi: ' . $e->getMessage();
+            return $stmt->fetchAll();
+        } catch (PDOException $e) {
+            echo "loi" . $e->getMessage();
         }
     }
 }

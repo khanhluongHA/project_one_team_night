@@ -7,7 +7,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Khuyen Mai | NN Shop</title>
+    <title>Thêm danh mục  | NN Shop</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
@@ -42,7 +42,8 @@
 
             <div class="page-content">
                 <div class="container-fluid">
-                <div class="row">
+                          <!-- start page title -->
+                          <div class="row">
                         <div class="col-12">
                             <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
                                 <h4 class="mb-sm-0">Quản lý liên hệ</h4>
@@ -50,7 +51,7 @@
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
                                         <li class="breadcrumb-item"><a href="javascript: void(0);">Admin</a></li>
-                                        <li class="breadcrumb-item active">Quản lý liên hệ</li>
+                                        <li class="breadcrumb-item active">Danh mục sản phẩm</li>
                                     </ol>
                                 </div>
 
@@ -64,62 +65,57 @@
                             <div class="h-100">
                             <div class="card">
                                 <div class="card-header align-items-center d-flex">
-                                    <h4 class="card-title mb-0 flex-grow-1">Quản lý Liên hệ  </h4>
-                                  
-
-                        
-                                      
+                                    <h4 class="card-title mb-0 flex-grow-1"> Thêm liên hệ</h4>
+                                    <div class="flex-shrink-0">
+                                   
+                                    </div>
                                 </div><!-- end card header -->
 
                                 <div class="card-body">
+                                   
                                     <div class="live-preview">
-                                        <div class="table-responsive">
-                                            <table class="table table-striped table-nowrap align-middle mb-0">
-                                                <thead>
-                                                    <tr>
-                                                        <th scope="col">STT</th>
-                                                        <th scope="col">Danh sách khách hàng</th>
-                                                        <th scope="col">Xem chi tiết</th>
-                                                        <th scope="col">Trạng thái </th>
-                                                        <th scope="col">Action </th>
-
-                                                        
-                                                      
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php
-                                                        foreach ($lienHes as $index => $lienHe) :
-                                                    ?>
-                                                    <tr>
-                                                        <td class="fw-medium"><?= $index + 1?></td>
-                                                        <td><?= $lienHe['danh_sach'] ?></td>
-                                                        <td>
-                                                            <a href="?act=chi-tiet-nguoi-dung" class="btn btn-primary">Xem chi tiết</a>
-                                                        </td>
-                                                        <td><?= $lienHe['trang_thai'] ?></td>
-                        
-                                                        <td>
-                                                          <div class="hstack gap-3 flex-wrap">
-                                                                        <a href="?act=create_lien_he=<?= $lienHe['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
-                                                                        <form action="?act=xoa-lien-he" method="POST" onsubmit="return confirm('ban co dong y xoa khong')">
-                                                                            <input type="hidden" name="lien-he-id" value="<?= $lienHe['id'] ?>">
-
-                                                                        <button type="submit" class="link-danger fs-15" style="border: none; background: none;"><i class="ri-delete-bin-line"></i></button>
-                                                                        </form>
-                                                                        <!-- <a href="javascript:void(0);" class="link-danger fs-15"><i class="ri-delete-bin-line"></i></a> -->
-                                                                    </div>
-                                                         </td>
-                                                    </tr>
-                                                   
-                                                   <?php endforeach;  ?>
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                        <form action="?act=them-lien-he" method="POST">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label for="citynameInput" class="form-label">Tên liên hệ</label>
+                                                        <input type="text" class="form-control" placeholder="Nhập tên lien he" name="ten_lien_he">
+                                                        <span class="text-danger">
+                                                                <?= !empty($_SESSION['errors']['ten_lien_he']) ? $_SESSION['errors']['ten_lien_he'] : ''?>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <!--end col-->
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label for="ForminputState" class="form-label">Trạng thái</label>
+                                                        <select  class="form-select" name="trang_thai_lh">
+                                                            <option selected disabled>Chọn trạng thái</option>
+                                                            <option value="1">hiển thị</option>
+                                                            <option value="2">không hiển thị</option>
+                                                        </select>
+                                                        <span class="text-danger">
+                                                                <?= !empty($_SESSION['errors']['trang_thai_lh']) ? $_SESSION['errors']['trang_thai_lh'] : ''?>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <!--end col-->
+                                                <div class="col-lg-12">
+                                                    <div class="text-center">
+                                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                                    </div>
+                                                </div>
+                                                <!--end col-->
+                                            </div>
+                                            <!--end row-->
+                                        </form>
                                     </div>
-                                  
-                                </div><!-- end card-body -->
-                            </div><!-- end card -->
+                                    
+                                </div>
+                            </div>
+
+                            </div> <!-- end .h-100-->
+
                         </div> <!-- end col -->
                     </div>
 
@@ -181,5 +177,3 @@
 </body>
 
 </html>
-
-                                                                

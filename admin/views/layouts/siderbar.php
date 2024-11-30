@@ -75,7 +75,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="?act=lienhe-category">
+                    <a class="nav-link menu-link" href="?act=lien-hes">
                         <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Liên Hệ</span>
                     </a>
                 </li>

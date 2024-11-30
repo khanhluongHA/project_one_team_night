@@ -51,7 +51,7 @@
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
                                         <li class="breadcrumb-item"><a href="javascript: void(0);">Admin</a></li>
-                                        <li class="breadcrumb-item active">Quản lý Người dùng</li>
+                                        <li class="breadcrumb-item active">Tài khoản người dùng</li>
                                     </ol>
                                 </div>
 
@@ -87,7 +87,6 @@
                                                         <th scope="col">Giới Tính</th>
                                                         <th scope="col">Avatar</th>
                                                         <th scope="col">Vai Trò</th>
-                                                        <th scope="col">Trạng thái</th>
                                                         <th scope="col">Action</th>
 
 
@@ -105,7 +104,6 @@
                                                         <td><?= $nguoiDungs['gioi_tinh'] ?></td>
                                                         <td><?= $nguoiDungs['avartar'] ?></td>
                                                         <td><?= $nguoiDungs['vai_tro'] ?></td>
-                                                        <td><?= $nguoiDungs['trang_thai'] ?></td>
                                                         
                                                         
 

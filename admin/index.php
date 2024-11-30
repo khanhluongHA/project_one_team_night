@@ -93,8 +93,12 @@ match ($act) {
 
     // liên hệ
 
-    'lienhe-category'       => (new LienHeController())->index(),
-    'xoa-lien-he'           => (new LienHeController())->destroy(),
+    'lien-hes'              => (new LienHeController())->index_lien_he(),
+     'form- them-lien-he'    => (new LienHeController())->create_lien_he(),
+     'them-lien-he'          => (new LienHeController())->store_lien_he(),
+     'form-sua-lien-he'      => (new LienHeController())->edit_lien_he(),
+     'sua-lien-he'           => (new LienHeController())->update_lien_he(),
+     'xoa-lien-he'           => (new LienHeController())->destroy_lien_he(),
     // người dùng
     'nguoidung-categoryy'    => (new NguoiDungController())->index(),
     'form-them-nguoi-dung'   => (new NguoiDungController())->create(),
@@ -174,5 +178,11 @@ match ($act) {
     // danh gia
     'update-trang-thai-danh-gia' => (new AdminSanPhamController())->updateTrangThaiDanhGia(),
     
+    //đăng nhập
+    'login'                 => (new DashboardController())->login(),
+    'logout'                 => (new DashboardController())->logout(),
+    'register'                 => (new DashboardController())->register(),
+    'forgot_password'                 => (new DashboardController())->forgot_password(),
+    'edit_profile'                 => (new DashboardController())->edit_profile(),
  
 };

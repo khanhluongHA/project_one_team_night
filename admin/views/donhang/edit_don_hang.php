@@ -128,18 +128,18 @@
 
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
-                                                        <label for="ForminputState" class="form-label">Trạng Thái đơn hàng</label>
-                                                        <select id="ForminputState"  class="form-select" name="trang_thai_don_hang" value="<?= $donHang['trang_thai_don_hang'] ?>">
-                                                            <option selected disabled>Chọn trạng thái</option>          
-                                                            <option value="1" <?= $donHang['trang_thai_don_hang'] == 1 ? 'selected' : '' ?> >Chưa xác nhận</option>
-                                                         
-                                                            <option value="2" <?= $donHang['trang_thai_don_hang'] == 2 ? 'selected' : '' ?> >đã xác nhận</option>
-                                                            <option value="3" <?= $donHang['trang_thai_don_hang'] == 3 ? 'selected' : '' ?> >đang giao</option>
-                                                            <option value="4" <?= $donHang['trang_thai_don_hang'] == 4 ? 'selected' : '' ?> >đã giao</option>
-                                                            <option value="5" <?= $donHang['trang_thai_don_hang'] == 5 ? 'selected' : '' ?> >giao hàng thành công</option>
-                                                            <option value="6" <?= $donHang['trang_thai_don_hang'] == 6 ? 'selected' : '' ?> >giao hàng thất bại</option>
-                                                            <option value="7" <?= $donHang['trang_thai_don_hang'] == 7 ? 'selected' : '' ?> >đã hủy</option>
+                                                        <label  for="ForminputState" class="form-label">Trạng Thái đơn hàng</label>
+                                                        <select id="ForminputState" class="form-select" name="trang_thai_don_hang">
+                                                            <option selected disabled>Chọn trạng thái</option>
+                                                            <option value="1" <?= $donHang['trang_thai_don_hang'] == 1 ? 'selected' : '' ?> <?= $donHang['trang_thai_don_hang'] > 1 ? 'disabled' : '' ?>>Chưa xác nhận</option>
+                                                            <option value="2" <?= $donHang['trang_thai_don_hang'] == 2 ? 'selected' : '' ?> <?= $donHang['trang_thai_don_hang'] > 2 ? 'disabled' : '' ?>>Đã xác nhận</option>
+                                                            <option value="3" <?= $donHang['trang_thai_don_hang'] == 3 ? 'selected' : '' ?> <?= $donHang['trang_thai_don_hang'] > 3 ? 'disabled' : '' ?>>Đang giao</option>
+                                                            <option value="4" <?= $donHang['trang_thai_don_hang'] == 4 ? 'selected' : '' ?> <?= $donHang['trang_thai_don_hang'] > 4 ? 'disabled' : '' ?>>Đã giao</option>
+                                                            <option value="5" <?= $donHang['trang_thai_don_hang'] == 5 ? 'selected' : '' ?> <?= $donHang['trang_thai_don_hang'] > 5 ? 'disabled' : '' ?>>Giao hàng thành công</option>
+                                                            <option value="6" <?= $donHang['trang_thai_don_hang'] == 6 ? 'selected' : '' ?> <?= $donHang['trang_thai_don_hang'] > 6 ? 'disabled' : '' ?>>Giao hàng thất bại</option>
+                                                            <option value="7" <?= $donHang['trang_thai_don_hang'] == 7 ? 'selected' : '' ?> <?= $donHang['trang_thai_don_hang'] == 7 ? 'disabled' : '' ?>>Đã hủy</option>
                                                         </select>
+
                                                         <span class="text-danger">
                                                          <?= !empty($_SESSION['errors']['trang_thai_don_hang'] ) ? $_SESSION['errors']['trang_thai_don_hang'] : '' ?>
                                                         </span>

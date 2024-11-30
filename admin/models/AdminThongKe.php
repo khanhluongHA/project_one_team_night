@@ -8,7 +8,8 @@ class AdminThongKe {
     }
 
     public function getTongDoanhThu() {
-        $stmt = $this->conn->query("SELECT SUM(thanh_toan) AS thanh_toan FROM don_hangs");
+        $stmt = $this->conn->query("SELECT SUM(thanh_toan) AS thanh_toan FROM don_hangs WHERE trang_thai_thanh_toan = 2");
+        // "SELECT COUNT(*) AS trang_thai_thanh_toan FROM don_hangs WHERE trang_thai_thanh_toan in (2)"
 
         $tongDonHang = $this->getTongDonHangDaBan();
         return $stmt->fetch(PDO::FETCH_ASSOC);
@@ -23,7 +24,7 @@ class AdminThongKe {
         $stmt = $this->conn->query("
             SELECT DATE(ngay_dat) AS Ngay, SUM(tong_tien) AS TongDoanhThu
             FROM don_hangs
-            WHERE trang_thai_don_hang IN (4,6,7,8,9)
+            WHERE trang_thai_thanh_toan IN (2)
             GROUP BY DATE(ngay_dat)
             ORDER BY DATE(ngay_dat) DESC
             LIMIT 5

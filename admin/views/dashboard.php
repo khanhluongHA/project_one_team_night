@@ -1,3 +1,15 @@
+
+<?php
+session_start();
+
+// Kiểm tra nếu người dùng chưa đăng nhập hoặc không phải admin, chuyển hướng tới trang đăng nhập
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
+    header('Location: ?act=login');
+    exit();
+}
+?>
+
+
 <!doctype html>
 <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable" data-theme="default" data-theme-colors="default">
 
@@ -51,8 +63,10 @@
                                     <div class="col-12">
                                         <div class="d-flex align-items-lg-center flex-lg-row flex-column">
                                             <div class="flex-grow-1">
-                                                <h4 class="fs-16 mb-1">Good Morning, Anna!</h4>
-                                                <p class="text-muted mb-0">Here's what's happening with your store today.</p>
+                                                <h4 class="fs-16 mb-1"><h1>Chào mừng, <?php echo $_SESSION['user_name']; ?> (Admin)</h1>
+                                                <a href="?act=logout">Đăng xuất</a></h4><br>
+                                                <a href="?act=edit_profile">cập nhật thông tin</a>
+                                            
                                             </div>
                                             <div class="mt-3 mt-lg-0">
                                                 <form action="javascript:void(0);">

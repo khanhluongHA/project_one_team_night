@@ -80,8 +80,8 @@
                                                         <th scope="col">STT</th>
                                                         <th scope="col">Tên người dùng</th>                                                     
                                                         <th scope="col">avatar</th>
-                                                        <th scope="col">vai tro</th>
-                                                        <th scope="col">trang thái</th>
+                                                        <th scope="col">Vai trò</th>
+                                                        <!-- <th scope="col"></th> -->
                                                         <th scope="col">action</th>
                                                     </tr>
                                                 </thead>
@@ -102,16 +102,7 @@
                                                             ?>
                                                             
                                                         </td>
-                                                        <td>
-                                                            <?php 
-                                                            if($nguoiDung['trang_thai'] ==1) { ?>
-                                                            <span class="badge bg-success">Hiển Thị</span>
-                                                            <?php } else { ?>
-                                                                <span class="badge bg-danger">Không hiển Thị</span>
-                                                           <?php }
-                                                            ?>
-                                                            
-                                                        </td>
+                                                        
                                                         
                                                         
 
