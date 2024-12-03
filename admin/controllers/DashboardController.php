@@ -23,5 +23,9 @@ class DashboardController {
        
         require_once './views/edit_profile.php';
     }
+    public function reset_password(){
+       
+        require_once './views/reset_password.php';
+    }
 }
 

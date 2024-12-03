@@ -16,7 +16,7 @@ if (isset($_SESSION['reset_email'])) {
         unset($_SESSION['reset_email']);
         
         echo "Mật khẩu đã được thay đổi thành công!";
-		header("Location: login.php");
+		header("Location: ?act=login");
     }
 } else {
     echo "Không có yêu cầu reset mật khẩu!";

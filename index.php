@@ -60,6 +60,8 @@ match ($act) {
     'register'                 => (new HomeController())->register(),
     'forgot_password'                 => (new HomeController())->forgot_password(),
     'edit_profile'                 => (new HomeController())->edit_profile(),
+    'reset_password'                 => (new HomeController())->reset_password(),
+
 
     
 

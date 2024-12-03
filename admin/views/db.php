@@ -1,13 +1,13 @@
 <?php
 $host = 'localhost';
 $dbname = 'db_du_an';
-$username = 'root';
-$password = '';
+$user = 'root';
+$pass = '';
 
 try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
-    echo "Lỗi kết nối: " . $e->getMessage();
+    die("Connection failed: " . $e->getMessage());
 }
 ?>

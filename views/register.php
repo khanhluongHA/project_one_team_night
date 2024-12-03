@@ -1,47 +1,46 @@
-
 <?php
-session_start();
-require('db.php'); // Kết nối cơ sở dữ liệu
+require 'db.php';
+function isValidEmail($email) {
+    return filter_var($email, FILTER_VALIDATE_EMAIL) !== false;
+}
 
-// Kiểm tra nếu có yêu cầu gửi POST (khi người dùng gửi form)
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Lấy thông tin từ form
-    $name = $_POST['name'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
     $confirm_password = $_POST['confirm_password'];
-    $role = $_POST['role']; // Lấy giá trị role từ form (user/admin)
 
-    // Kiểm tra mật khẩu và xác nhận mật khẩu có khớp không
-    if ($password !== $confirm_password) {
-        echo "Mật khẩu và xác nhận mật khẩu không khớp!";
+    // Kiểm tra định dạng email hợp lệ
+    if (!isValidEmail($email)) {
+        echo "Email không hợp lệ! Vui lòng nhập lại.";
     } else {
-        // Kiểm tra email đã tồn tại chưa
+        // Kiểm tra email đã tồn tại trong cơ sở dữ liệu chưa
         $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
         $stmt->execute([$email]);
-        if ($stmt->rowCount() > 0) {
-            echo "Email đã tồn tại!";
-        } else {
-            // Mã hóa mật khẩu trước khi lưu vào cơ sở dữ liệu
-            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+        $user = $stmt->fetch();
 
-            // Thêm người dùng vào cơ sở dữ liệu (bao gồm cả role)
-            $stmt = $pdo->prepare("INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)");
-            if ($stmt->execute([$name, $email, $hashed_password, $role])) {
-                echo "Đăng ký thành công!";
-                // Sau khi đăng ký thành công, chuyển hướng đến trang đăng nhập
-                header('Location: ?act=login');
-                exit();
+        if ($user) {
+            echo "Email này đã được đăng ký. Vui lòng sử dụng email khác!";
+        } else {
+            // Kiểm tra mật khẩu xác nhận
+            if ($password !== $confirm_password) {
+                echo "Mật khẩu xác nhận không khớp!";
             } else {
-                echo "Đã xảy ra lỗi khi đăng ký!";
+                // Mã hóa mật khẩu trước khi lưu vào cơ sở dữ liệu
+                $hashed_password = password_hash($password, PASSWORD_BCRYPT);
+
+                // Lưu thông tin người dùng vào cơ sở dữ liệu
+                $stmt = $pdo->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
+                $stmt->execute([$username, $email, $hashed_password]);
+
+                echo "Đăng ký thành công! Bạn có thể đăng nhập ngay.";
+                // Chuyển hướng người dùng đến trang đăng nhập hoặc trang chủ
+                header("Location: ?act=login");
+                exit();
             }
         }
     }
-}
-?>
-
-
-
+}?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -112,7 +111,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 									<li><a href="blog.html">Blog</a></li>
 									<li><a href="wishlist.html">My Wishlist</a></li>
 									<li><a href="cart.html">Cart</a></li>
-									<li><a href="?act=login" class="login-link">Log In</a></li>
+									<li><a href="login.html" class="login-link">Log In</a></li>
 								</ul>
 							</div><!-- End .header-menu -->
 						</div><!-- End .header-dropown -->
@@ -201,7 +200,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 							<h6><span>Call us now</span><a href="tel:#" class="text-dark font1">+123 5678 890</a></h6>
 						</div>
 
-						<a href="?act=login" class="header-icon" title="login"><i class="icon-user-2"></i></a>
+						<a href="login.html" class="header-icon" title="login"><i class="icon-user-2"></i></a>
 
 						<a href="wishlist.html" class="header-icon" title="wishlist"><i class="icon-wishlist-2"></i></a>
 
@@ -434,7 +433,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 										</ul>
 									</li>
 									<li><a href="contact.html">Contact Us</a></li>
-									<li><a href="?act=login">Login</a></li>
+									<li><a href="login.html">Login</a></li>
 									<li><a href="forgot-password.html">Forgot Password</a></li>
 								</ul>
 							</li>
@@ -493,52 +492,43 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				<div class="row">
 					<div class="col-lg-10 mx-auto">
 						<div class="row">
+							
 							<div class="col-md-12">
-						
 								<div class="heading mb-1">
-									<h2 class="title">Đăng ký</h2>
-									<?php if (isset($error)) echo "<p style='color:red;'>$error</p>"; ?>
+									<h2 class="title">Đăng kí</h2>
 								</div>
-                                <form method="POST" action="?act=login">
-                                    <label for="login-email">
-										Tên người dùng
+								<form method="POST">
+									<label for="register-email">
+										Tên đăng nhập
 										<span class="required">*</span>
-									</label> <br>
-                                    <input class="form-input form-wide" type="text" name="name" placeholder="Tên người dùng" required><br>
-                                    <label for="login-email">
-										Email
+									</label>
+									<input  class="form-input form-wide" type="text" name="username"  required>
+									<label for="register-email">
+										Email  
 										<span class="required">*</span>
-									</label> <br>
-									<input class="form-input form-wide" type="email" name="email" placeholder="Email" required><br>
-									<label for="login-email">
+									</label>
+									<input class="form-input form-wide" type="email" name="email" required>
+									<label for="register-email">
 										Mật khẩu
 										<span class="required">*</span>
 									</label>
-									<input class="form-input form-wide" type="password" name="password" placeholder="Mật khẩu" required><br>
-                                    <label for="login-email">
+									<input class="form-input form-wide" type="password" name="password" required>
+									<label for="register-email">
 										Xác nhận mật khẩu
 										<span class="required">*</span>
-									</label>
-									<input class="form-input form-wide" type="password" name="confirm_password" placeholder="Mật khẩu" required><br>
-									<div class="form-footer">
-										
-											<label for="role">Vai trò </label> 
-                                            <select name="role">
-                                                <option value="user">User</option>
-                                                <option value="admin">Admin</option>
-                                            </select>
-										
+									</label> 
+									<input class="form-input form-wide" type="password" name="confirm_password" id="confirm_password" required><br>
+									<select class=" mb-2" name="role">
+										<option value="user">User</option>
+										<option value="admin">Admin</option>
+									</select>
+									<button type="submit" class="btn btn-dark btn-md w-100 mr-0">
+										Đăng ký
+									</button>
+								</form> 
 
-										
-									</div>
-									
-									<button class="btn btn-dark btn-md w-100" type="submit">Đăng ký</button>
-   
-                                    </form>
-                                    
 								
 							</div>
-							
 						</div>
 					</div>
 				</div>

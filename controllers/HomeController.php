@@ -27,6 +27,10 @@ class HomeController
        
         require_once './views/db.php';
     }
+    public function reset_password(){
+       
+        require_once './views/reset_password.php';
+    }
     public function forgot_password(){
        
         require_once './views/forgot_password.php';
@@ -118,6 +122,7 @@ $chiTietGioiHang = $this->modelGioHang->getDetailGioHang($gioHang['id']);
             var_dump('Chưa đăng nhập');die;
         }
     }
+
 
     public function postThanhToan()
     {

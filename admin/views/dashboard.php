@@ -1,13 +1,12 @@
 
-<?php
-session_start();
 
-// Kiểm tra nếu người dùng chưa đăng nhập hoặc không phải admin, chuyển hướng tới trang đăng nhập
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
-    header('Location: ?act=login');
-    exit();
-}
-?>
+<?php
+require 'auth.php';
+echo "Chào mừng Admin " . $_SESSION['username'];
+?><br>
+<a href="auth.php">tài khoản người dùng</a><br>
+<a href="logout.php">Đăng xuất</a><br>
+<a href="edit_profile.php">Chỉnh sửa thông tin tài khoản</a>
 
 
 <!doctype html>
@@ -63,7 +62,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
                                     <div class="col-12">
                                         <div class="d-flex align-items-lg-center flex-lg-row flex-column">
                                             <div class="flex-grow-1">
-                                                <h4 class="fs-16 mb-1"><h1>Chào mừng, <?php echo $_SESSION['user_name']; ?> (Admin)</h1>
+                                                <h4 class="fs-16 mb-1"><h1>Chào mừng, <?php echo $_SESSION['username']; ?> (Admin)</h1>
                                                 <a href="?act=logout">Đăng xuất</a></h4><br>
                                                 <a href="?act=edit_profile">cập nhật thông tin</a>
                                             

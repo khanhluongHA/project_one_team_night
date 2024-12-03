@@ -184,5 +184,6 @@ match ($act) {
     'register'                 => (new DashboardController())->register(),
     'forgot_password'                 => (new DashboardController())->forgot_password(),
     'edit_profile'                 => (new DashboardController())->edit_profile(),
+    'reset_password'                 => (new DashboardController())->reset_password(),
  
 };

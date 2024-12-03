@@ -1,32 +1,34 @@
 <?php
-session_start();
-require('db.php'); // Kết nối CSDL
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+require 'db.php';
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $email = $_POST['email'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = $_POST['username'];
     $password = $_POST['password'];
-    
-    // Kiểm tra email và mật khẩu
-    $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
-    $stmt->execute([$email]);
+
+    $stmt = $pdo->prepare("SELECT * FROM users WHERE username = ?");
+    $stmt->execute([$username]);
     $user = $stmt->fetch();
-    
+
     if ($user && password_verify($password, $user['password'])) {
         $_SESSION['user_id'] = $user['id'];
-        $_SESSION['user_name'] = $user['name'];
         $_SESSION['role'] = $user['role'];
-        
-        // Chuyển hướng đến trang chủ hoặc admin
-        if ($user['role'] == 'admin') {
-            header('Location: http://localhost/base_du_an_1/admin/');
+        $_SESSION['username'] = $user['username'];
+
+        if ($user['role'] === 'admin') {
+            header("Location: http://localhost/base_du_an_1/admin");
         } else {
-            header('Location: ?act=about');
+            header("Location: http://localhost/base_du_an_1/");
         }
+        exit();
     } else {
-        echo "Email hoặc mật khẩu không chính xác!";
+        echo "Tên đăng nhập hoặc mật khẩu không đúng!";
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -97,7 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 									<li><a href="blog.html">Blog</a></li>
 									<li><a href="wishlist.html">My Wishlist</a></li>
 									<li><a href="cart.html">Cart</a></li>
-									<li><a href="?act=login" class="login-link">Log In</a></li>
+									<li><a href="login.html" class="login-link">Log In</a></li>
 								</ul>
 							</div><!-- End .header-menu -->
 						</div><!-- End .header-dropown -->
@@ -186,7 +188,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 							<h6><span>Call us now</span><a href="tel:#" class="text-dark font1">+123 5678 890</a></h6>
 						</div>
 
-						<a href="?act=login" class="header-icon" title="login"><i class="icon-user-2"></i></a>
+						<a href="login.html" class="header-icon" title="login"><i class="icon-user-2"></i></a>
 
 						<a href="wishlist.html" class="header-icon" title="wishlist"><i class="icon-wishlist-2"></i></a>
 
@@ -419,7 +421,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 										</ul>
 									</li>
 									<li><a href="contact.html">Contact Us</a></li>
-									<li><a href="?act=login">Login</a></li>
+									<li><a href="login.html">Login</a></li>
 									<li><a href="forgot-password.html">Forgot Password</a></li>
 								</ul>
 							</li>
@@ -479,37 +481,41 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 					<div class="col-lg-10 mx-auto">
 						<div class="row">
 							<div class="col-md-12">
-						
 								<div class="heading mb-1">
-									<h2 class="title">Đăng Nhập</h2>
-									<?php if (isset($error)) echo "<p style='color:red;'>$error</p>"; ?>
+									<h2 class="title">Đăng nhập</h2>
 								</div>
-
-								<form method="POST" action="?act=login">
-									<label for="login-email">
-										Email
+								<form method="POST">
+									<label for="login-password">
+										Tên đăng nhập
 										<span class="required">*</span>
-									</label> <br>
-									<input class="form-input form-wide" type="email" name="email" placeholder="Email" required><br>
-									<label for="login-email">
+									</label>
+									<input class="form-input form-wide" type="text" name="username"   required>
+									<label for="login-password">
 										Mật khẩu
 										<span class="required">*</span>
 									</label>
-									<input class="form-input form-wide" type="password" name="password" placeholder="Mật khẩu" required><br>
+									<input class="form-input form-wide" type="password" name="password"   required>
 									<div class="form-footer">
-										<div class=" mb-0">
-												<p><a class=" mb-0" href="?act=register">
-													Đăng ký
-												</a></p>
+										<div class="mb-0">
+											<input type="checkbox" class="custom-control-input" id="lost-password" />
+											<label  for="lost-password">
+												<a class="text-dark" href="?act=register">Đăng kí</a> <br>
+											</label>
 										</div>
 
 										<a href="?act=forgot_password"
 											class="forget-password text-dark form-footer-right">
-											Quên mật khẩu?</a>
+											quên mật khẩu?
+										</a>
 									</div>
+									<button type="submit" class="btn btn-dark btn-md w-100">
+										Đăng nhập
+									</button>
 									
-									<button class="btn btn-dark btn-md w-100" type="submit">Đăng nhập</button>
+									
 								</form>
+								
+								
 							</div>
 							
 						</div>
